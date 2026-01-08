@@ -1,10 +1,18 @@
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DaT9;
 using FishyFlip;
+using FishyFlip.Lexicon;
+using FishyFlip.Lexicon.App.Bsky.Embed;
+using FishyFlip.Lexicon.App.Bsky.Feed;
+using FishyFlip.Lexicon.Com.Atproto.Repo;
+using FishyFlip.Models;
+using Microsoft.Extensions.Logging.Abstractions;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 using SkyDrop.Services;
+using System.Collections.ObjectModel;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SkyDrop.ViewModels;
 
@@ -270,10 +278,10 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// </summary>
     public string InputModeDisplay => CurrentInputMode switch
     {
-        TextInputMode.T9 => "T9",
-        TextInputMode.ABC => "ABC",
-        TextInputMode.Kana => "かな",
-        _ => "T9"
+        TextInputMode.T9 => Strings.InputModeT9,
+        TextInputMode.ABC => Strings.InputModeABC,
+        TextInputMode.Kana => Strings.InputModeKana,
+        _ => Strings.InputModeT9
     };
 
     /// <summary>
@@ -336,7 +344,7 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// </summary>
     private void LoadDefaultDictionary()
     {
-        var uri = new Uri("avares://SkyDrop/google-10000-english-usa.txt");
+        var uri = new Uri("avares://SkyDrop/Assets/google-10000-english-usa.txt");
         using var stream = Avalonia.Platform.AssetLoader.Open(uri);
         using var reader = new StreamReader(stream);
 
@@ -1225,30 +1233,45 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     {
         if (CompletedPosts.Count == 0)
         {
-            PostingStatus = "No posts to send!";
+            PostingStatus = Strings.StatusNoPostsToSend;
             return;
         }
 
         if (_protocol.Session is null)
         {
-            PostingStatus = "Not logged in!";
+            PostingStatus = Strings.StatusNotLoggedIn;
             return;
         }
 
         IsPosting = true;
-        PostingStatus = "Posting to Bluesky...";
+        PostingStatus = Strings.StatusPostingToBluesky;
 
         try
         {
-            // TODO: Implement posting using _protocol.Repo.CreateRecordAsync
-            // For now, simulate posting
-            await Task.Delay(1000);
+            ReplyRefDef? replyRefDef = null;
+            StrongRef? firstPost = null;
 
+            foreach (var post in CompletedPosts)
+            {
+                var (pResult, pError) = await _protocol.Feed.CreatePostAsync(post, reply: replyRefDef);
+                if (pResult != null)
+                {
+                    if (firstPost is null)
+                    {
+                        firstPost = new FishyFlip.Lexicon.Com.Atproto.Repo.StrongRef(pResult.Uri, pResult.Cid);
+                    }
+                    replyRefDef = new ReplyRefDef(firstPost, new FishyFlip.Lexicon.Com.Atproto.Repo.StrongRef(pResult.Uri, pResult.Cid));
+                }
+                else
+                {
+                    throw new Exception($"Failed to upload post: {pError?.Detail?.Message}");
+                }
+            }
             var totalPosts = CompletedPosts.Count;
 
-            if (IncludeSkyDropSignature)
+            if (IncludeSkyDropSignature && replyRefDef is not null)
             {
-                PostingStatus = "Generating stats image...";
+                PostingStatus = Strings.StatusGeneratingStatsImage;
 
                 var statsImageBytes = StatsImageGenerator.GenerateStatsImage(
                     Score,
@@ -1256,17 +1279,29 @@ public partial class CreatePostGameViewModel : GameViewModelBase
                     Lines,
                     CompletedPosts.Count);
 
-                // TODO: Upload image and create signature post
-                // The signature post text
-                var signatureText = $"Posted by #SkyDrop\n\nScore: {Score:N0} | Level: {Level} | Lines: {Lines}";
+                var content = new StreamContent(new MemoryStream(statsImageBytes));
+                content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
 
-                // For now, simulate uploading
-                await Task.Delay(500);
+                var (blobResult, eerror) = await _protocol.Repo.UploadBlobAsync(content);
+
+                if (blobResult != null)
+                {
+                    var markdownPostText = $"Posted with [@SkyDrop](did:plc:zgvtbqqgnrbpfsyni76dpmca)\n\nScore: {Score:N0} | Level: {Level} | Lines: {Lines}";
+                    var post = MarkdownPost.Parse(markdownPostText);
+
+                    Image image = new Image(blobResult.Blob, post.Post, aspectRatio: new AspectRatio(800, 420));
+
+                    var (result, p) = await _protocol.Feed.CreatePostAsync(post.Post, facets: post.Facets, reply: replyRefDef, embed: new EmbedImages(images: new() { image }));
+                }
+                else if (eerror != null)
+                {
+                    throw new Exception($"Failed to upload stats image: {eerror.Detail?.Message}");
+                }
 
                 totalPosts++;
             }
 
-            PostingStatus = $"Successfully posted {totalPosts} post(s) to Bluesky!";
+            PostingStatus = string.Format(Strings.StatusSuccessfullyPosted, totalPosts);
             HasPosted = true;
         }
         catch (Exception ex)

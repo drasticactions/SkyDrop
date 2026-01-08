@@ -4,6 +4,7 @@ using FishyFlip;
 using FishyFlip.Lexicon.App.Bsky.Actor;
 using FishyFlip.Models;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -56,10 +57,10 @@ public partial class AuthorFeedModeOptionsViewModel : GameModeOptionsViewModelBa
     /// </summary>
     public AuthorFilterOption[] AvailableFilters { get; } = new[]
     {
-        new AuthorFilterOption(AuthorFilterConstants.PostsAndAuthorThreads, "All Posts", "Posts and threads by the author"),
-        new AuthorFilterOption(AuthorFilterConstants.PostsWithReplies, "With Replies", "Posts including replies"),
-        new AuthorFilterOption(AuthorFilterConstants.PostsWithMedia, "Media Only", "Posts with images or media"),
-        new AuthorFilterOption(AuthorFilterConstants.PostsWithVideo, "Video Only", "Posts with videos"),
+        new AuthorFilterOption(AuthorFilterConstants.PostsAndAuthorThreads, Strings.FilterAllPosts, Strings.FilterAllPostsDesc),
+        new AuthorFilterOption(AuthorFilterConstants.PostsWithReplies, Strings.FilterWithReplies, Strings.FilterWithRepliesDesc),
+        new AuthorFilterOption(AuthorFilterConstants.PostsWithMedia, Strings.FilterMediaOnly, Strings.FilterMediaOnlyDesc),
+        new AuthorFilterOption(AuthorFilterConstants.PostsWithVideo, Strings.FilterVideoOnly, Strings.FilterVideoOnlyDesc),
     };
 
     /// <summary>
@@ -72,8 +73,8 @@ public partial class AuthorFeedModeOptionsViewModel : GameModeOptionsViewModelBa
     /// </summary>
     public string GameTypeDescription => SelectedGameType switch
     {
-        FeedGameType.Reveal => "Posts are revealed as you clear lines",
-        FeedGameType.Scroll => "Rotate pieces to scroll through the feed",
+        FeedGameType.Reveal => Strings.GameTypeRevealDesc,
+        FeedGameType.Scroll => Strings.GameTypeScrollDesc,
         _ => ""
     };
 
@@ -152,7 +153,7 @@ public partial class AuthorFeedModeOptionsViewModel : GameModeOptionsViewModelBa
     {
         if (string.IsNullOrWhiteSpace(AuthorHandle))
         {
-            ProfileError = "Please enter a handle";
+            ProfileError = Strings.ErrorPleaseEnterHandle;
             return;
         }
 
@@ -173,7 +174,7 @@ public partial class AuthorFeedModeOptionsViewModel : GameModeOptionsViewModelBa
             var identifier = ATIdentifier.Create(cleanHandle);
             if (identifier == null)
             {
-                ProfileError = "Invalid handle format";
+                ProfileError = Strings.ErrorInvalidHandleFormat;
                 return;
             }
 
@@ -181,13 +182,13 @@ public partial class AuthorFeedModeOptionsViewModel : GameModeOptionsViewModelBa
 
             if (error != null)
             {
-                ProfileError = error.Detail?.Message ?? "Profile not found";
+                ProfileError = error.Detail?.Message ?? Strings.ErrorProfileNotFound;
                 return;
             }
 
             if (profile == null)
             {
-                ProfileError = "Profile not found";
+                ProfileError = Strings.ErrorProfileNotFound;
                 return;
             }
 

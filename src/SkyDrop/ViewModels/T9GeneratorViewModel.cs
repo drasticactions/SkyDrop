@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DaT9;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -53,7 +54,7 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
     private void LoadDictionary()
     {
-        var uri = new Uri("avares://SkyDrop/google-10000-english-usa.txt");
+        var uri = new Uri("avares://SkyDrop/Assets/google-10000-english-usa.txt");
         using var stream = Avalonia.Platform.AssetLoader.Open(uri);
         using var reader = new StreamReader(stream);
 
@@ -131,7 +132,7 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
         if (!T9Input.All(c => char.IsDigit(c)))
         {
-            ErrorMessage = "T9 input must contain only digits (0-9)";
+            ErrorMessage = Strings.T9InputDigitsOnly;
             return;
         }
 
@@ -139,7 +140,7 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
         if (string.IsNullOrEmpty(wordSequence))
         {
-            ErrorMessage = "Enter digits 2-9 for letters";
+            ErrorMessage = Strings.T9EnterDigitsHint;
             return;
         }
 
@@ -147,7 +148,7 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
         if (completions.Count == 0)
         {
-            ErrorMessage = "No matching words found";
+            ErrorMessage = Strings.NoMatchingWords;
             return;
         }
 
@@ -158,7 +159,7 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
         if (completions.Count > 30)
         {
-            ErrorMessage = $"Showing 30 of {completions.Count} matches";
+            ErrorMessage = string.Format(Strings.T9ShowingMatches, completions.Count);
         }
     }
 

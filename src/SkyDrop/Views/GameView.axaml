@@ -1,0 +1,151 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:controls="using:SkyDrop.Controls"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
+             x:Class="SkyDrop.Views.GameView"
+             x:DataType="vm:GameViewModel"
+             Focusable="True">
+
+    <Panel x:Name="RootPanel">
+        <Grid x:Name="LandscapeLayout" ColumnDefinitions="*,Auto" IsVisible="True">
+            <Border Grid.Column="0"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="20">
+                <controls:GameCanvas x:Name="GameCanvasLandscape"
+                                     Engine="{Binding Engine}"
+                                     ShowGhost="True"
+                                     ShowGrid="True"/>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Background="{DynamicResource PanelBackgroundBrush}"
+                    Width="160"
+                    Padding="15"
+                    Margin="0,20,20,20"
+                    CornerRadius="4">
+                <StackPanel Spacing="25">
+                    <StackPanel>
+                        <TextBlock Text="{x:Static res:Strings.Score}" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                        <TextBlock Text="{Binding Score}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentGoldBrush}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="{x:Static res:Strings.Level}" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                        <TextBlock Text="{Binding Level}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentCyanBrush}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="{x:Static res:Strings.Lines}" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                        <TextBlock Text="{Binding Lines}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentGreenBrush}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="{x:Static res:Strings.Next}" FontSize="12" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,0,0,10"/>
+                        <Border Background="{DynamicResource NextPieceBackgroundBrush}" CornerRadius="4" Height="80">
+                            <controls:NextPieceCanvas Piece="{Binding NextPiece}"/>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Margin="0,20,0,0" Spacing="4">
+                        <TextBlock Text="{x:Static res:Strings.Controls}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource TertiaryTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlMove}" FontSize="10" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlRotate}" FontSize="10" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlSoftDrop}" FontSize="10" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlPause}" FontSize="10" Foreground="{DynamicResource MutedTextBrush}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid x:Name="PortraitLayout" RowDefinitions="Auto,*" IsVisible="False">
+            <Border Grid.Row="0"
+                    Background="{DynamicResource PanelBackgroundBrush}"
+                    Padding="15,10"
+                    Margin="10,10,10,0"
+                    CornerRadius="4">
+                <Grid ColumnDefinitions="*,Auto,*,Auto,*,Auto,Auto">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                        <TextBlock Text="{x:Static res:Strings.Score}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Score}" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource AccentGoldBrush}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Rectangle Grid.Column="1" Width="1" Fill="{DynamicResource DividerBrush}" Margin="10,5"/>
+
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                        <TextBlock Text="{x:Static res:Strings.Level}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Level}" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Rectangle Grid.Column="3" Width="1" Fill="{DynamicResource DividerBrush}" Margin="10,5"/>
+
+                    <StackPanel Grid.Column="4" HorizontalAlignment="Center">
+                        <TextBlock Text="{x:Static res:Strings.Lines}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                        <TextBlock Text="{Binding Lines}" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource AccentGreenBrush}" HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Rectangle Grid.Column="5" Width="1" Fill="{DynamicResource DividerBrush}" Margin="10,5"/>
+
+                    <StackPanel Grid.Column="6" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                        <TextBlock Text="{x:Static res:Strings.Next}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center"/>
+                        <Border Background="{DynamicResource NextPieceBackgroundBrush}" CornerRadius="4" Width="50" Height="40">
+                            <controls:NextPieceCanvas Piece="{Binding NextPiece}"/>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="2"
+                    CornerRadius="4"
+                    Margin="10">
+                <controls:GameCanvas x:Name="GameCanvasPortrait"
+                                     Engine="{Binding Engine}"
+                                     ShowGhost="True"
+                                     ShowGrid="True"/>
+            </Border>
+        </Grid>
+
+        <controls:PauseOverlay x:Name="PauseOverlay" IsPaused="{Binding IsPaused}"/>
+
+        <controls:InstructionsOverlay x:Name="InstructionsOverlay" IsVisibleOverlay="{Binding ShowInstructions}"/>
+
+        <Border Background="#CC000000"
+                IsVisible="{Binding IsGameOver}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+                <TextBlock Text="{x:Static res:Strings.GameOver}"
+                           FontSize="48"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource AccentRedBrush}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Spacing="8">
+                    <TextBlock FontSize="18" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center">
+                        <Run Text="{x:Static res:Strings.FinalScore}"/>
+                        <Run Text="{Binding Score}" Foreground="{DynamicResource AccentGoldBrush}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock FontSize="14" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center">
+                        <Run Text="{x:Static res:Strings.Level}"/>
+                        <Run Text=": "/>
+                        <Run Text="{Binding Level}" Foreground="{DynamicResource AccentCyanBrush}" FontWeight="Bold"/>
+                        <Run Text="  "/>
+                        <Run Text="{x:Static res:Strings.Lines}"/>
+                        <Run Text=": "/>
+                        <Run Text="{Binding Lines}" Foreground="{DynamicResource AccentGreenBrush}" FontWeight="Bold"/>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Spacing="10" Margin="0,20,0,0">
+                    <TextBlock Text="{x:Static res:Strings.PressSpaceRestart}"
+                               FontSize="14"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Static res:Strings.PressEscTitle}"
+                               FontSize="12"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Panel>
+</UserControl>

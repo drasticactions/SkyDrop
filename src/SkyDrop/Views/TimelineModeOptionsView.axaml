@@ -1,0 +1,182 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="700"
+             x:Class="SkyDrop.Views.TimelineModeOptionsView"
+             x:DataType="vm:TimelineModeOptionsViewModel"
+             Focusable="True">
+
+    <ScrollViewer x:Name="MainScrollViewer" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel HorizontalAlignment="Center" Spacing="20">
+            <StackPanel Margin="0,40,0,0" HorizontalAlignment="Center">
+                <TextBlock Text="{x:Static res:Strings.ModeTimeline}"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource AccentCyanBrush}"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="{x:Static res:Strings.PlayWhileViewingTimeline}"
+                           FontSize="14"
+                           Foreground="{DynamicResource SecondaryTextBrush}"
+                           HorizontalAlignment="Center"
+                           Margin="0,8,0,0"/>
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center" Spacing="20">
+
+                <StackPanel Spacing="10">
+                    <TextBlock Text="{x:Static res:Strings.GameType}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+
+                    <Border x:Name="GameTypeSelectorBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="3"
+                            CornerRadius="8"
+                            Padding="5"
+                            HorizontalAlignment="Center">
+                        <Grid ColumnDefinitions="*,*" HorizontalAlignment="Center">
+                            <Border Grid.Column="0"
+                                    x:Name="RevealModeButton"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    CornerRadius="4,0,0,4"
+                                    Padding="20,12"
+                                    Cursor="Hand">
+                                <StackPanel HorizontalAlignment="Center" Spacing="4">
+                                    <TextBlock Text="{x:Static res:Strings.Reveal}"
+                                               FontSize="14"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static res:Strings.RevealDesc}"
+                                               FontSize="10"
+                                               Foreground="{DynamicResource TertiaryTextBrush}"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Grid.Column="1"
+                                    x:Name="ScrollModeButton"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    CornerRadius="0,4,4,0"
+                                    Padding="20,12"
+                                    Cursor="Hand">
+                                <StackPanel HorizontalAlignment="Center" Spacing="4">
+                                    <TextBlock Text="{x:Static res:Strings.Scroll}"
+                                               FontSize="14"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static res:Strings.ScrollDesc}"
+                                               FontSize="10"
+                                               Foreground="{DynamicResource TertiaryTextBrush}"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="{Binding GameTypeDescription}"
+                               FontSize="12"
+                               Foreground="{DynamicResource AccentGoldBrush}"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Spacing="10">
+                    <TextBlock Text="{x:Static res:Strings.SelectLevel}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+
+                    <Border x:Name="LevelSelectorBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="3"
+                            CornerRadius="8"
+                            Padding="5"
+                            HorizontalAlignment="Center">
+                        <Grid ColumnDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center">
+                            <Button Grid.Column="0"
+                                    Content="&#9664;"
+                                    Command="{Binding DecreaseLevelCommand}"
+                                    FontSize="24"
+                                    Width="50"
+                                    Height="50"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    Foreground="{DynamicResource PrimaryTextBrush}"
+                                    CornerRadius="4"
+                                    Focusable="False"/>
+
+                            <Border Grid.Column="1"
+                                    Background="{DynamicResource NextPieceBackgroundBrush}"
+                                    CornerRadius="4"
+                                    Margin="20,0"
+                                    Padding="30,10"
+                                    MinWidth="100">
+                                <TextBlock Text="{Binding SelectedLevel}"
+                                           FontSize="36"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource AccentGoldBrush}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Border>
+
+                            <Button Grid.Column="2"
+                                    Content="&#9654;"
+                                    Command="{Binding IncreaseLevelCommand}"
+                                    FontSize="24"
+                                    Width="50"
+                                    Height="50"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    Foreground="{DynamicResource PrimaryTextBrush}"
+                                    CornerRadius="4"
+                                    Focusable="False"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Margin="0,20,0,40" HorizontalAlignment="Center" Spacing="15">
+                <Border x:Name="PlayButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7"
+                        HorizontalAlignment="Center">
+                    <Button Content="{x:Static res:Strings.Play}"
+                            Command="{Binding PlayCommand}"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Padding="60,15"
+                            Background="{DynamicResource AccentGreenBrush}"
+                            Foreground="White"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+
+                <Border x:Name="BackButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7"
+                        HorizontalAlignment="Center">
+                    <Button Content="{x:Static res:Strings.Back}"
+                            Command="{Binding BackCommand}"
+                            FontSize="14"
+                            Padding="40,10"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+
+                <TextBlock Text="{x:Static res:Strings.NavTimeline}"
+                           FontSize="12"
+                           Foreground="{DynamicResource TertiaryTextBrush}"
+                           HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

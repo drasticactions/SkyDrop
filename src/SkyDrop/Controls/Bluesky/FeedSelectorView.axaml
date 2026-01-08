@@ -5,6 +5,7 @@
              xmlns:vm="using:SkyDrop.ViewModels"
              xmlns:feed="using:FishyFlip.Lexicon.App.Bsky.Feed"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
              x:Class="SkyDrop.Controls.Bluesky.FeedSelectorView"
              x:DataType="vm:FeedSelectorViewModel">
@@ -16,7 +17,7 @@
             Padding="12">
         <Grid RowDefinitions="Auto,Auto,*,Auto">
             <StackPanel Grid.Row="0" Spacing="4">
-                <TextBlock Text="SELECT FEED"
+                <TextBlock Text="{x:Static res:Strings.SelectFeed}"
                            FontSize="14"
                            FontWeight="SemiBold"
                            Foreground="{DynamicResource PrimaryTextBrush}"/>
@@ -45,7 +46,7 @@
                              BorderBrush="{DynamicResource ButtonBackgroundBrush}"
                              CornerRadius="4"/>
                     <Button Grid.Column="1"
-                            Content="Search"
+                            Content="{x:Static res:Strings.Search}"
                             Command="{Binding SearchFeedsCommand}"
                             IsEnabled="{Binding !IsLoading}"
                             Margin="8,0,0,0"
@@ -61,7 +62,7 @@
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             IsVisible="{Binding IsLoading}">
-                    <TextBlock Text="Loading feeds..."
+                    <TextBlock Text="{x:Static res:Strings.LoadingFeeds}"
                                FontSize="14"
                                Foreground="{DynamicResource SecondaryTextBrush}"
                                HorizontalAlignment="Center"/>
@@ -124,7 +125,7 @@
                                                 <TextBlock Text="{Binding LikeCount}"
                                                            FontSize="11"
                                                            Foreground="{DynamicResource SecondaryTextBrush}"/>
-                                                <TextBlock Text="likes"
+                                                <TextBlock Text="{x:Static res:Strings.Likes}"
                                                            FontSize="11"
                                                            Foreground="{DynamicResource TertiaryTextBrush}"/>
                                             </StackPanel>
@@ -146,7 +147,7 @@
                     Margin="0,8,0,0"
                     Padding="2"
                     IsVisible="{Binding HasMoreItems}">
-                <Button Content="Load More"
+                <Button Content="{x:Static res:Strings.LoadMore}"
                         Command="{Binding LoadMoreFeedsCommand}"
                         IsEnabled="{Binding !IsLoading}"
                         Padding="20,8"

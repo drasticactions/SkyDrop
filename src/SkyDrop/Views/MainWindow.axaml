@@ -7,6 +7,7 @@
         xmlns:views="using:SkyDrop.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SkyDrop.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
         Title="SkyDrop"
         Width="600"
         Height="700"
@@ -17,9 +18,71 @@
         Background="{DynamicResource GameBackgroundBrush}"
         WindowStartupLocation="CenterScreen">
 
+    <Window.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:TitleScreenViewModel}">
+            <views:TitleScreen/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NormalModeOptionsViewModel}">
+            <views:NormalModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:GameViewModel}">
+            <views:GameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiscoverFeedModeOptionsViewModel}">
+            <views:DiscoverFeedModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiscoverFeedGameViewModel}">
+            <views:DiscoverFeedGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiscoverFeedScrollGameViewModel}">
+            <views:DiscoverFeedScrollGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AuthorFeedModeOptionsViewModel}">
+            <views:AuthorFeedModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TimelineModeOptionsViewModel}">
+            <views:TimelineModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RevealFeedGameViewModel}">
+            <views:RevealFeedGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ScrollFeedGameViewModel}">
+            <views:ScrollFeedGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreatePostModeOptionsViewModel}">
+            <views:CreatePostModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreatePostGameViewModel}">
+            <views:CreatePostGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <views:LoginView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:T9GeneratorViewModel}">
+            <views:T9GeneratorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreditsViewModel}">
+            <views:CreditsView/>
+        </DataTemplate>
+    </Window.DataTemplates>
+
     <Grid>
         <controls:StarFieldBackground StarCount="120" EnableTwinkle="True"/>
         <controls:CloudFieldBackground CloudCount="8" EnableAnimation="True"/>
+
+         <Grid RowDefinitions="25,*">
+             <TextBlock Text="SkyDrop"
+             Grid.Row="0"
+                           FontSize="14"
+                           IsHitTestVisible="False"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource TitleBarTextBrush}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="0,5,0,0"/>
+
+            <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
+        </Grid>
     </Grid>
 
 </Window>

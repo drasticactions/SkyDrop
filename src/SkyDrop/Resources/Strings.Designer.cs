@@ -61,6 +61,42 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
+        ///   ABC = Multi-tap (individual letters) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ABCDescription {
+            get {
+                return ResourceManager.GetString("ABCDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ABC MODE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ABCMode {
+            get {
+                return ResourceManager.GetString("ABCMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   App Password に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AppPassword {
+            get {
+                return ResourceManager.GetString("AppPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Use an App Password from bsky.app/settings に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AppPasswordHint {
+            get {
+                return ResourceManager.GetString("AppPasswordHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   BACK に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Back {
@@ -70,11 +106,506 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
-        ///   Change level に類似しているローカライズされた文字列を検索します。
+        ///   BLUESKY HANDLE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string BlueskyHandle {
+            get {
+                return ResourceManager.GetString("BlueskyHandle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   BLUESKY LOGIN に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string BlueskyLogin {
+            get {
+                return ResourceManager.GetString("BlueskyLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ←→ Browse modes に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string BrowseModes {
+            get {
+                return ResourceManager.GetString("BrowseModes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ←→ Change level に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ChangeLevel {
             get {
                 return ResourceManager.GetString("ChangeLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   CLEAR に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Clear {
+            get {
+                return ResourceManager.GetString("Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Clear lines to reveal posts! に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClearLinesToReveal {
+            get {
+                return ResourceManager.GetString("ClearLinesToReveal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   (click to toggle) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ClickToToggle {
+            get {
+                return ResourceManager.GetString("ClickToToggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Coming Soon に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ComingSoon {
+            get {
+                return ResourceManager.GetString("ComingSoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   COMPLETED に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Completed {
+            get {
+                return ResourceManager.GetString("Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Connect your account に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ConnectYourAccount {
+            get {
+                return ResourceManager.GetString("ConnectYourAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   TAB = Cycle word/kanji suggestions に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlCycleSuggestions {
+            get {
+                return ResourceManager.GetString("ControlCycleSuggestions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Hard drop に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlHardDrop {
+            get {
+                return ResourceManager.GetString("ControlHardDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ← →  Move に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlMove {
+            get {
+                return ResourceManager.GetString("ControlMove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Move piece left/right に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlMoveLeftRight {
+            get {
+                return ResourceManager.GetString("ControlMoveLeftRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ESC  Pause に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlPause {
+            get {
+                return ResourceManager.GetString("ControlPause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Pause game に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlPauseGame {
+            get {
+                return ResourceManager.GetString("ControlPauseGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Drop = Press key / Add character に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlPressKey {
+            get {
+                return ResourceManager.GetString("ControlPressKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ↑ X  Rotate に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlRotate {
+            get {
+                return ResourceManager.GetString("ControlRotate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rotate piece に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlRotateCW {
+            get {
+                return ResourceManager.GetString("ControlRotateCW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   CONTROLS に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Controls {
+            get {
+                return ResourceManager.GetString("Controls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rotate = Select key/character に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlSelectKey {
+            get {
+                return ResourceManager.GetString("ControlSelectKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ↓    Soft Drop に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlSoftDrop {
+            get {
+                return ResourceManager.GetString("ControlSoftDrop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Soft drop に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlSoftDropDesc {
+            get {
+                return ResourceManager.GetString("ControlSoftDropDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   0 = Space  |  * = Delete  |  # = Add post に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlSpecialKeys {
+            get {
+                return ResourceManager.GetString("ControlSpecialKeys", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Press digits 2-9 to build words from dictionary.
+        /// </summary>
+        public static string T9HelpDigits {
+            get {
+                return ResourceManager.GetString("T9HelpDigits", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   TAB cycles through word suggestions.
+        /// </summary>
+        public static string T9HelpTab {
+            get {
+                return ResourceManager.GetString("T9HelpTab", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Key 1 enters punctuation (. , ! ? etc.)
+        /// </summary>
+        public static string T9HelpKey1 {
+            get {
+                return ResourceManager.GetString("T9HelpKey1", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Auto-capitalizes after sentences.
+        /// </summary>
+        public static string T9HelpAutoCapitalize {
+            get {
+                return ResourceManager.GetString("T9HelpAutoCapitalize", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Rotate to cycle through letters on each key (like old phones).
+        /// </summary>
+        public static string ABCHelpRotate {
+            get {
+                return ResourceManager.GetString("ABCHelpRotate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Drop adds the displayed character directly to your post.
+        /// </summary>
+        public static string ABCHelpDrop {
+            get {
+                return ResourceManager.GetString("ABCHelpDrop", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Key 1 = Punctuation (.!?-')
+        /// </summary>
+        public static string ABCHelpKey1 {
+            get {
+                return ResourceManager.GetString("ABCHelpKey1", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Auto-capitalizes at start and after periods.
+        /// </summary>
+        public static string ABCHelpAutoCapitalize {
+            get {
+                return ResourceManager.GetString("ABCHelpAutoCapitalize", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Rotate to select hiragana characters.
+        /// </summary>
+        public static string KanaHelpRotate {
+            get {
+                return ResourceManager.GetString("KanaHelpRotate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   * = Apply dakuten or handakuten
+        /// </summary>
+        public static string KanaHelpDakuten {
+            get {
+                return ResourceManager.GetString("KanaHelpDakuten", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   TAB cycles through kanji suggestions.
+        /// </summary>
+        public static string KanaHelpTab {
+            get {
+                return ResourceManager.GetString("KanaHelpTab", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   # = Confirm kana/kanji, OK = Add post
+        /// </summary>
+        public static string KanaHelpConfirm {
+            get {
+                return ResourceManager.GetString("KanaHelpConfirm", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   M = Toggle input mode (T9/ABC/かな) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ControlToggleMode {
+            get {
+                return ResourceManager.GetString("ControlToggleMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Convert between text and T9 sequences に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ConvertTextT9 {
+            get {
+                return ResourceManager.GetString("ConvertTextT9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Credits に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Credits {
+            get {
+                return ResourceManager.GetString("Credits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   CURRENT POST に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string CurrentPost {
+            get {
+                return ResourceManager.GetString("CurrentPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   In Feed mode, clear lines to reveal posts. Each line cleared reveals a new post from the feed. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DiscoverFeedModeInstructions {
+            get {
+                return ResourceManager.GetString("DiscoverFeedModeInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Enter a Bluesky handle and press Lookup に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string EnterHandleHint {
+            get {
+                return ResourceManager.GetString("EnterHandleHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Enter T9 Sequence に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string EnterT9Sequence {
+            get {
+                return ResourceManager.GetString("EnterT9Sequence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Enter Text に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string EnterText {
+            get {
+                return ResourceManager.GetString("EnterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   FEED FILTER に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FeedFilter {
+            get {
+                return ResourceManager.GetString("FeedFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Final Score:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FinalScore {
+            get {
+                return ResourceManager.GetString("FinalScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   GAME OVER に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string GameOver {
+            get {
+                return ResourceManager.GetString("GameOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   GAME TYPE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string GameType {
+            get {
+                return ResourceManager.GetString("GameType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Website に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string GameWebsite {
+            get {
+                return ResourceManager.GetString("GameWebsite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Handle or Email に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string HandleOrEmail {
+            get {
+                return ResourceManager.GetString("HandleOrEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   HOW TO PLAY に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string HowToPlay {
+            get {
+                return ResourceManager.GetString("HowToPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Include #SkyDrop signature に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string IncludeSkyDropSignature {
+            get {
+                return ResourceManager.GetString("IncludeSkyDropSignature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   INPUT MODE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string InputMode {
+            get {
+                return ResourceManager.GetString("InputMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Stack falling pieces to complete horizontal lines. Completed lines are cleared and you earn points. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string InstructionsIntro {
+            get {
+                return ResourceManager.GetString("InstructionsIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Japanese Hiragana Input に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string JapaneseHiraganaInput {
+            get {
+                return ResourceManager.GetString("JapaneseHiraganaInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   かな MODE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string KanaMode {
+            get {
+                return ResourceManager.GetString("KanaMode", resourceCulture);
             }
         }
         
@@ -106,6 +637,78 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
+        ///   LEVEL に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   likes に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Likes {
+            get {
+                return ResourceManager.GetString("Likes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   LINES に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Lines {
+            get {
+                return ResourceManager.GetString("Lines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Loading feed... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoadingFeed {
+            get {
+                return ResourceManager.GetString("LoadingFeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Loading feeds... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoadingFeeds {
+            get {
+                return ResourceManager.GetString("LoadingFeeds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Loading posts... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoadingPosts {
+            get {
+                return ResourceManager.GetString("LoadingPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Load More に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoadMore {
+            get {
+                return ResourceManager.GetString("LoadMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   LOGGED IN に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoggedIn {
+            get {
+                return ResourceManager.GetString("LoggedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Login に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Login {
@@ -115,11 +718,47 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
+        ///   Login required to play に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LoginRequiredToPlay {
+            get {
+                return ResourceManager.GetString("LoginRequiredToPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Logout に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looking up profile... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string LookingUpProfile {
+            get {
+                return ResourceManager.GetString("LookingUpProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   LOOKUP に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Lookup {
+            get {
+                return ResourceManager.GetString("Lookup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   MAIN MENU に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MainMenu {
+            get {
+                return ResourceManager.GetString("MainMenu", resourceCulture);
             }
         }
         
@@ -151,7 +790,7 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
-        ///   Write posts using T9 input に類似しているローカライズされた文字列を検索します。
+        ///   A true spin on posting に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ModeCreatePostDesc {
             get {
@@ -169,7 +808,7 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
-        ///   Bluesky feeds and puzzles, together! に類似しているローカライズされた文字列を検索します。
+        ///   Feeds and puzzles, together at last! に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ModeDiscoverFeedDesc {
             get {
@@ -223,11 +862,47 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
-        ///   Your home timeline while playing に類似しているローカライズされた文字列を検索します。
+        ///   Read your timeline while playing に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ModeTimelineDesc {
             get {
                 return ResourceManager.GetString("ModeTimelineDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Multi-tap Input に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MultiTapInput {
+            get {
+                return ResourceManager.GetString("MultiTapInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ENTER Lookup/Select  |  ESC Back に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavAuthorFeed {
+            get {
+                return ResourceManager.GetString("NavAuthorFeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ESC/ENTER to go back に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavCredits {
+            get {
+                return ResourceManager.GetString("NavCredits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ↑↓ Navigate  |  ←→ Level/Type  |  ENTER Select に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavFeedOptions {
+            get {
+                return ResourceManager.GetString("NavFeedOptions", resourceCulture);
             }
         }
         
@@ -241,11 +916,65 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
+        ///   ↑↓ Navigate  |  ENTER Select  |  ESC Back に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavLoginScreen {
+            get {
+                return ResourceManager.GetString("NavLoginScreen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ↑↓ Navigate  |  ←→ Level  |  ENTER Select に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavModeOptions {
+            get {
+                return ResourceManager.GetString("NavModeOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ↑↓ Navigate  |  ENTER Select  |  ESC Resume に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavPause {
+            get {
+                return ResourceManager.GetString("NavPause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Select に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string NavSelect {
             get {
                 return ResourceManager.GetString("NavSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   TAB Switch Mode  |  ENTER Select  |  ESC Back に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavT9Generator {
+            get {
+                return ResourceManager.GetString("NavT9Generator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ENTER Select  |  ESC Back  |  LEFT/RIGHT Navigate に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavTimeline {
+            get {
+                return ResourceManager.GetString("NavTimeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   ↑↓←→ Navigate  |  ENTER Select に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NavTitleScreen {
+            get {
+                return ResourceManager.GetString("NavTitleScreen", resourceCulture);
             }
         }
         
@@ -259,6 +988,51 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
+        ///   NEXT に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No matching words found に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NoMatchingWords {
+            get {
+                return ResourceManager.GetString("NoMatchingWords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No posts... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NoPosts {
+            get {
+                return ResourceManager.GetString("NoPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   No posts created に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NoPostsCreated {
+            get {
+                return ResourceManager.GetString("NoPostsCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   PAUSED に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Paused {
+            get {
+                return ResourceManager.GetString("Paused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   PLAY に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Play {
@@ -268,11 +1042,254 @@ namespace SkyDrop.Resources {
         }
         
         /// <summary>
+        ///   PLAY AGAIN に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PlayAgain {
+            get {
+                return ResourceManager.GetString("PlayAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Play while viewing someone&apos;s posts に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PlayWhileViewingPosts {
+            get {
+                return ResourceManager.GetString("PlayWhileViewingPosts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Play while viewing your home timeline に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PlayWhileViewingTimeline {
+            get {
+                return ResourceManager.GetString("PlayWhileViewingTimeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Possible Words に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PossibleWords {
+            get {
+                return ResourceManager.GetString("PossibleWords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   POST TO BLUESKY に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PostAsThread {
+            get {
+                return ResourceManager.GetString("PostAsThread", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Posts Discovered:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PostsDiscovered {
+            get {
+                return ResourceManager.GetString("PostsDiscovered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Posts Revealed:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PostsRevealed {
+            get {
+                return ResourceManager.GetString("PostsRevealed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Post too long! に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PostTooLong {
+            get {
+                return ResourceManager.GetString("PostTooLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Predictive Text Input に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PredictiveTextInput {
+            get {
+                return ResourceManager.GetString("PredictiveTextInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Press ENTER to restart に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PressEnterRestart {
+            get {
+                return ResourceManager.GetString("PressEnterRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Press ENTER to start に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PressEnterToStart {
+            get {
+                return ResourceManager.GetString("PressEnterToStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Press ESC to return to title に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PressEscTitle {
+            get {
+                return ResourceManager.GetString("PressEscTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Press # to add post に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PressHashToAddPost {
+            get {
+                return ResourceManager.GetString("PressHashToAddPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Press SPACE to restart に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string PressSpaceRestart {
+            get {
+                return ResourceManager.GetString("PressSpaceRestart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Requires Login に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string RequiresLogin {
             get {
                 return ResourceManager.GetString("RequiresLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   RESUME に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Resume {
+            get {
+                return ResourceManager.GetString("Resume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   REVEAL に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Reveal {
+            get {
+                return ResourceManager.GetString("Reveal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Clear lines to reveal に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string RevealDesc {
+            get {
+                return ResourceManager.GetString("RevealDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Clear lines to reveal posts from the feed. Each line cleared reveals a new post. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string RevealModeInstructions {
+            get {
+                return ResourceManager.GetString("RevealModeInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rotate to scroll に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string RotateToScroll {
+            get {
+                return ResourceManager.GetString("RotateToScroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rotations:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Rotations {
+            get {
+                return ResourceManager.GetString("Rotations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SCORE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SCROLL に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Scroll {
+            get {
+                return ResourceManager.GetString("Scroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Rotate to scroll feed に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ScrollDesc {
+            get {
+                return ResourceManager.GetString("ScrollDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   In this mode, rotating pieces scrolls through the feed. Rotate clockwise to scroll down, counter-clockwise to scroll up. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ScrollModeInstructions {
+            get {
+                return ResourceManager.GetString("ScrollModeInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Search に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECTED KEY に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SelectedKey {
+            get {
+                return ResourceManager.GetString("SelectedKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SELECT FEED に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SelectFeed {
+            get {
+                return ResourceManager.GetString("SelectFeed", resourceCulture);
             }
         }
         
@@ -291,6 +1308,105 @@ namespace SkyDrop.Resources {
         public static string SelectMode {
             get {
                 return ResourceManager.GetString("SelectMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Adds a final post with game stats image に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SignatureDescription {
+            get {
+                return ResourceManager.GetString("SignatureDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SIGN IN に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   SIGNING IN... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SigningIn {
+            get {
+                return ResourceManager.GetString("SigningIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   START GAME に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string StartGame {
+            get {
+                return ResourceManager.GetString("StartGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   T9 = Predictive text (dictionary) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string T9Description {
+            get {
+                return ResourceManager.GetString("T9Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   T9 GENERATOR に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string T9Generator {
+            get {
+                return ResourceManager.GetString("T9Generator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Use 2-9 for letters (0=space, 1=punctuation) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string T9InputHint {
+            get {
+                return ResourceManager.GetString("T9InputHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   T9 MODE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string T9Mode {
+            get {
+                return ResourceManager.GetString("T9Mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   T9 Sequence に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string T9Sequence {
+            get {
+                return ResourceManager.GetString("T9Sequence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   T9 → TEXT に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string T9ToText {
+            get {
+                return ResourceManager.GetString("T9ToText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   TEXT → T9 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TextToT9 {
+            get {
+                return ResourceManager.GetString("TextToT9", resourceCulture);
             }
         }
         
@@ -327,6 +1443,402 @@ namespace SkyDrop.Resources {
         public static string ThemeLight {
             get {
                 return ResourceManager.GetString("ThemeLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   THIRD-PARTY LIBRARIES に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ThirdPartyLibraries {
+            get {
+                return ResourceManager.GetString("ThirdPartyLibraries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   TITLE に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Total Rotations:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TotalRotations {
+            get {
+                return ResourceManager.GetString("TotalRotations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   WORD に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Word {
+            get {
+                return ResourceManager.GetString("Word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Word Breakdown に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WordBreakdown {
+            get {
+                return ResourceManager.GetString("WordBreakdown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Write posts using T9 input に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WritePostsUsingT9 {
+            get {
+                return ResourceManager.GetString("WritePostsUsingT9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   YOUR POSTS に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string YourPosts {
+            get {
+                return ResourceManager.GetString("YourPosts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posts are revealed as you clear lines
+        /// </summary>
+        public static string GameTypeRevealDesc {
+            get {
+                return ResourceManager.GetString("GameTypeRevealDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Rotate pieces to scroll through the feed
+        /// </summary>
+        public static string GameTypeScrollDesc {
+            get {
+                return ResourceManager.GetString("GameTypeScrollDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   T9
+        /// </summary>
+        public static string InputModeT9 {
+            get {
+                return ResourceManager.GetString("InputModeT9", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   ABC
+        /// </summary>
+        public static string InputModeABC {
+            get {
+                return ResourceManager.GetString("InputModeABC", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   かな
+        /// </summary>
+        public static string InputModeKana {
+            get {
+                return ResourceManager.GetString("InputModeKana", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   All Posts
+        /// </summary>
+        public static string FilterAllPosts {
+            get {
+                return ResourceManager.GetString("FilterAllPosts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posts and threads by the author
+        /// </summary>
+        public static string FilterAllPostsDesc {
+            get {
+                return ResourceManager.GetString("FilterAllPostsDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   With Replies
+        /// </summary>
+        public static string FilterWithReplies {
+            get {
+                return ResourceManager.GetString("FilterWithReplies", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posts including replies
+        /// </summary>
+        public static string FilterWithRepliesDesc {
+            get {
+                return ResourceManager.GetString("FilterWithRepliesDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Media Only
+        /// </summary>
+        public static string FilterMediaOnly {
+            get {
+                return ResourceManager.GetString("FilterMediaOnly", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posts with images or media
+        /// </summary>
+        public static string FilterMediaOnlyDesc {
+            get {
+                return ResourceManager.GetString("FilterMediaOnlyDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Video Only
+        /// </summary>
+        public static string FilterVideoOnly {
+            get {
+                return ResourceManager.GetString("FilterVideoOnly", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posts with videos
+        /// </summary>
+        public static string FilterVideoOnlyDesc {
+            get {
+                return ResourceManager.GetString("FilterVideoOnlyDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   No posts to send!
+        /// </summary>
+        public static string StatusNoPostsToSend {
+            get {
+                return ResourceManager.GetString("StatusNoPostsToSend", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Not logged in!
+        /// </summary>
+        public static string StatusNotLoggedIn {
+            get {
+                return ResourceManager.GetString("StatusNotLoggedIn", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posting to Bluesky...
+        /// </summary>
+        public static string StatusPostingToBluesky {
+            get {
+                return ResourceManager.GetString("StatusPostingToBluesky", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Generating stats image...
+        /// </summary>
+        public static string StatusGeneratingStatsImage {
+            get {
+                return ResourceManager.GetString("StatusGeneratingStatsImage", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Successfully posted {0} post(s) to Bluesky!
+        /// </summary>
+        public static string StatusSuccessfullyPosted {
+            get {
+                return ResourceManager.GetString("StatusSuccessfullyPosted", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   T9 input must contain only digits (0-9)
+        /// </summary>
+        public static string T9InputDigitsOnly {
+            get {
+                return ResourceManager.GetString("T9InputDigitsOnly", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Enter digits 2-9 for letters
+        /// </summary>
+        public static string T9EnterDigitsHint {
+            get {
+                return ResourceManager.GetString("T9EnterDigitsHint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Showing 30 of {0} matches
+        /// </summary>
+        public static string T9ShowingMatches {
+            get {
+                return ResourceManager.GetString("T9ShowingMatches", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Please enter a handle
+        /// </summary>
+        public static string ErrorPleaseEnterHandle {
+            get {
+                return ResourceManager.GetString("ErrorPleaseEnterHandle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Invalid handle format
+        /// </summary>
+        public static string ErrorInvalidHandleFormat {
+            get {
+                return ResourceManager.GetString("ErrorInvalidHandleFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Profile not found
+        /// </summary>
+        public static string ErrorProfileNotFound {
+            get {
+                return ResourceManager.GetString("ErrorProfileNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   An unknown error occurred.
+        /// </summary>
+        public static string ErrorUnknown {
+            get {
+                return ResourceManager.GetString("ErrorUnknown", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Invalid feed URI
+        /// </summary>
+        public static string ErrorInvalidFeedUri {
+            get {
+                return ResourceManager.GetString("ErrorInvalidFeedUri", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Failed to load feed
+        /// </summary>
+        public static string ErrorFailedToLoadFeed {
+            get {
+                return ResourceManager.GetString("ErrorFailedToLoadFeed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Failed to create feed collection
+        /// </summary>
+        public static string ErrorFailedToCreateFeedCollection {
+            get {
+                return ResourceManager.GetString("ErrorFailedToCreateFeedCollection", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Invalid author identifier
+        /// </summary>
+        public static string ErrorInvalidAuthorIdentifier {
+            get {
+                return ResourceManager.GetString("ErrorInvalidAuthorIdentifier", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Please enter a valid ATUri
+        /// </summary>
+        public static string ErrorPleaseEnterValidATUri {
+            get {
+                return ResourceManager.GetString("ErrorPleaseEnterValidATUri", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Invalid ATUri format
+        /// </summary>
+        public static string ErrorInvalidATUriFormat {
+            get {
+                return ResourceManager.GetString("ErrorInvalidATUriFormat", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Failed to load more posts
+        /// </summary>
+        public static string ErrorFailedToLoadMorePosts {
+            get {
+                return ResourceManager.GetString("ErrorFailedToLoadMorePosts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   DISCOVER FEED
+        /// </summary>
+        public static string FeedNameDiscover {
+            get {
+                return ResourceManager.GetString("FeedNameDiscover", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   FEED SCROLL
+        /// </summary>
+        public static string FeedNameScroll {
+            get {
+                return ResourceManager.GetString("FeedNameScroll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   FEED
+        /// </summary>
+        public static string FeedNameDefault {
+            get {
+                return ResourceManager.GetString("FeedNameDefault", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   YOUR TIMELINE
+        /// </summary>
+        public static string FeedNameTimeline {
+            get {
+                return ResourceManager.GetString("FeedNameTimeline", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   No feed selected
+        /// </summary>
+        public static string FeedNameNone {
+            get {
+                return ResourceManager.GetString("FeedNameNone", resourceCulture);
             }
         }
     }

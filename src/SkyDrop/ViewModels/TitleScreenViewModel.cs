@@ -67,12 +67,12 @@ public partial class TitleScreenViewModel : ViewModelBase
     /// </summary>
     public List<GameModeInfo> AvailableModes { get; } =
     [
-        new GameModeInfo(GameMode.Normal, Strings.ModeNormal, Strings.ModeNormalDesc, true),
-        new GameModeInfo(GameMode.DiscoverFeed, Strings.ModeDiscoverFeed, Strings.ModeDiscoverFeedDesc, true),
-        new GameModeInfo(GameMode.AuthorFeed, Strings.ModeAuthorFeed, Strings.ModeAuthorFeedDesc, true),
-        new GameModeInfo(GameMode.Timeline, Strings.ModeTimeline, Strings.ModeTimelineDesc, true, RequiresLogin: true),
-        new GameModeInfo(GameMode.CreatePost, Strings.ModeCreatePost, Strings.ModeCreatePostDesc, true, RequiresLogin: true),
-        new GameModeInfo(GameMode.T9Generator, Strings.ModeT9Generator, Strings.ModeT9GeneratorDesc, true)
+        new GameModeInfo(GameMode.Normal, isAvailable: true),
+        new GameModeInfo(GameMode.DiscoverFeed, isAvailable: true),
+        new GameModeInfo(GameMode.AuthorFeed, isAvailable: true),
+        new GameModeInfo(GameMode.Timeline, isAvailable: true, requiresLogin: true),
+        new GameModeInfo(GameMode.CreatePost, isAvailable: true, requiresLogin: true),
+        new GameModeInfo(GameMode.T9Generator, isAvailable: true)
     ];
 
     /// <summary>

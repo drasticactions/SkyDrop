@@ -4,6 +4,7 @@ using FishyFlip;
 using FishyFlip.Lexicon.App.Bsky.Feed;
 using SkyDrop.Collections;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -38,7 +39,7 @@ public partial class DiscoverFeedGameViewModel : GameViewModelBase
     private int _totalPostsRevealed;
 
     [ObservableProperty]
-    private string _feedName = "DISCOVER FEED";
+    private string _feedName = Strings.FeedNameDiscover;
 
     public DiscoverFeedGameViewModel(ATProtocol protocol)
     {
@@ -100,7 +101,7 @@ public partial class DiscoverFeedGameViewModel : GameViewModelBase
             var uri = FishyFlip.Models.ATUri.Create(feedUri);
             if (uri == null)
             {
-                FeedError = "Invalid feed URI";
+                FeedError = Strings.ErrorInvalidFeedUri;
                 return;
             }
 
@@ -111,7 +112,7 @@ public partial class DiscoverFeedGameViewModel : GameViewModelBase
         }
         catch (Exception ex)
         {
-            FeedError = $"Failed to load feed: {ex.Message}";
+            FeedError = $"{Strings.ErrorFailedToLoadFeed}: {ex.Message}";
         }
         finally
         {
@@ -158,9 +159,9 @@ public partial class DiscoverFeedGameViewModel : GameViewModelBase
                 _loadedPosts.Add(items[i]);
             }
         }
-        catch
+        catch (Exception ex)
         {
-            // Silently fail - we have enough posts for now
+            FeedError = $"{Strings.ErrorFailedToLoadMorePosts}: {ex.Message}";
         }
     }
 

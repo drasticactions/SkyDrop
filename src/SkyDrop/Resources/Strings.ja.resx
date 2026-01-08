@@ -142,10 +142,10 @@
     <value>ライト</value>
   </data>
   <data name="ModeNormal" xml:space="preserve">
-    <value>ノーマルモード</value>
+    <value>ブロックモード</value>
   </data>
   <data name="ModeNormalDesc" xml:space="preserve">
-    <value>ブロックだけ</value>
+    <value>ブロックだけだ</value>
   </data>
   <data name="ModeDiscoverFeed" xml:space="preserve">
     <value>フィード</value>
@@ -157,7 +157,7 @@
     <value>ユーザーフィード</value>
   </data>
   <data name="ModeAuthorFeedDesc" xml:space="preserve">
-    <value>ユーザーの投稿を見ながらプレイ</value>
+    <value>ユーザーのトウコウを見ながらプレイ</value>
   </data>
   <data name="ModeTimeline" xml:space="preserve">
     <value>タイムライン</value>
@@ -166,22 +166,22 @@
     <value>ホームタイムラインでプレイ</value>
   </data>
   <data name="ModeCreatePost" xml:space="preserve">
-    <value>ポスト作成</value>
+    <value>トウコウ作成</value>
   </data>
   <data name="ModeCreatePostDesc" xml:space="preserve">
-    <value>T9入力で投稿を作成</value>
+    <value>ブロックを回転させてトウコウを作ろう</value>
   </data>
   <data name="ModeT9Generator" xml:space="preserve">
     <value>T9ジェネレーター</value>
   </data>
   <data name="ModeT9GeneratorDesc" xml:space="preserve">
-    <value>テキストをT9シーケンスに変換</value>
+    <value>テキストをT9シーケンスにへんかん</value>
   </data>
   <data name="Play" xml:space="preserve">
     <value>プレイ</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>戻る</value>
+    <value>もどる</value>
   </data>
   <data name="SelectLevel" xml:space="preserve">
     <value>レベル選択</value>
@@ -190,7 +190,7 @@
     <value>ログインが必要</value>
   </data>
   <data name="NavUpDown" xml:space="preserve">
-    <value>移動</value>
+    <value>いどう</value>
   </data>
   <data name="NavLeftRight" xml:space="preserve">
     <value>変更</value>
@@ -199,12 +199,526 @@
     <value>決定</value>
   </data>
   <data name="ChangeLevel" xml:space="preserve">
-    <value>レベル変更</value>
+    <value>←→ レベル変更</value>
   </data>
   <data name="LanguageEnglish" xml:space="preserve">
     <value>EN</value>
   </data>
   <data name="LanguageJapanese" xml:space="preserve">
     <value>JA</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>スコア</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>レベル</value>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>ライン</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>次</value>
+  </data>
+  <data name="Controls" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="ControlMove" xml:space="preserve">
+    <value>← →  いどう</value>
+  </data>
+  <data name="ControlRotate" xml:space="preserve">
+    <value>↑ X  回転</value>
+  </data>
+  <data name="ControlSoftDrop" xml:space="preserve">
+    <value>↓    ソフトドロップ</value>
+  </data>
+  <data name="ControlPause" xml:space="preserve">
+    <value>ESC  ポーズ</value>
+  </data>
+  <data name="GameOver" xml:space="preserve">
+    <value>ゲームオーバー</value>
+  </data>
+  <data name="FinalScore" xml:space="preserve">
+    <value>最終スコア: </value>
+  </data>
+  <data name="PressSpaceRestart" xml:space="preserve">
+    <value>SPACEでリスタート</value>
+  </data>
+  <data name="PressEscTitle" xml:space="preserve">
+    <value>ESCでタイトルにもどる</value>
+  </data>
+  <data name="PressEnterRestart" xml:space="preserve">
+    <value>ENTERでリスタート</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>ポーズ</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>再開</value>
+  </data>
+  <data name="MainMenu" xml:space="preserve">
+    <value>メインメニュー</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>クレジット</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>近日公開</value>
+  </data>
+  <data name="LoginRequiredToPlay" xml:space="preserve">
+    <value>プレイにはログインが必要</value>
+  </data>
+  <data name="BlueskyLogin" xml:space="preserve">
+    <value>BLUESKYログイン</value>
+  </data>
+  <data name="ConnectYourAccount" xml:space="preserve">
+    <value>アカウントを接続</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>サインイン</value>
+  </data>
+  <data name="HandleOrEmail" xml:space="preserve">
+    <value>ハンドルまたはメール</value>
+  </data>
+  <data name="AppPassword" xml:space="preserve">
+    <value>アプリパスワード</value>
+  </data>
+  <data name="AppPasswordHint" xml:space="preserve">
+    <value>bsky.app/settingsからアプリパスワードをしゅとく</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>サインイン中...</value>
+  </data>
+  <data name="LoggedIn" xml:space="preserve">
+    <value>ログイン済み</value>
+  </data>
+  <data name="GameType" xml:space="preserve">
+    <value>ゲームタイプ</value>
+  </data>
+  <data name="Reveal" xml:space="preserve">
+    <value>リビール</value>
+  </data>
+  <data name="RevealDesc" xml:space="preserve">
+    <value>ラインを消して表示</value>
+  </data>
+  <data name="Scroll" xml:space="preserve">
+    <value>スクロール</value>
+  </data>
+  <data name="ScrollDesc" xml:space="preserve">
+    <value>回転でフィードをスクロール</value>
+  </data>
+  <data name="BlueskyHandle" xml:space="preserve">
+    <value>BLUESKYハンドル</value>
+  </data>
+  <data name="Lookup" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="LookingUpProfile" xml:space="preserve">
+    <value>プロフィールを検索中...</value>
+  </data>
+  <data name="EnterHandleHint" xml:space="preserve">
+    <value>Blueskyハンドルを入力して検索</value>
+  </data>
+  <data name="FeedFilter" xml:space="preserve">
+    <value>フィードフィルター</value>
+  </data>
+  <data name="PlayWhileViewingPosts" xml:space="preserve">
+    <value>ユーザーのトウコウを見ながらプレイ</value>
+  </data>
+  <data name="PlayWhileViewingTimeline" xml:space="preserve">
+    <value>ホームタイムラインを見ながらプレイ</value>
+  </data>
+  <data name="WritePostsUsingT9" xml:space="preserve">
+    <value>T9入力でトウコウを作成</value>
+  </data>
+  <data name="InputMode" xml:space="preserve">
+    <value>入力モード</value>
+  </data>
+  <data name="ClickToToggle" xml:space="preserve">
+    <value>(クリックで切替)</value>
+  </data>
+  <data name="T9Description" xml:space="preserve">
+    <value>T9 = 予測へんかん</value>
+  </data>
+  <data name="ABCDescription" xml:space="preserve">
+    <value>ABC = マルチタップ (個別文字)</value>
+  </data>
+  <data name="HowToPlay" xml:space="preserve">
+    <value>あそび方</value>
+  </data>
+  <data name="ControlSelectKey" xml:space="preserve">
+    <value>回転 = キー/文字を選択</value>
+  </data>
+  <data name="ControlPressKey" xml:space="preserve">
+    <value>落下 = キーを押す/文字を追加</value>
+  </data>
+  <data name="ControlCycleSuggestions" xml:space="preserve">
+    <value>TAB = 単語/漢字候補を切替</value>
+  </data>
+  <data name="ControlToggleMode" xml:space="preserve">
+    <value>M = 入力モード切替 (T9/ABC/かな)</value>
+  </data>
+  <data name="ControlSpecialKeys" xml:space="preserve">
+    <value>0 = スペース | * = 削除 | # = トウコウ追加</value>
+  </data>
+  <!-- T9 Mode Help -->
+  <data name="T9HelpDigits" xml:space="preserve">
+    <value>2-9キーで辞書から単語を作成</value>
+  </data>
+  <data name="T9HelpTab" xml:space="preserve">
+    <value>TABで単語候補を切替</value>
+  </data>
+  <data name="T9HelpKey1" xml:space="preserve">
+    <value>1キーで記号を入力 (. , ! ? など)</value>
+  </data>
+  <data name="T9HelpAutoCapitalize" xml:space="preserve">
+    <value>文末で自動的に大文字に変換</value>
+  </data>
+  <!-- ABC Mode Help -->
+  <data name="ABCHelpRotate" xml:space="preserve">
+    <value>回転で各キーの文字を切替（昔のケータイのように）</value>
+  </data>
+  <data name="ABCHelpDrop" xml:space="preserve">
+    <value>落下で表示中の文字をトウコウに追加</value>
+  </data>
+  <data name="ABCHelpKey1" xml:space="preserve">
+    <value>1キー = 記号 (.!?-')</value>
+  </data>
+  <data name="ABCHelpAutoCapitalize" xml:space="preserve">
+    <value>文頭とピリオドの後で自動的に大文字に変換</value>
+  </data>
+  <!-- Kana Mode Help -->
+  <data name="KanaHelpRotate" xml:space="preserve">
+    <value>回転でひらがなを選択</value>
+  </data>
+  <data name="KanaHelpDakuten" xml:space="preserve">
+    <value>* = 濁点（゛）または半濁点（゜）を適用</value>
+  </data>
+  <data name="KanaHelpTab" xml:space="preserve">
+    <value>TABで漢字候補を切替</value>
+  </data>
+  <data name="KanaHelpConfirm" xml:space="preserve">
+    <value># = かな/漢字を確定、OK = トウコウ追加</value>
+  </data>
+  <data name="T9Mode" xml:space="preserve">
+    <value>T9モード</value>
+  </data>
+  <data name="PredictiveTextInput" xml:space="preserve">
+    <value>予測へんかん入力</value>
+  </data>
+  <data name="ABCMode" xml:space="preserve">
+    <value>ABCモード</value>
+  </data>
+  <data name="MultiTapInput" xml:space="preserve">
+    <value>マルチタップ入力</value>
+  </data>
+  <data name="KanaMode" xml:space="preserve">
+    <value>かなモード</value>
+  </data>
+  <data name="JapaneseHiraganaInput" xml:space="preserve">
+    <value>ひらがな入力</value>
+  </data>
+  <data name="BrowseModes" xml:space="preserve">
+    <value>←→ モード切替</value>
+  </data>
+  <data name="SelectedKey" xml:space="preserve">
+    <value>選択キー</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>単語</value>
+  </data>
+  <data name="CurrentPost" xml:space="preserve">
+    <value>現在のトウコウ</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="PressHashToAddPost" xml:space="preserve">
+    <value>#を押してトウコウを追加</value>
+  </data>
+  <data name="YourPosts" xml:space="preserve">
+    <value>あなたのトウコウ</value>
+  </data>
+  <data name="NoPostsCreated" xml:space="preserve">
+    <value>トウコウなし</value>
+  </data>
+  <data name="IncludeSkyDropSignature" xml:space="preserve">
+    <value>#SkyDrop署名を含める</value>
+  </data>
+  <data name="SignatureDescription" xml:space="preserve">
+    <value>ゲーム統計画像付きの最終トウコウを追加</value>
+  </data>
+  <data name="PostAsThread" xml:space="preserve">
+    <value>BLUESKYにスレッドとしてトウコウ</value>
+  </data>
+  <data name="PlayAgain" xml:space="preserve">
+    <value>もう一度プレイ</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>タイトル</value>
+  </data>
+  <data name="PostTooLong" xml:space="preserve">
+    <value>トウコウが長すぎる！</value>
+  </data>
+  <data name="PostsRevealed" xml:space="preserve">
+    <value>表示したトウコウ: </value>
+  </data>
+  <data name="LoadingFeed" xml:space="preserve">
+    <value>フィード読み込み中...</value>
+  </data>
+  <data name="NoPosts" xml:space="preserve">
+    <value>トウコウなし...</value>
+  </data>
+  <data name="ClearLinesToReveal" xml:space="preserve">
+    <value>ラインを消してトウコウを表示！</value>
+  </data>
+  <data name="Rotations" xml:space="preserve">
+    <value>回転数: </value>
+  </data>
+  <data name="RotateToScroll" xml:space="preserve">
+    <value>回転でスクロール</value>
+  </data>
+  <data name="LoadingPosts" xml:space="preserve">
+    <value>トウコウを読み込み中...</value>
+  </data>
+  <data name="PostsDiscovered" xml:space="preserve">
+    <value>発見したトウコウ: </value>
+  </data>
+  <data name="TotalRotations" xml:space="preserve">
+    <value>総回転数: </value>
+  </data>
+  <data name="GameWebsite" xml:space="preserve">
+    <value>ウェブサイト</value>
+  </data>
+  <data name="ThirdPartyLibraries" xml:space="preserve">
+    <value>サードパーティライブラリ</value>
+  </data>
+  <data name="T9Generator" xml:space="preserve">
+    <value>T9ジェネレーター</value>
+  </data>
+  <data name="ConvertTextT9" xml:space="preserve">
+    <value>テキストとT9シーケンスをへんかん</value>
+  </data>
+  <data name="TextToT9" xml:space="preserve">
+    <value>テキスト → T9</value>
+  </data>
+  <data name="T9ToText" xml:space="preserve">
+    <value>T9 → テキスト</value>
+  </data>
+  <data name="EnterText" xml:space="preserve">
+    <value>テキストを入力</value>
+  </data>
+  <data name="T9Sequence" xml:space="preserve">
+    <value>T9シーケンス</value>
+  </data>
+  <data name="WordBreakdown" xml:space="preserve">
+    <value>単語分解</value>
+  </data>
+  <data name="EnterT9Sequence" xml:space="preserve">
+    <value>T9シーケンスを入力</value>
+  </data>
+  <data name="T9InputHint" xml:space="preserve">
+    <value>2-9で文字入力 (0=スペース, 1=記号)</value>
+  </data>
+  <data name="PossibleWords" xml:space="preserve">
+    <value>候補単語</value>
+  </data>
+  <data name="NoMatchingWords" xml:space="preserve">
+    <value>一致する単語なし</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>クリア</value>
+  </data>
+  <data name="SelectFeed" xml:space="preserve">
+    <value>フィードを選択</value>
+  </data>
+  <data name="LoadingFeeds" xml:space="preserve">
+    <value>フィード読み込み中...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>検索</value>
+  </data>
+  <data name="LoadMore" xml:space="preserve">
+    <value>もっと読み込む</value>
+  </data>
+  <data name="Likes" xml:space="preserve">
+    <value>いいね</value>
+  </data>
+  <data name="InstructionsIntro" xml:space="preserve">
+    <value>おちてくるピースをつみかさねてよこ一列を完成させよう。完成したラインはきえてポイントをかくとく.</value>
+  </data>
+  <data name="ControlMoveLeftRight" xml:space="preserve">
+    <value>ピースを左右にいどう</value>
+  </data>
+  <data name="ControlRotateCW" xml:space="preserve">
+    <value>ピースを回転</value>
+  </data>
+  <data name="ControlSoftDropDesc" xml:space="preserve">
+    <value>ソフトドロップ </value>
+  </data>
+  <data name="ControlHardDrop" xml:space="preserve">
+    <value>ハードドロップ</value>
+  </data>
+  <data name="ControlPauseGame" xml:space="preserve">
+    <value>ゲームをポーズ</value>
+  </data>
+  <data name="StartGame" xml:space="preserve">
+    <value>ゲーム開始</value>
+  </data>
+  <data name="PressEnterToStart" xml:space="preserve">
+    <value>ENTERでスタート</value>
+  </data>
+  <data name="NavTitleScreen" xml:space="preserve">
+    <value>↑↓←→ いどう | ENTER 決定</value>
+  </data>
+  <data name="NavLoginScreen" xml:space="preserve">
+    <value>↑↓ いどう | ENTER 決定 | ESC もどる</value>
+  </data>
+  <data name="NavModeOptions" xml:space="preserve">
+    <value>↑↓ いどう | ←→ レベル | ENTER 決定</value>
+  </data>
+  <data name="NavFeedOptions" xml:space="preserve">
+    <value>↑↓ いどう | ←→ レベル/タイプ | ENTER 決定</value>
+  </data>
+  <data name="NavAuthorFeed" xml:space="preserve">
+    <value>ENTER 検索/決定 | ESC もどる</value>
+  </data>
+  <data name="NavTimeline" xml:space="preserve">
+    <value>ENTER 決定 | ESC もどる | ←→ いどう</value>
+  </data>
+  <data name="NavT9Generator" xml:space="preserve">
+    <value>TAB モード切替 | ENTER 決定 | ESC もどる</value>
+  </data>
+  <data name="NavCredits" xml:space="preserve">
+    <value>ESC/ENTERでもどる</value>
+  </data>
+  <data name="NavPause" xml:space="preserve">
+    <value>↑↓ いどう | ENTER 決定 | ESC 再開</value>
+  </data>
+  <data name="RevealModeInstructions" xml:space="preserve">
+    <value>ラインを消してフィードのトウコウを表示. 1ライン消すごとに新しいトウコウが現れます。</value>
+  </data>
+  <data name="ScrollModeInstructions" xml:space="preserve">
+    <value>このモードでは、ピースの回転でフィードをスクロール. 時計回りで下へ、反時計回りで上へスクロールします。</value>
+  </data>
+  <data name="DiscoverFeedModeInstructions" xml:space="preserve">
+    <value>フィードモードでは、ラインを消してトウコウを表示. 1ライン消すごとにフィードから新しいトウコウが現れる。</value>
+  </data>
+  <!-- Game Type Descriptions -->
+  <data name="GameTypeRevealDesc" xml:space="preserve">
+    <value>ラインを消すとトウコウが表示される</value>
+  </data>
+  <data name="GameTypeScrollDesc" xml:space="preserve">
+    <value>ピースを回転してフィードをスクロール</value>
+  </data>
+  <!-- Input Mode Names -->
+  <data name="InputModeT9" xml:space="preserve">
+    <value>T9</value>
+  </data>
+  <data name="InputModeABC" xml:space="preserve">
+    <value>ABC</value>
+  </data>
+  <data name="InputModeKana" xml:space="preserve">
+    <value>かな</value>
+  </data>
+  <!-- Author Feed Filter Options -->
+  <data name="FilterAllPosts" xml:space="preserve">
+    <value>すべてのトウコウ</value>
+  </data>
+  <data name="FilterAllPostsDesc" xml:space="preserve">
+    <value>作者のトウコウとスレッド</value>
+  </data>
+  <data name="FilterWithReplies" xml:space="preserve">
+    <value>リプライを含む</value>
+  </data>
+  <data name="FilterWithRepliesDesc" xml:space="preserve">
+    <value>リプライを含むトウコウ</value>
+  </data>
+  <data name="FilterMediaOnly" xml:space="preserve">
+    <value>メディアのみ</value>
+  </data>
+  <data name="FilterMediaOnlyDesc" xml:space="preserve">
+    <value>画像やメディア付きのトウコウ</value>
+  </data>
+  <data name="FilterVideoOnly" xml:space="preserve">
+    <value>動画のみ</value>
+  </data>
+  <data name="FilterVideoOnlyDesc" xml:space="preserve">
+    <value>動画付きのトウコウ</value>
+  </data>
+  <!-- Status Messages -->
+  <data name="StatusNoPostsToSend" xml:space="preserve">
+    <value>送信するトウコウがありません！</value>
+  </data>
+  <data name="StatusNotLoggedIn" xml:space="preserve">
+    <value>ログインしていません！</value>
+  </data>
+  <data name="StatusPostingToBluesky" xml:space="preserve">
+    <value>Blueskyにトウコウ中...</value>
+  </data>
+  <data name="StatusGeneratingStatsImage" xml:space="preserve">
+    <value>統計画像を生成中...</value>
+  </data>
+  <data name="StatusSuccessfullyPosted" xml:space="preserve">
+    <value>{0}件のトウコウをBlueskyに送信しました！</value>
+  </data>
+  <!-- T9 Generator Messages -->
+  <data name="T9InputDigitsOnly" xml:space="preserve">
+    <value>T9入力は数字(0-9)のみ使用できます</value>
+  </data>
+  <data name="T9EnterDigitsHint" xml:space="preserve">
+    <value>文字には2-9を入力</value>
+  </data>
+  <data name="T9ShowingMatches" xml:space="preserve">
+    <value>{0}件中30件を表示</value>
+  </data>
+  <!-- Error Messages -->
+  <data name="ErrorPleaseEnterHandle" xml:space="preserve">
+    <value>ハンドルを入力してください</value>
+  </data>
+  <data name="ErrorInvalidHandleFormat" xml:space="preserve">
+    <value>ハンドル形式が無効です</value>
+  </data>
+  <data name="ErrorProfileNotFound" xml:space="preserve">
+    <value>プロフィールが見つかりません</value>
+  </data>
+  <data name="ErrorUnknown" xml:space="preserve">
+    <value>不明なエラーが発生しました。</value>
+  </data>
+  <data name="ErrorInvalidFeedUri" xml:space="preserve">
+    <value>無効なフィードURIです</value>
+  </data>
+  <data name="ErrorFailedToLoadFeed" xml:space="preserve">
+    <value>フィードの読み込みに失敗しました</value>
+  </data>
+  <data name="ErrorFailedToCreateFeedCollection" xml:space="preserve">
+    <value>フィードコレクションの作成に失敗しました</value>
+  </data>
+  <data name="ErrorInvalidAuthorIdentifier" xml:space="preserve">
+    <value>無効な作者識別子です</value>
+  </data>
+  <data name="ErrorPleaseEnterValidATUri" xml:space="preserve">
+    <value>有効なATUriを入力してください</value>
+  </data>
+  <data name="ErrorInvalidATUriFormat" xml:space="preserve">
+    <value>ATUri形式が無効です</value>
+  </data>
+  <data name="ErrorFailedToLoadMorePosts" xml:space="preserve">
+    <value>追加のトウコウの読み込みに失敗しました</value>
+  </data>
+  <!-- Default Feed Names -->
+  <data name="FeedNameDiscover" xml:space="preserve">
+    <value>ディスカバーフィード</value>
+  </data>
+  <data name="FeedNameScroll" xml:space="preserve">
+    <value>フィードスクロール</value>
+  </data>
+  <data name="FeedNameDefault" xml:space="preserve">
+    <value>フィード</value>
+  </data>
+  <data name="FeedNameTimeline" xml:space="preserve">
+    <value>あなたのタイムライン</value>
+  </data>
+  <data name="FeedNameNone" xml:space="preserve">
+    <value>フィード未選択</value>
   </data>
 </root>

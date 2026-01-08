@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -24,8 +25,8 @@ public partial class TimelineModeOptionsViewModel : GameModeOptionsViewModelBase
     /// </summary>
     public string GameTypeDescription => SelectedGameType switch
     {
-        FeedGameType.Reveal => "Posts are revealed as you clear lines",
-        FeedGameType.Scroll => "Rotate pieces to scroll through the feed",
+        FeedGameType.Reveal => Strings.GameTypeRevealDesc,
+        FeedGameType.Scroll => Strings.GameTypeScrollDesc,
         _ => ""
     };
 
@@ -59,7 +60,7 @@ public partial class TimelineModeOptionsViewModel : GameModeOptionsViewModelBase
             FeedUri: null,
             AuthorIdentifier: null,
             AuthorFilter: null,
-            FeedName: "YOUR TIMELINE"
+            FeedName: Strings.FeedNameTimeline
         );
     }
 

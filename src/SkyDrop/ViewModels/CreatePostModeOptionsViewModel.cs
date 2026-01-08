@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -25,10 +26,10 @@ public partial class CreatePostModeOptionsViewModel : GameModeOptionsViewModelBa
     /// </summary>
     public string SelectedInputModeDisplay => SelectedInputMode switch
     {
-        TextInputMode.T9 => "T9",
-        TextInputMode.ABC => "ABC",
-        TextInputMode.Kana => "かな",
-        _ => "T9"
+        TextInputMode.T9 => Strings.InputModeT9,
+        TextInputMode.ABC => Strings.InputModeABC,
+        TextInputMode.Kana => Strings.InputModeKana,
+        _ => Strings.InputModeT9
     };
 
     /// <inheritdoc/>

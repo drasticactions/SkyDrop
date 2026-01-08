@@ -1,5 +1,10 @@
+// <copyright file="JapaneseDictionaryService.cs" company="Drastic Actions">
+// Copyright (c) Drastic Actions. All rights reserved.
+// </copyright>
+
 using System.Collections.Concurrent;
-using JMDict;
+using System.Text.Json;
+using SkyDrop.Models;
 
 namespace SkyDrop.Services;
 
@@ -12,7 +17,7 @@ namespace SkyDrop.Services;
 public record JapaneseWord(string Kana, string Kanji, int Priority);
 
 /// <summary>
-/// Service for Japanese kana-to-kanji conversion using JMdict.
+/// Service for Japanese kana-to-kanji conversion using JMdict-simplified.
 /// </summary>
 public class JapaneseDictionaryService
 {
@@ -25,23 +30,23 @@ public class JapaneseDictionaryService
     public bool IsLoaded => _isLoaded;
 
     /// <summary>
-    /// Loads the JMdict dictionary from the specified XML file path.
+    /// Loads the JMdict dictionary from the specified JSON file path.
     /// </summary>
-    /// <param name="xmlPath">Path to the JMdict XML file.</param>
-    public void LoadFromJmdict(string xmlPath)
+    /// <param name="jsonPath">Path to the JMdict-simplified JSON file.</param>
+    public void LoadFromJson(string jsonPath)
     {
         if (_isLoaded)
             return;
 
-        var parser = new DictParser();
-        var jmdict = parser.ParseXml<Jmdict>(xmlPath);
+        using var stream = File.OpenRead(jsonPath);
+        var dictionary = JsonSerializer.Deserialize(stream, SourceGenerationContext.Default.JmdictDictionary);
 
-        if (jmdict?.Entries == null)
+        if (dictionary?.Words == null)
             return;
 
-        foreach (var entry in jmdict.Entries)
+        foreach (var word in dictionary.Words)
         {
-            ProcessEntry(entry);
+            ProcessEntry(word);
         }
 
         _isLoaded = true;
@@ -50,7 +55,7 @@ public class JapaneseDictionaryService
     /// <summary>
     /// Loads the dictionary from an embedded Avalonia resource.
     /// </summary>
-    /// <param name="resourceUri">The avares:// URI to the JMdict XML file.</param>
+    /// <param name="resourceUri">The avares:// URI to the JMdict-simplified JSON file.</param>
     public void LoadFromAvaloniaResource(string resourceUri)
     {
         if (_isLoaded)
@@ -61,31 +66,17 @@ public class JapaneseDictionaryService
             var uri = new Uri(resourceUri);
             using var stream = Avalonia.Platform.AssetLoader.Open(uri);
 
-            // JMDict parser needs a file path, so we need to copy to temp file
-            var tempPath = Path.GetTempFileName();
-            try
+            var dictionary = JsonSerializer.Deserialize(stream, SourceGenerationContext.Default.JmdictDictionary);
+
+            if (dictionary?.Words == null)
+                return;
+
+            foreach (var word in dictionary.Words)
             {
-                using (var fileStream = File.Create(tempPath))
-                {
-                    // Check if the resource is gzipped
-                    if (resourceUri.EndsWith(".gz", StringComparison.OrdinalIgnoreCase))
-                    {
-                        using var gzipStream = new System.IO.Compression.GZipStream(
-                            stream, System.IO.Compression.CompressionMode.Decompress);
-                        gzipStream.CopyTo(fileStream);
-                    }
-                    else
-                    {
-                        stream.CopyTo(fileStream);
-                    }
-                }
-                LoadFromJmdict(tempPath);
+                ProcessEntry(word);
             }
-            finally
-            {
-                if (File.Exists(tempPath))
-                    File.Delete(tempPath);
-            }
+
+            _isLoaded = true;
         }
         catch (Exception)
         {
@@ -96,51 +87,79 @@ public class JapaneseDictionaryService
     /// <summary>
     /// Loads the dictionary asynchronously from a file path.
     /// </summary>
-    public Task LoadFromJmdictAsync(string xmlPath)
+    public Task LoadFromJsonAsync(string jsonPath)
     {
-        return Task.Run(() => LoadFromJmdict(xmlPath));
+        return Task.Run(() => LoadFromJson(jsonPath));
+    }
+
+    /// <summary>
+    /// Loads the dictionary asynchronously from an Avalonia resource.
+    /// </summary>
+    public Task LoadFromAvaloniaResourceAsync(string resourceUri)
+    {
+        return Task.Run(() => LoadFromAvaloniaResource(resourceUri));
     }
 
     /// <summary>
     /// Processes a single JMdict entry and adds it to the lookup dictionary.
     /// </summary>
-    private void ProcessEntry(JmdictEntry entry)
+    private void ProcessEntry(JmdictWord entry)
     {
-        if (entry.Readings == null)
+        if (entry.Kana == null || entry.Kana.Count == 0)
             return;
 
         // Get all kana readings
-        var readings = entry.Readings
-            .Where(r => r.Kana != null)
-            .Select(r => r.Kana!)
+        var readings = entry.Kana
+            .Where(k => !string.IsNullOrEmpty(k.Text))
             .ToList();
 
-        // Get all kanji representations (or use kana if none)
+        // Get all kanji representations
         var kanjiList = entry.Kanji?
-            .Where(k => k.Expression != null)
-            .Select(k => k.Expression!)
-            .ToList() ?? new List<string>();
+            .Where(k => !string.IsNullOrEmpty(k.Text))
+            .ToList() ?? new List<JmdictKanji>();
 
-        // Calculate priority (lower = more common)
-        // Priority markers in JMdict: news1/2, ichi1/2, spec1/2, gai1/2, nf01-48
-        var priority = CalculatePriority(entry);
-
-        foreach (var kana in readings)
+        foreach (var kanaEntry in readings)
         {
+            var kana = kanaEntry.Text;
             var words = new List<JapaneseWord>();
+
+            // Calculate base priority from kana commonness
+            var basePriority = kanaEntry.Common ? 10 : 500;
 
             if (kanjiList.Count > 0)
             {
-                // Add each kanji representation
-                foreach (var kanji in kanjiList)
+                // Filter kanji based on appliesToKanji
+                var applicableKanji = kanjiList;
+                if (kanaEntry.AppliesToKanji != null && kanaEntry.AppliesToKanji.Count > 0)
                 {
-                    words.Add(new JapaneseWord(kana, kanji, priority));
+                    if (!kanaEntry.AppliesToKanji.Contains("*"))
+                    {
+                        applicableKanji = kanjiList
+                            .Where(k => kanaEntry.AppliesToKanji.Contains(k.Text))
+                            .ToList();
+                    }
+                }
+
+                if (applicableKanji.Count > 0)
+                {
+                    // Add each kanji representation
+                    foreach (var kanji in applicableKanji)
+                    {
+                        // Use the more favorable priority if kanji is also common
+                        var priority = (kanaEntry.Common || kanji.Common) ? 10 : 500;
+                        words.Add(new JapaneseWord(kana, kanji.Text, priority));
+                    }
+                }
+                else
+                {
+                    // No applicable kanji - use kana as both reading and output
+                    words.Add(new JapaneseWord(kana, kana, basePriority));
                 }
             }
             else
             {
                 // No kanji - use kana as both reading and output
-                words.Add(new JapaneseWord(kana, kana, priority));
+                words.Add(new JapaneseWord(kana, kana, basePriority));
             }
 
             // Add to dictionary, merging with existing entries
@@ -153,65 +172,6 @@ public class JapaneseDictionaryService
                     return existing;
                 });
         }
-    }
-
-    /// <summary>
-    /// Calculates a priority score for an entry (lower = more common).
-    /// </summary>
-    private static int CalculatePriority(JmdictEntry entry)
-    {
-        // Default priority for uncommon words
-        var priority = 1000;
-
-        // Check reading element priorities
-        if (entry.Readings != null)
-        {
-            foreach (var reading in entry.Readings)
-            {
-                if (reading.Priorities != null)
-                {
-                    foreach (var p in reading.Priorities)
-                    {
-                        priority = Math.Min(priority, GetPriorityValue(p));
-                    }
-                }
-            }
-        }
-
-        // Check kanji element priorities
-        if (entry.Kanji != null)
-        {
-            foreach (var kanji in entry.Kanji)
-            {
-                if (kanji.Priorities != null)
-                {
-                    foreach (var p in kanji.Priorities)
-                    {
-                        priority = Math.Min(priority, GetPriorityValue(p));
-                    }
-                }
-            }
-        }
-
-        return priority;
-    }
-
-    /// <summary>
-    /// Converts a JMdict priority string to a numeric value.
-    /// </summary>
-    private static int GetPriorityValue(string priority)
-    {
-        // news1, ichi1, spec1, gai1 = most common (10)
-        // news2, ichi2, spec2, gai2 = common (50)
-        // nf01-nf10 = very common (1-10)
-        // nf11-nf48 = common (11-48)
-        return priority switch
-        {
-            "news1" or "ichi1" or "spec1" or "gai1" => 10,
-            "news2" or "ichi2" or "spec2" or "gai2" => 50,
-            _ when priority.StartsWith("nf") && int.TryParse(priority[2..], out var nf) => nf,
-            _ => 500
-        };
     }
 
     /// <summary>

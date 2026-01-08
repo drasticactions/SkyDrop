@@ -151,7 +151,7 @@
     <value>FEED</value>
   </data>
   <data name="ModeDiscoverFeedDesc" xml:space="preserve">
-    <value>Bluesky feeds and puzzles, together!</value>
+    <value>Feeds and puzzles, together at last!</value>
   </data>
   <data name="ModeAuthorFeed" xml:space="preserve">
     <value>AUTHOR FEED</value>
@@ -163,13 +163,13 @@
     <value>TIMELINE</value>
   </data>
   <data name="ModeTimelineDesc" xml:space="preserve">
-    <value>Your home timeline while playing</value>
+    <value>Read your timeline while playing</value>
   </data>
   <data name="ModeCreatePost" xml:space="preserve">
     <value>CREATE POST</value>
   </data>
   <data name="ModeCreatePostDesc" xml:space="preserve">
-    <value>Write posts using T9 input</value>
+    <value>A true spin on posting</value>
   </data>
   <data name="ModeT9Generator" xml:space="preserve">
     <value>T9 GENERATOR</value>
@@ -199,12 +199,526 @@
     <value>Select</value>
   </data>
   <data name="ChangeLevel" xml:space="preserve">
-    <value>Change level</value>
+    <value>←→ Change level</value>
   </data>
   <data name="LanguageEnglish" xml:space="preserve">
     <value>EN</value>
   </data>
   <data name="LanguageJapanese" xml:space="preserve">
     <value>JA</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>SCORE</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>LEVEL</value>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>LINES</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>NEXT</value>
+  </data>
+  <data name="Controls" xml:space="preserve">
+    <value>CONTROLS</value>
+  </data>
+  <data name="ControlMove" xml:space="preserve">
+    <value>← →  Move</value>
+  </data>
+  <data name="ControlRotate" xml:space="preserve">
+    <value>↑ X  Rotate</value>
+  </data>
+  <data name="ControlSoftDrop" xml:space="preserve">
+    <value>↓    Soft Drop</value>
+  </data>
+  <data name="ControlPause" xml:space="preserve">
+    <value>ESC  Pause</value>
+  </data>
+  <data name="GameOver" xml:space="preserve">
+    <value>GAME OVER</value>
+  </data>
+  <data name="FinalScore" xml:space="preserve">
+    <value>Final Score: </value>
+  </data>
+  <data name="PressSpaceRestart" xml:space="preserve">
+    <value>Press SPACE to restart</value>
+  </data>
+  <data name="PressEscTitle" xml:space="preserve">
+    <value>Press ESC to return to title</value>
+  </data>
+  <data name="PressEnterRestart" xml:space="preserve">
+    <value>Press ENTER to restart</value>
+  </data>
+  <data name="Paused" xml:space="preserve">
+    <value>PAUSED</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>RESUME</value>
+  </data>
+  <data name="MainMenu" xml:space="preserve">
+    <value>MAIN MENU</value>
+  </data>
+  <data name="Credits" xml:space="preserve">
+    <value>Credits</value>
+  </data>
+  <data name="ComingSoon" xml:space="preserve">
+    <value>Coming Soon</value>
+  </data>
+  <data name="LoginRequiredToPlay" xml:space="preserve">
+    <value>Login required to play</value>
+  </data>
+  <data name="BlueskyLogin" xml:space="preserve">
+    <value>BLUESKY LOGIN</value>
+  </data>
+  <data name="ConnectYourAccount" xml:space="preserve">
+    <value>Connect your account</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>SIGN IN</value>
+  </data>
+  <data name="HandleOrEmail" xml:space="preserve">
+    <value>Handle or Email</value>
+  </data>
+  <data name="AppPassword" xml:space="preserve">
+    <value>App Password</value>
+  </data>
+  <data name="AppPasswordHint" xml:space="preserve">
+    <value>Use an App Password from bsky.app/settings</value>
+  </data>
+  <data name="SigningIn" xml:space="preserve">
+    <value>SIGNING IN...</value>
+  </data>
+  <data name="LoggedIn" xml:space="preserve">
+    <value>LOGGED IN</value>
+  </data>
+  <data name="GameType" xml:space="preserve">
+    <value>GAME TYPE</value>
+  </data>
+  <data name="Reveal" xml:space="preserve">
+    <value>REVEAL</value>
+  </data>
+  <data name="RevealDesc" xml:space="preserve">
+    <value>Clear lines to reveal</value>
+  </data>
+  <data name="Scroll" xml:space="preserve">
+    <value>SCROLL</value>
+  </data>
+  <data name="ScrollDesc" xml:space="preserve">
+    <value>Rotate to scroll feed</value>
+  </data>
+  <data name="BlueskyHandle" xml:space="preserve">
+    <value>BLUESKY HANDLE</value>
+  </data>
+  <data name="Lookup" xml:space="preserve">
+    <value>LOOKUP</value>
+  </data>
+  <data name="LookingUpProfile" xml:space="preserve">
+    <value>Looking up profile...</value>
+  </data>
+  <data name="EnterHandleHint" xml:space="preserve">
+    <value>Enter a Bluesky handle and press Lookup</value>
+  </data>
+  <data name="FeedFilter" xml:space="preserve">
+    <value>FEED FILTER</value>
+  </data>
+  <data name="PlayWhileViewingPosts" xml:space="preserve">
+    <value>Play while viewing someone's posts</value>
+  </data>
+  <data name="PlayWhileViewingTimeline" xml:space="preserve">
+    <value>Play while viewing your home timeline</value>
+  </data>
+  <data name="WritePostsUsingT9" xml:space="preserve">
+    <value>Write posts using T9 input</value>
+  </data>
+  <data name="InputMode" xml:space="preserve">
+    <value>INPUT MODE</value>
+  </data>
+  <data name="ClickToToggle" xml:space="preserve">
+    <value>(click to toggle)</value>
+  </data>
+  <data name="T9Description" xml:space="preserve">
+    <value>T9 = Predictive text (dictionary)</value>
+  </data>
+  <data name="ABCDescription" xml:space="preserve">
+    <value>ABC = Multi-tap (individual letters)</value>
+  </data>
+  <data name="HowToPlay" xml:space="preserve">
+    <value>HOW TO PLAY</value>
+  </data>
+  <data name="ControlSelectKey" xml:space="preserve">
+    <value>Rotate = Select key/character</value>
+  </data>
+  <data name="ControlPressKey" xml:space="preserve">
+    <value>Drop = Press key / Add character</value>
+  </data>
+  <data name="ControlCycleSuggestions" xml:space="preserve">
+    <value>TAB = Cycle word/kanji suggestions</value>
+  </data>
+  <data name="ControlToggleMode" xml:space="preserve">
+    <value>M = Toggle input mode (T9/ABC/かな)</value>
+  </data>
+  <data name="ControlSpecialKeys" xml:space="preserve">
+    <value>0 = Space  |  * = Delete  |  # = Add post</value>
+  </data>
+  <!-- T9 Mode Help -->
+  <data name="T9HelpDigits" xml:space="preserve">
+    <value>Press digits 2-9 to build words from dictionary.</value>
+  </data>
+  <data name="T9HelpTab" xml:space="preserve">
+    <value>TAB cycles through word suggestions.</value>
+  </data>
+  <data name="T9HelpKey1" xml:space="preserve">
+    <value>Key 1 enters punctuation (. , ! ? etc.)</value>
+  </data>
+  <data name="T9HelpAutoCapitalize" xml:space="preserve">
+    <value>Auto-capitalizes after sentences.</value>
+  </data>
+  <!-- ABC Mode Help -->
+  <data name="ABCHelpRotate" xml:space="preserve">
+    <value>Rotate to cycle through letters on each key (like old phones).</value>
+  </data>
+  <data name="ABCHelpDrop" xml:space="preserve">
+    <value>Drop adds the displayed character directly to your post.</value>
+  </data>
+  <data name="ABCHelpKey1" xml:space="preserve">
+    <value>Key 1 = Punctuation (.!?-')</value>
+  </data>
+  <data name="ABCHelpAutoCapitalize" xml:space="preserve">
+    <value>Auto-capitalizes at start and after periods.</value>
+  </data>
+  <!-- Kana Mode Help -->
+  <data name="KanaHelpRotate" xml:space="preserve">
+    <value>Rotate to select hiragana characters.</value>
+  </data>
+  <data name="KanaHelpDakuten" xml:space="preserve">
+    <value>* = Apply dakuten or handakuten</value>
+  </data>
+  <data name="KanaHelpTab" xml:space="preserve">
+    <value>TAB cycles through kanji suggestions.</value>
+  </data>
+  <data name="KanaHelpConfirm" xml:space="preserve">
+    <value># = Confirm kana/kanji, OK = Add post</value>
+  </data>
+  <data name="T9Mode" xml:space="preserve">
+    <value>T9 MODE</value>
+  </data>
+  <data name="PredictiveTextInput" xml:space="preserve">
+    <value>Predictive Text Input</value>
+  </data>
+  <data name="ABCMode" xml:space="preserve">
+    <value>ABC MODE</value>
+  </data>
+  <data name="MultiTapInput" xml:space="preserve">
+    <value>Multi-tap Input</value>
+  </data>
+  <data name="KanaMode" xml:space="preserve">
+    <value>かな MODE</value>
+  </data>
+  <data name="JapaneseHiraganaInput" xml:space="preserve">
+    <value>Japanese Hiragana Input</value>
+  </data>
+  <data name="BrowseModes" xml:space="preserve">
+    <value>←→ Browse modes</value>
+  </data>
+  <data name="SelectedKey" xml:space="preserve">
+    <value>SELECTED KEY</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+    <value>WORD</value>
+  </data>
+  <data name="CurrentPost" xml:space="preserve">
+    <value>CURRENT POST</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>COMPLETED</value>
+  </data>
+  <data name="PressHashToAddPost" xml:space="preserve">
+    <value>Press # to add post</value>
+  </data>
+  <data name="YourPosts" xml:space="preserve">
+    <value>YOUR POSTS</value>
+  </data>
+  <data name="NoPostsCreated" xml:space="preserve">
+    <value>No posts created</value>
+  </data>
+  <data name="IncludeSkyDropSignature" xml:space="preserve">
+    <value>Include #SkyDrop signature</value>
+  </data>
+  <data name="SignatureDescription" xml:space="preserve">
+    <value>Adds a final post with game stats image</value>
+  </data>
+  <data name="PostAsThread" xml:space="preserve">
+    <value>POST TO BLUESKY</value>
+  </data>
+  <data name="PlayAgain" xml:space="preserve">
+    <value>PLAY AGAIN</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>TITLE</value>
+  </data>
+  <data name="PostTooLong" xml:space="preserve">
+    <value>Post too long!</value>
+  </data>
+  <data name="PostsRevealed" xml:space="preserve">
+    <value>Posts Revealed: </value>
+  </data>
+  <data name="LoadingFeed" xml:space="preserve">
+    <value>Loading feed...</value>
+  </data>
+  <data name="NoPosts" xml:space="preserve">
+    <value>No posts...</value>
+  </data>
+  <data name="ClearLinesToReveal" xml:space="preserve">
+    <value>Clear lines to reveal posts!</value>
+  </data>
+  <data name="Rotations" xml:space="preserve">
+    <value>Rotations: </value>
+  </data>
+  <data name="RotateToScroll" xml:space="preserve">
+    <value>Rotate to scroll</value>
+  </data>
+  <data name="LoadingPosts" xml:space="preserve">
+    <value>Loading posts...</value>
+  </data>
+  <data name="PostsDiscovered" xml:space="preserve">
+    <value>Posts Discovered: </value>
+  </data>
+  <data name="TotalRotations" xml:space="preserve">
+    <value>Total Rotations: </value>
+  </data>
+  <data name="GameWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="ThirdPartyLibraries" xml:space="preserve">
+    <value>THIRD-PARTY LIBRARIES</value>
+  </data>
+  <data name="T9Generator" xml:space="preserve">
+    <value>T9 GENERATOR</value>
+  </data>
+  <data name="ConvertTextT9" xml:space="preserve">
+    <value>Convert between text and T9 sequences</value>
+  </data>
+  <data name="TextToT9" xml:space="preserve">
+    <value>TEXT → T9</value>
+  </data>
+  <data name="T9ToText" xml:space="preserve">
+    <value>T9 → TEXT</value>
+  </data>
+  <data name="EnterText" xml:space="preserve">
+    <value>Enter Text</value>
+  </data>
+  <data name="T9Sequence" xml:space="preserve">
+    <value>T9 Sequence</value>
+  </data>
+  <data name="WordBreakdown" xml:space="preserve">
+    <value>Word Breakdown</value>
+  </data>
+  <data name="EnterT9Sequence" xml:space="preserve">
+    <value>Enter T9 Sequence</value>
+  </data>
+  <data name="T9InputHint" xml:space="preserve">
+    <value>Use 2-9 for letters (0=space, 1=punctuation)</value>
+  </data>
+  <data name="PossibleWords" xml:space="preserve">
+    <value>Possible Words</value>
+  </data>
+  <data name="NoMatchingWords" xml:space="preserve">
+    <value>No matching words found</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>CLEAR</value>
+  </data>
+  <data name="SelectFeed" xml:space="preserve">
+    <value>SELECT FEED</value>
+  </data>
+  <data name="LoadingFeeds" xml:space="preserve">
+    <value>Loading feeds...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="LoadMore" xml:space="preserve">
+    <value>Load More</value>
+  </data>
+  <data name="Likes" xml:space="preserve">
+    <value>likes</value>
+  </data>
+  <data name="InstructionsIntro" xml:space="preserve">
+    <value>Stack falling pieces to complete horizontal lines. Completed lines are cleared and you earn points.</value>
+  </data>
+  <data name="ControlMoveLeftRight" xml:space="preserve">
+    <value>Move piece left/right</value>
+  </data>
+  <data name="ControlRotateCW" xml:space="preserve">
+    <value>Rotate piece</value>
+  </data>
+  <data name="ControlSoftDropDesc" xml:space="preserve">
+    <value>Soft drop</value>
+  </data>
+  <data name="ControlHardDrop" xml:space="preserve">
+    <value>Hard drop</value>
+  </data>
+  <data name="ControlPauseGame" xml:space="preserve">
+    <value>Pause game</value>
+  </data>
+  <data name="StartGame" xml:space="preserve">
+    <value>START GAME</value>
+  </data>
+  <data name="PressEnterToStart" xml:space="preserve">
+    <value>Press ENTER to start</value>
+  </data>
+  <data name="NavTitleScreen" xml:space="preserve">
+    <value>↑↓←→ Navigate  |  ENTER Select</value>
+  </data>
+  <data name="NavLoginScreen" xml:space="preserve">
+    <value>↑↓ Navigate  |  ENTER Select  |  ESC Back</value>
+  </data>
+  <data name="NavModeOptions" xml:space="preserve">
+    <value>↑↓ Navigate  |  ←→ Level  |  ENTER Select</value>
+  </data>
+  <data name="NavFeedOptions" xml:space="preserve">
+    <value>↑↓ Navigate  |  ←→ Level/Type  |  ENTER Select</value>
+  </data>
+  <data name="NavAuthorFeed" xml:space="preserve">
+    <value>ENTER Lookup/Select  |  ESC Back</value>
+  </data>
+  <data name="NavTimeline" xml:space="preserve">
+    <value>ENTER Select  |  ESC Back  |  LEFT/RIGHT Navigate</value>
+  </data>
+  <data name="NavT9Generator" xml:space="preserve">
+    <value>TAB Switch Mode  |  ENTER Select  |  ESC Back</value>
+  </data>
+  <data name="NavCredits" xml:space="preserve">
+    <value>ESC/ENTER to go back</value>
+  </data>
+  <data name="NavPause" xml:space="preserve">
+    <value>↑↓ Navigate  |  ENTER Select  |  ESC Resume</value>
+  </data>
+  <data name="RevealModeInstructions" xml:space="preserve">
+    <value>Clear lines to reveal posts from the feed. Each line cleared reveals a new post.</value>
+  </data>
+  <data name="ScrollModeInstructions" xml:space="preserve">
+    <value>In this mode, rotating pieces scrolls through the feed. Rotate clockwise to scroll down, counter-clockwise to scroll up.</value>
+  </data>
+  <data name="DiscoverFeedModeInstructions" xml:space="preserve">
+    <value>In Feed mode, clear lines to reveal posts. Each line cleared reveals a new post from the feed.</value>
+  </data>
+  <!-- Game Type Descriptions -->
+  <data name="GameTypeRevealDesc" xml:space="preserve">
+    <value>Posts are revealed as you clear lines</value>
+  </data>
+  <data name="GameTypeScrollDesc" xml:space="preserve">
+    <value>Rotate pieces to scroll through the feed</value>
+  </data>
+  <!-- Input Mode Names -->
+  <data name="InputModeT9" xml:space="preserve">
+    <value>T9</value>
+  </data>
+  <data name="InputModeABC" xml:space="preserve">
+    <value>ABC</value>
+  </data>
+  <data name="InputModeKana" xml:space="preserve">
+    <value>かな</value>
+  </data>
+  <!-- Author Feed Filter Options -->
+  <data name="FilterAllPosts" xml:space="preserve">
+    <value>All Posts</value>
+  </data>
+  <data name="FilterAllPostsDesc" xml:space="preserve">
+    <value>Posts and threads by the author</value>
+  </data>
+  <data name="FilterWithReplies" xml:space="preserve">
+    <value>With Replies</value>
+  </data>
+  <data name="FilterWithRepliesDesc" xml:space="preserve">
+    <value>Posts including replies</value>
+  </data>
+  <data name="FilterMediaOnly" xml:space="preserve">
+    <value>Media Only</value>
+  </data>
+  <data name="FilterMediaOnlyDesc" xml:space="preserve">
+    <value>Posts with images or media</value>
+  </data>
+  <data name="FilterVideoOnly" xml:space="preserve">
+    <value>Video Only</value>
+  </data>
+  <data name="FilterVideoOnlyDesc" xml:space="preserve">
+    <value>Posts with videos</value>
+  </data>
+  <!-- Status Messages -->
+  <data name="StatusNoPostsToSend" xml:space="preserve">
+    <value>No posts to send!</value>
+  </data>
+  <data name="StatusNotLoggedIn" xml:space="preserve">
+    <value>Not logged in!</value>
+  </data>
+  <data name="StatusPostingToBluesky" xml:space="preserve">
+    <value>Posting to Bluesky...</value>
+  </data>
+  <data name="StatusGeneratingStatsImage" xml:space="preserve">
+    <value>Generating stats image...</value>
+  </data>
+  <data name="StatusSuccessfullyPosted" xml:space="preserve">
+    <value>Successfully posted {0} post(s) to Bluesky!</value>
+  </data>
+  <!-- T9 Generator Messages -->
+  <data name="T9InputDigitsOnly" xml:space="preserve">
+    <value>T9 input must contain only digits (0-9)</value>
+  </data>
+  <data name="T9EnterDigitsHint" xml:space="preserve">
+    <value>Enter digits 2-9 for letters</value>
+  </data>
+  <data name="T9ShowingMatches" xml:space="preserve">
+    <value>Showing 30 of {0} matches</value>
+  </data>
+  <!-- Error Messages -->
+  <data name="ErrorPleaseEnterHandle" xml:space="preserve">
+    <value>Please enter a handle</value>
+  </data>
+  <data name="ErrorInvalidHandleFormat" xml:space="preserve">
+    <value>Invalid handle format</value>
+  </data>
+  <data name="ErrorProfileNotFound" xml:space="preserve">
+    <value>Profile not found</value>
+  </data>
+  <data name="ErrorUnknown" xml:space="preserve">
+    <value>An unknown error occurred.</value>
+  </data>
+  <data name="ErrorInvalidFeedUri" xml:space="preserve">
+    <value>Invalid feed URI</value>
+  </data>
+  <data name="ErrorFailedToLoadFeed" xml:space="preserve">
+    <value>Failed to load feed</value>
+  </data>
+  <data name="ErrorFailedToCreateFeedCollection" xml:space="preserve">
+    <value>Failed to create feed collection</value>
+  </data>
+  <data name="ErrorInvalidAuthorIdentifier" xml:space="preserve">
+    <value>Invalid author identifier</value>
+  </data>
+  <data name="ErrorPleaseEnterValidATUri" xml:space="preserve">
+    <value>Please enter a valid ATUri</value>
+  </data>
+  <data name="ErrorInvalidATUriFormat" xml:space="preserve">
+    <value>Invalid ATUri format</value>
+  </data>
+  <data name="ErrorFailedToLoadMorePosts" xml:space="preserve">
+    <value>Failed to load more posts</value>
+  </data>
+  <!-- Default Feed Names -->
+  <data name="FeedNameDiscover" xml:space="preserve">
+    <value>DISCOVER FEED</value>
+  </data>
+  <data name="FeedNameScroll" xml:space="preserve">
+    <value>FEED SCROLL</value>
+  </data>
+  <data name="FeedNameDefault" xml:space="preserve">
+    <value>FEED</value>
+  </data>
+  <data name="FeedNameTimeline" xml:space="preserve">
+    <value>YOUR TIMELINE</value>
+  </data>
+  <data name="FeedNameNone" xml:space="preserve">
+    <value>No feed selected</value>
   </data>
 </root>

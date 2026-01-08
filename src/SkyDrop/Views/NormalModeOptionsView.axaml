@@ -1,0 +1,122 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+             x:Class="SkyDrop.Views.NormalModeOptionsView"
+             x:DataType="vm:NormalModeOptionsViewModel"
+             Focusable="True">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <StackPanel Grid.Row="0" Margin="0,40,0,20" HorizontalAlignment="Center">
+            <TextBlock Text="{x:Static res:Strings.ModeNormal}"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AccentCyanBrush}"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{x:Static res:Strings.ModeNormalDesc}"
+                       FontSize="14"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+            <TextBlock Text="{x:Static res:Strings.SelectLevel}"
+                       FontSize="18"
+                       FontWeight="SemiBold"
+                       Foreground="{DynamicResource PrimaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+
+            <Border x:Name="LevelSelectorBorder"
+                    BorderBrush="Transparent"
+                    BorderThickness="3"
+                    CornerRadius="8"
+                    Padding="5"
+                    HorizontalAlignment="Center">
+                <Grid ColumnDefinitions="Auto,Auto,Auto" HorizontalAlignment="Center">
+                    <Button Grid.Column="0"
+                            Content="&#9664;"
+                            Command="{Binding DecreaseLevelCommand}"
+                            FontSize="24"
+                            Width="50"
+                            Height="50"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource PrimaryTextBrush}"
+                            CornerRadius="4"
+                            Focusable="False"/>
+
+                    <Border Grid.Column="1"
+                            Background="{DynamicResource NextPieceBackgroundBrush}"
+                            CornerRadius="4"
+                            Margin="20,0"
+                            Padding="30,10"
+                            MinWidth="100">
+                        <TextBlock Text="{Binding SelectedLevel}"
+                                   FontSize="36"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AccentGoldBrush}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Button Grid.Column="2"
+                            Content="&#9654;"
+                            Command="{Binding IncreaseLevelCommand}"
+                            FontSize="24"
+                            Width="50"
+                            Height="50"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource PrimaryTextBrush}"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Grid>
+            </Border>
+
+            <TextBlock Text="{x:Static res:Strings.ChangeLevel}"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,40,0,60" HorizontalAlignment="Center" Spacing="15">
+            <Border x:Name="PlayButtonBorder"
+                    BorderThickness="3"
+                    BorderBrush="Transparent"
+                    CornerRadius="7"
+                    HorizontalAlignment="Center">
+                <Button Content="{x:Static res:Strings.Play}"
+                        Command="{Binding PlayCommand}"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Padding="60,15"
+                        Background="{DynamicResource AccentGreenBrush}"
+                        Foreground="White"
+                        CornerRadius="4"
+                        Focusable="False"/>
+            </Border>
+
+            <Border x:Name="BackButtonBorder"
+                    BorderThickness="3"
+                    BorderBrush="Transparent"
+                    CornerRadius="7"
+                    HorizontalAlignment="Center">
+                <Button Content="{x:Static res:Strings.Back}"
+                        Command="{Binding BackCommand}"
+                        FontSize="14"
+                        Padding="40,10"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource SecondaryTextBrush}"
+                        CornerRadius="4"
+                        Focusable="False"/>
+            </Border>
+
+            <TextBlock Text="{x:Static res:Strings.NavModeOptions}"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

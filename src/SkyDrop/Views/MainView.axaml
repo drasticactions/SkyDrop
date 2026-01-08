@@ -2,11 +2,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              xmlns:controls="using:SkyDrop.Controls"
+             xmlns:controls="using:SkyDrop.Controls"
+             xmlns:views="using:SkyDrop.Views"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             x:DataType="vm:MainWindowViewModel"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SkyDrop.Views.MainView">
+
+    <UserControl.DataTemplates>
+        <DataTemplate DataType="{x:Type vm:TitleScreenViewModel}">
+            <views:TitleScreen/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:NormalModeOptionsViewModel}">
+            <views:NormalModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:GameViewModel}">
+            <views:GameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiscoverFeedModeOptionsViewModel}">
+            <views:DiscoverFeedModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiscoverFeedGameViewModel}">
+            <views:DiscoverFeedGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiscoverFeedScrollGameViewModel}">
+            <views:DiscoverFeedScrollGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AuthorFeedModeOptionsViewModel}">
+            <views:AuthorFeedModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:TimelineModeOptionsViewModel}">
+            <views:TimelineModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:RevealFeedGameViewModel}">
+            <views:RevealFeedGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:ScrollFeedGameViewModel}">
+            <views:ScrollFeedGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreatePostModeOptionsViewModel}">
+            <views:CreatePostModeOptionsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreatePostGameViewModel}">
+            <views:CreatePostGameView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:LoginViewModel}">
+            <views:LoginView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:T9GeneratorViewModel}">
+            <views:T9GeneratorView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:CreditsViewModel}">
+            <views:CreditsView/>
+        </DataTemplate>
+    </UserControl.DataTemplates>
+
      <Grid>
         <controls:StarFieldBackground StarCount="120" EnableTwinkle="True"/>
         <controls:CloudFieldBackground CloudCount="8" EnableAnimation="True"/>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"/>
     </Grid>
 </UserControl>

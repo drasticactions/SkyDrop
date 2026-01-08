@@ -1,0 +1,155 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:controls="using:SkyDrop.Controls"
+             xmlns:bluesky="using:SkyDrop.Controls.Bluesky"
+             xmlns:feed="using:FishyFlip.Lexicon.App.Bsky.Feed"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="SkyDrop.Views.RevealFeedGameView"
+             x:DataType="vm:RevealFeedGameViewModel"
+             Focusable="True">
+
+    <Panel>
+        <Grid ColumnDefinitions="Auto,*">
+            <Grid Grid.Column="0" RowDefinitions="*,Auto" Margin="20">
+                <Border Grid.Row="0"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="4"
+                        Width="250">
+                    <controls:GameCanvas x:Name="GameCanvas"
+                                         Engine="{Binding Engine}"
+                                         ShowGhost="True"
+                                         ShowGrid="True"/>
+                </Border>
+
+                <Border Grid.Row="1"
+                        Background="{DynamicResource PanelBackgroundBrush}"
+                        Padding="10"
+                        Margin="0,10,0,0"
+                        CornerRadius="4">
+                    <Grid ColumnDefinitions="*,*,*,Auto">
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                            <TextBlock Text="{x:Static res:Strings.Score}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Score}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource AccentGoldBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                            <TextBlock Text="{x:Static res:Strings.Level}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Level}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource AccentCyanBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                            <TextBlock Text="{x:Static res:Strings.Lines}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding Lines}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource AccentGreenBrush}" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                        <Border Grid.Column="3" Background="{DynamicResource NextPieceBackgroundBrush}" CornerRadius="4" Width="60" Height="50" Margin="10,0,0,0">
+                            <controls:NextPieceCanvas Piece="{Binding NextPiece}"/>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <Border Grid.Column="1"
+                    Background="{DynamicResource PanelBackgroundBrush}"
+                    Margin="0,20,20,20"
+                    Padding="15"
+                    CornerRadius="4"
+                    MinWidth="300">
+                <Grid RowDefinitions="Auto,Auto,*">
+                    <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                        <TextBlock Text="{Binding FeedName}"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AccentCyanBrush}"/>
+                        <StackPanel Orientation="Horizontal" Spacing="15" Margin="0,4,0,0">
+                            <TextBlock FontSize="11" Foreground="{DynamicResource SecondaryTextBrush}">
+                                <Run Text="{x:Static res:Strings.PostsRevealed}"/>
+                                <Run Text="{Binding TotalPostsRevealed}" Foreground="{DynamicResource AccentGreenBrush}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" IsVisible="{Binding IsLoadingFeed}" Margin="0,0,0,10">
+                        <TextBlock Text="{x:Static res:Strings.LoadingFeed}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource TertiaryTextBrush}"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <Border Grid.Row="1"
+                            Background="#44FF4444"
+                            CornerRadius="4"
+                            Padding="8"
+                            Margin="0,0,0,10"
+                            IsVisible="{Binding FeedError, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                        <TextBlock Text="{Binding FeedError}"
+                                   FontSize="11"
+                                   Foreground="#FFFF6666"
+                                   TextWrapping="Wrap"/>
+                    </Border>
+
+                    <ScrollViewer Grid.Row="2"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding RevealedPosts}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="feed:FeedViewPost">
+                                    <bluesky:BlueskyPostView/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <StackPanel Grid.Row="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsVisible="{Binding !RevealedPosts.Count}">
+                        <TextBlock Text="{x:Static res:Strings.ClearLinesToReveal}"
+                                   FontSize="14"
+                                   Foreground="{DynamicResource TertiaryTextBrush}"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <controls:PauseOverlay x:Name="PauseOverlay" IsPaused="{Binding IsPaused}"/>
+
+        <controls:InstructionsOverlay x:Name="InstructionsOverlay"
+                                      IsVisibleOverlay="{Binding ShowInstructions}"
+                                      ModeInstructions="{x:Static res:Strings.RevealModeInstructions}"/>
+
+        <Border Background="#CC000000"
+                IsVisible="{Binding IsGameOver}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="20">
+                <TextBlock Text="{x:Static res:Strings.GameOver}"
+                           FontSize="48"
+                           FontWeight="Bold"
+                           Foreground="{DynamicResource AccentRedBrush}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Spacing="8">
+                    <TextBlock FontSize="18" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center">
+                        <Run Text="{x:Static res:Strings.FinalScore}"/>
+                        <Run Text="{Binding Score}" Foreground="{DynamicResource AccentGoldBrush}" FontWeight="Bold"/>
+                    </TextBlock>
+                    <TextBlock FontSize="14" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center">
+                        <Run Text="{x:Static res:Strings.PostsDiscovered}"/>
+                        <Run Text="{Binding TotalPostsRevealed}" Foreground="{DynamicResource AccentGreenBrush}" FontWeight="Bold"/>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Spacing="10" Margin="0,20,0,0">
+                    <TextBlock Text="{x:Static res:Strings.PressEnterRestart}"
+                               FontSize="14"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="{x:Static res:Strings.PressEscTitle}"
+                               FontSize="12"
+                               Foreground="{DynamicResource MutedTextBrush}"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Panel>
+</UserControl>

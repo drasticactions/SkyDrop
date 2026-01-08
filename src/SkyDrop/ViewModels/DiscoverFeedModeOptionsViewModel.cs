@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -37,8 +38,8 @@ public partial class DiscoverFeedModeOptionsViewModel : GameModeOptionsViewModel
     /// </summary>
     public string GameTypeDescription => SelectedGameType switch
     {
-        DiscoverFeedGameType.Reveal => "Posts are revealed as you clear lines",
-        DiscoverFeedGameType.Scroll => "Rotate pieces to scroll through the feed",
+        DiscoverFeedGameType.Reveal => Strings.GameTypeRevealDesc,
+        DiscoverFeedGameType.Scroll => Strings.GameTypeScrollDesc,
         _ => ""
     };
 

@@ -4,6 +4,7 @@ using FishyFlip.Lexicon.App.Bsky.Feed;
 using FishyFlip.Models;
 using SkyDrop.Collections;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -23,7 +24,7 @@ public abstract partial class FeedGameViewModelBase : GameViewModelBase
     private string? _feedError;
 
     [ObservableProperty]
-    private string _feedName = "FEED";
+    private string _feedName = Strings.FeedNameDefault;
 
     protected FeedGameViewModelBase(ATProtocol protocol)
     {
@@ -104,7 +105,7 @@ public abstract partial class FeedGameViewModelBase : GameViewModelBase
             _feedCollection = CreateFeedCollection();
             if (_feedCollection == null)
             {
-                FeedError = "Failed to create feed collection";
+                FeedError = Strings.ErrorFailedToCreateFeedCollection;
                 return;
             }
 
@@ -113,7 +114,7 @@ public abstract partial class FeedGameViewModelBase : GameViewModelBase
         }
         catch (Exception ex)
         {
-            FeedError = $"Failed to load feed: {ex.Message}";
+            FeedError = $"{Strings.ErrorFailedToLoadFeed}: {ex.Message}";
         }
         finally
         {
@@ -146,7 +147,7 @@ public abstract partial class FeedGameViewModelBase : GameViewModelBase
         var uri = ATUri.Create(_currentOptions.FeedUri);
         if (uri == null)
         {
-            FeedError = "Invalid feed URI";
+            FeedError = Strings.ErrorInvalidFeedUri;
             return null;
         }
 
@@ -161,7 +162,7 @@ public abstract partial class FeedGameViewModelBase : GameViewModelBase
         var identifier = ATIdentifier.Create(_currentOptions.AuthorIdentifier);
         if (identifier == null)
         {
-            FeedError = "Invalid author identifier";
+            FeedError = Strings.ErrorInvalidAuthorIdentifier;
             return null;
         }
 
@@ -191,9 +192,9 @@ public abstract partial class FeedGameViewModelBase : GameViewModelBase
             await _feedCollection.GetMoreItemsAsync(count);
             OnMorePostsLoaded();
         }
-        catch
+        catch (Exception ex)
         {
-            // Silently fail - we have enough posts for now
+            FeedError = $"{Strings.ErrorFailedToLoadMorePosts}: {ex.Message}";
         }
         finally
         {

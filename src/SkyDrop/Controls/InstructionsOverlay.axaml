@@ -2,19 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
              mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="500"
              x:Class="SkyDrop.Controls.InstructionsOverlay"
              Focusable="True">
 
     <Border Margin="10" Background="{DynamicResource OverlayBackgroundBrush}" CornerRadius="12">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="25" MaxWidth="400">
-            <TextBlock Text="HOW TO PLAY"
+            <TextBlock Text="{x:Static res:Strings.HowToPlay}"
                        FontSize="36"
                        FontWeight="Bold"
                        Foreground="{DynamicResource AccentCyanBrush}"
                        HorizontalAlignment="Center"/>
 
-            <TextBlock Text="Stack falling pieces to complete horizontal lines. Completed lines are cleared and you earn points!"
+            <TextBlock Text="{x:Static res:Strings.InstructionsIntro}"
                        FontSize="14"
                        Foreground="{DynamicResource SecondaryTextBrush}"
                        TextWrapping="Wrap"
@@ -25,7 +26,7 @@
                     CornerRadius="8"
                     Padding="20">
                 <StackPanel Spacing="15">
-                    <TextBlock Text="CONTROLS"
+                    <TextBlock Text="{x:Static res:Strings.Controls}"
                                FontSize="14"
                                FontWeight="Bold"
                                Foreground="{DynamicResource AccentGoldBrush}"
@@ -44,7 +45,7 @@
                                        Foreground="{DynamicResource PrimaryTextBrush}"/>
                         </Border>
                         <TextBlock Grid.Row="0" Grid.Column="1"
-                                   Text="Move piece left/right"
+                                   Text="{x:Static res:Strings.ControlMoveLeftRight}"
                                    FontSize="13"
                                    Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
@@ -60,7 +61,7 @@
                                        Foreground="{DynamicResource PrimaryTextBrush}"/>
                         </Border>
                         <TextBlock Grid.Row="1" Grid.Column="1"
-                                   Text="Rotate piece (CW / CCW)"
+                                   Text="{x:Static res:Strings.ControlRotateCW}"
                                    FontSize="13"
                                    Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
@@ -76,7 +77,7 @@
                                        Foreground="{DynamicResource PrimaryTextBrush}"/>
                         </Border>
                         <TextBlock Grid.Row="2" Grid.Column="1"
-                                   Text="Soft drop (faster fall)"
+                                   Text="{x:Static res:Strings.ControlSoftDropDesc}"
                                    FontSize="13"
                                    Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
@@ -92,7 +93,7 @@
                                        Foreground="{DynamicResource PrimaryTextBrush}"/>
                         </Border>
                         <TextBlock Grid.Row="3" Grid.Column="1"
-                                   Text="Hard drop (instant)"
+                                   Text="{x:Static res:Strings.ControlHardDrop}"
                                    FontSize="13"
                                    Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
@@ -108,7 +109,7 @@
                                        Foreground="{DynamicResource PrimaryTextBrush}"/>
                         </Border>
                         <TextBlock Grid.Row="4" Grid.Column="1"
-                                   Text="Pause game"
+                                   Text="{x:Static res:Strings.ControlPauseGame}"
                                    FontSize="13"
                                    Foreground="{DynamicResource SecondaryTextBrush}"
                                    VerticalAlignment="Center"/>
@@ -126,7 +127,7 @@
 
             <!-- Start Button -->
             <Button x:Name="StartButton"
-                    Content="START GAME"
+                    Content="{x:Static res:Strings.StartGame}"
                     FontSize="20"
                     FontWeight="Bold"
                     Padding="60,18"
@@ -137,7 +138,7 @@
                     Margin="0,10,0,0"
                     Focusable="False"/>
 
-            <TextBlock Text="Press ENTER to start"
+            <TextBlock Text="{x:Static res:Strings.PressEnterToStart}"
                        FontSize="11"
                        Foreground="{DynamicResource MutedTextBrush}"
                        HorizontalAlignment="Center"/>

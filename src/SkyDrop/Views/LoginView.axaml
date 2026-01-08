@@ -1,0 +1,186 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+             x:Class="SkyDrop.Views.LoginView"
+             x:DataType="vm:LoginViewModel"
+             Focusable="True">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,40,0,20" HorizontalAlignment="Center">
+            <TextBlock Text="{x:Static res:Strings.BlueskyLogin}"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AccentCyanBrush}"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{x:Static res:Strings.ConnectYourAccount}"
+                       FontSize="14"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel IsVisible="{Binding !IsAuthenticated}"
+                        Spacing="20"
+                        Width="400">
+                <TextBlock Text="{x:Static res:Strings.SignIn}"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           HorizontalAlignment="Center"/>
+
+                <StackPanel Spacing="8">
+                    <TextBlock Text="{x:Static res:Strings.HandleOrEmail}"
+                               FontSize="12"
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
+                    <Border x:Name="IdentifierBorder"
+                            BorderThickness="3"
+                            BorderBrush="Transparent"
+                            CornerRadius="7">
+                        <TextBox x:Name="IdentifierTextBox"
+                                 Text="{Binding Identifier, Mode=TwoWay}"
+                                 FontSize="14"
+                                 Padding="12"
+                                 Background="{DynamicResource NextPieceBackgroundBrush}"
+                                 Foreground="{DynamicResource PrimaryTextBrush}"
+                                 BorderBrush="{DynamicResource ButtonBackgroundBrush}"
+                                 CornerRadius="4"
+                                 IsEnabled="{Binding !IsLoggingIn}"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Spacing="8">
+                    <TextBlock Text="{x:Static res:Strings.AppPassword}"
+                               FontSize="12"
+                               Foreground="{DynamicResource SecondaryTextBrush}"/>
+                    <Border x:Name="PasswordBorder"
+                            BorderThickness="3"
+                            BorderBrush="Transparent"
+                            CornerRadius="7">
+                        <TextBox x:Name="PasswordTextBox"
+                                 Text="{Binding Password, Mode=TwoWay}"
+                                 PasswordChar="*"
+                                 Watermark="xxxx-xxxx-xxxx-xxxx"
+                                 FontSize="14"
+                                 Padding="12"
+                                 Background="{DynamicResource NextPieceBackgroundBrush}"
+                                 Foreground="{DynamicResource PrimaryTextBrush}"
+                                 BorderBrush="{DynamicResource ButtonBackgroundBrush}"
+                                 CornerRadius="4"
+                                 IsEnabled="{Binding !IsLoggingIn}"/>
+                    </Border>
+                    <TextBlock Text="{x:Static res:Strings.AppPasswordHint}"
+                               FontSize="10"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               FontStyle="Italic"/>
+                </StackPanel>
+
+                <Border Background="{DynamicResource AccentRedBrush}"
+                        CornerRadius="4"
+                        Padding="12"
+                        IsVisible="{Binding ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                    <TextBlock Text="{Binding ErrorMessage}"
+                               FontSize="12"
+                               Foreground="White"
+                               TextWrapping="Wrap"/>
+                </Border>
+
+                <Border x:Name="LoginButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7"
+                        HorizontalAlignment="Center">
+                    <Button Command="{Binding LoginWithPasswordCommand}"
+                            FontSize="16"
+                            FontWeight="Bold"
+                            Padding="40,12"
+                            Background="{DynamicResource AccentCyanBrush}"
+                            Foreground="White"
+                            CornerRadius="4"
+                            IsEnabled="{Binding CanLoginWithPassword}"
+                            Focusable="False">
+                        <Panel>
+                            <TextBlock Text="{x:Static res:Strings.SignIn}" IsVisible="{Binding !IsLoggingInWithPassword}"/>
+                            <TextBlock Text="{x:Static res:Strings.SigningIn}" IsVisible="{Binding IsLoggingInWithPassword}"/>
+                        </Panel>
+                    </Button>
+                </Border>
+            </StackPanel>
+
+            <StackPanel IsVisible="{Binding IsAuthenticated}"
+                        Spacing="20"
+                        MinWidth="300"
+                        HorizontalAlignment="Center">
+                <TextBlock Text="{x:Static res:Strings.LoggedIn}"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource AccentGreenBrush}"
+                           HorizontalAlignment="Center"/>
+
+                <!-- User Info Card -->
+                <Border Background="{DynamicResource PanelBackgroundBrush}"
+                        BorderBrush="{DynamicResource BorderBrush}"
+                        BorderThickness="2"
+                        CornerRadius="8"
+                        Padding="24">
+                    <StackPanel Spacing="12" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding CurrentUser.Handle, StringFormat='@{0}', FallbackValue=''}"
+                                   FontSize="20"
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource AccentCyanBrush}"
+                                   HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="{Binding CurrentUser.Did, FallbackValue=''}"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource TertiaryTextBrush}"
+                                   HorizontalAlignment="Center"
+                                   TextTrimming="CharacterEllipsis"
+                                   MaxWidth="250"/>
+                    </StackPanel>
+                </Border>
+
+                <Border x:Name="LogoutButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7"
+                        HorizontalAlignment="Center">
+                    <Button Content="{x:Static res:Strings.Logout}"
+                            Command="{Binding LogoutCommand}"
+                            FontSize="14"
+                            Padding="40,10"
+                            Background="{DynamicResource AccentRedBrush}"
+                            Foreground="White"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Margin="0,40,0,60" HorizontalAlignment="Center" Spacing="15">
+            <Border x:Name="BackButtonBorder"
+                    BorderThickness="3"
+                    BorderBrush="Transparent"
+                    CornerRadius="7"
+                    HorizontalAlignment="Center">
+                <Button Content="{x:Static res:Strings.Back}"
+                        Command="{Binding BackCommand}"
+                        FontSize="14"
+                        Padding="40,10"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource SecondaryTextBrush}"
+                        CornerRadius="4"
+                        Focusable="False"/>
+            </Border>
+
+            <TextBlock Text="{x:Static res:Strings.NavLoginScreen}"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

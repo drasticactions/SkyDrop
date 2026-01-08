@@ -1,0 +1,244 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="700"
+             x:Class="SkyDrop.Views.T9GeneratorView"
+             x:DataType="vm:T9GeneratorViewModel"
+             Focusable="True">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <StackPanel Grid.Row="0" Margin="0,40,0,20" HorizontalAlignment="Center">
+            <TextBlock Text="{x:Static res:Strings.T9Generator}"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AccentCyanBrush}"
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="{x:Static res:Strings.ConvertTextT9}"
+                       FontSize="14"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Margin="40,0" ColumnDefinitions="*,*">
+            <Border x:Name="TextToT9TabBorder"
+                    Grid.Column="0"
+                    BorderThickness="3"
+                    BorderBrush="Transparent"
+                    CornerRadius="4,0,0,4"
+                    Background="{DynamicResource ButtonBackgroundBrush}">
+                <Button Content="{x:Static res:Strings.TextToT9}"
+                        Command="{Binding SwitchModeCommand}"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Padding="20,12"
+                        Background="Transparent"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
+                        FontWeight="SemiBold"
+                        Focusable="False"/>
+            </Border>
+            <Border x:Name="T9ToTextTabBorder"
+                    Grid.Column="1"
+                    BorderThickness="3"
+                    BorderBrush="Transparent"
+                    CornerRadius="0,4,4,0"
+                    Background="{DynamicResource ButtonBackgroundBrush}">
+                <Button Content="{x:Static res:Strings.T9ToText}"
+                        Command="{Binding SwitchModeCommand}"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Center"
+                        Padding="20,12"
+                        Background="Transparent"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
+                        FontWeight="SemiBold"
+                        Focusable="False"/>
+            </Border>
+        </Grid>
+
+        <ScrollViewer Grid.Row="2" Margin="40,20" VerticalScrollBarVisibility="Auto">
+            <Panel>
+                <StackPanel IsVisible="{Binding IsTextToT9Mode}" Spacing="16">
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="{x:Static res:Strings.EnterText}"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <Border x:Name="InputTextBorder"
+                                BorderThickness="3"
+                                BorderBrush="Transparent"
+                                CornerRadius="7">
+                            <TextBox x:Name="InputTextBox"
+                                     Text="{Binding InputText, Mode=TwoWay}"
+                                     Watermark="Type text here..."
+                                     FontSize="16"
+                                     Padding="12"
+                                     Background="{DynamicResource NextPieceBackgroundBrush}"
+                                     Foreground="{DynamicResource PrimaryTextBrush}"
+                                     CornerRadius="4"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="{x:Static res:Strings.T9Sequence}"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <Border Background="{DynamicResource PanelBackgroundBrush}"
+                                BorderBrush="{DynamicResource BorderBrush}"
+                                BorderThickness="2"
+                                CornerRadius="4"
+                                Padding="16"
+                                MinHeight="60">
+                            <TextBlock Text="{Binding T9Output}"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                       TextWrapping="Wrap"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Spacing="8" IsVisible="{Binding SequenceSteps.Count}">
+                        <TextBlock Text="{x:Static res:Strings.WordBreakdown}"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <ItemsControl ItemsSource="{Binding SequenceSteps}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate x:DataType="vm:SequenceStepDisplay">
+                                    <Border Background="{DynamicResource NextPieceBackgroundBrush}"
+                                            CornerRadius="4"
+                                            Padding="12"
+                                            Margin="0,4">
+                                        <Grid ColumnDefinitions="*,Auto">
+                                            <TextBlock Grid.Column="0"
+                                                       Text="{Binding Word}"
+                                                       FontSize="14"
+                                                       Foreground="{DynamicResource PrimaryTextBrush}"/>
+                                            <TextBlock Grid.Column="1"
+                                                       Text="{Binding Sequence}"
+                                                       FontSize="14"
+                                                       FontWeight="Bold"
+                                                       Foreground="{DynamicResource AccentCyanBrush}"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel IsVisible="{Binding IsT9ToTextMode}" Spacing="16">
+
+                    <StackPanel Spacing="8">
+                        <TextBlock Text="{x:Static res:Strings.EnterT9Sequence}"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <Border x:Name="T9InputBorder"
+                                BorderThickness="3"
+                                BorderBrush="Transparent"
+                                CornerRadius="7">
+                            <TextBox x:Name="T9InputTextBox"
+                                     Text="{Binding T9Input, Mode=TwoWay}"
+                                     Watermark="Enter digits (2-9)..."
+                                     FontSize="16"
+                                     Padding="12"
+                                     Background="{DynamicResource NextPieceBackgroundBrush}"
+                                     Foreground="{DynamicResource PrimaryTextBrush}"
+                                     CornerRadius="4"/>
+                        </Border>
+                        <TextBlock Text="{x:Static res:Strings.T9InputHint}"
+                                   FontSize="10"
+                                   Foreground="{DynamicResource TertiaryTextBrush}"
+                                   FontStyle="Italic"/>
+                    </StackPanel>
+
+                    <Border Background="{DynamicResource AccentRedBrush}"
+                            CornerRadius="4"
+                            Padding="12"
+                            IsVisible="{Binding ErrorMessage, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+                        <TextBlock Text="{Binding ErrorMessage}"
+                                   FontSize="12"
+                                   Foreground="White"
+                                   TextWrapping="Wrap"/>
+                    </Border>
+
+                    <StackPanel Spacing="8" IsVisible="{Binding PossibleWords.Count}">
+                        <TextBlock Text="{x:Static res:Strings.PossibleWords}"
+                                   FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+                        <ItemsControl ItemsSource="{Binding PossibleWords}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{DynamicResource NextPieceBackgroundBrush}"
+                                            CornerRadius="4"
+                                            Padding="12,8"
+                                            Margin="4">
+                                        <TextBlock Text="{Binding}"
+                                                   FontSize="14"
+                                                   Foreground="{DynamicResource AccentGoldBrush}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <TextBlock Text="{x:Static res:Strings.NoMatchingWords}"
+                               FontSize="14"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               HorizontalAlignment="Center"
+                               IsVisible="{Binding !PossibleWords.Count}"/>
+                </StackPanel>
+            </Panel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3" Margin="0,20,0,40" HorizontalAlignment="Center" Spacing="15">
+            <StackPanel Orientation="Horizontal" Spacing="15" HorizontalAlignment="Center">
+                <Border x:Name="ClearButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7">
+                    <Button Content="{x:Static res:Strings.Clear}"
+                            Command="{Binding ClearAllCommand}"
+                            FontSize="14"
+                            Padding="30,10"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+
+                <Border x:Name="BackButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7">
+                    <Button Content="{x:Static res:Strings.Back}"
+                            Command="{Binding BackCommand}"
+                            FontSize="14"
+                            Padding="30,10"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+            </StackPanel>
+
+            <TextBlock Text="{x:Static res:Strings.NavT9Generator}"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

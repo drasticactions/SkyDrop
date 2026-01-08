@@ -2,13 +2,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
              x:Class="SkyDrop.Controls.PauseOverlay"
              Focusable="True">
 
     <Border Margin="10" Background="{DynamicResource OverlayBackgroundBrush}" CornerRadius="12">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
-            <TextBlock Text="PAUSED"
+            <TextBlock Text="{x:Static res:Strings.Paused}"
                        FontSize="48"
                        FontWeight="Bold"
                        Foreground="{DynamicResource AccentCyanBrush}"
@@ -21,7 +22,7 @@
                         CornerRadius="7"
                         HorizontalAlignment="Center">
                     <Button x:Name="ResumeButton"
-                            Content="RESUME"
+                            Content="{x:Static res:Strings.Resume}"
                             FontSize="18"
                             FontWeight="Bold"
                             Padding="50,15"
@@ -37,7 +38,7 @@
                         CornerRadius="7"
                         HorizontalAlignment="Center">
                     <Button x:Name="MainMenuButton"
-                            Content="MAIN MENU"
+                            Content="{x:Static res:Strings.MainMenu}"
                             FontSize="14"
                             Padding="40,12"
                             Background="{DynamicResource ButtonBackgroundBrush}"
@@ -47,7 +48,7 @@
                 </Border>
             </StackPanel>
 
-            <TextBlock Text="↑↓ Navigate  |  ENTER Select  |  ESC Resume"
+            <TextBlock Text="{x:Static res:Strings.NavPause}"
                        FontSize="12"
                        Foreground="{DynamicResource TertiaryTextBrush}"
                        HorizontalAlignment="Center"/>

@@ -1,0 +1,106 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="600"
+             x:Class="SkyDrop.Views.CreditsView"
+             x:DataType="vm:CreditsViewModel"
+             Focusable="True">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <StackPanel Grid.Row="0" Margin="0,40,0,20" HorizontalAlignment="Center">
+            <TextBlock Text="{x:Static res:Strings.Credits}"
+                       FontSize="32"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AccentCyanBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="0,0,0,20" HorizontalAlignment="Center" Spacing="10">
+            <TextBlock Text="{x:Static res:Strings.GameWebsite}"
+                       FontSize="14"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+            <Button Command="{Binding OpenWebsiteCommand}"
+                    HorizontalAlignment="Center"
+                    Background="Transparent"
+                    Padding="15,8"
+                    CornerRadius="4"
+                    Focusable="False">
+                <TextBlock Text="{Binding WebsiteUrl}"
+                           FontSize="14"
+                           Foreground="{DynamicResource AccentCyanBrush}"
+                           TextDecorations="Underline"/>
+            </Button>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2" Margin="20,0">
+            <StackPanel Spacing="10">
+                <TextBlock Text="{x:Static res:Strings.ThirdPartyLibraries}"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,15"/>
+
+                <ItemsControl ItemsSource="{Binding Libraries}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="vm:LibraryInfo">
+                            <Border Background="{DynamicResource PanelBackgroundBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Padding="15,12"
+                                    Margin="0,0,0,8">
+                                <Grid RowDefinitions="Auto,Auto">
+                                    <Button Grid.Row="0"
+                                            Command="{Binding $parent[ItemsControl].((vm:CreditsViewModel)DataContext).OpenLibraryUrlCommand}"
+                                            CommandParameter="{Binding Url}"
+                                            Background="Transparent"
+                                            Padding="0"
+                                            HorizontalAlignment="Left"
+                                            Focusable="False">
+                                        <TextBlock Text="{Binding Name}"
+                                                   FontSize="14"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource AccentGoldBrush}"/>
+                                    </Button>
+                                    <TextBlock Grid.Row="1"
+                                               Text="{Binding Description}"
+                                               FontSize="12"
+                                               Foreground="{DynamicResource TertiaryTextBrush}"
+                                               TextWrapping="Wrap"
+                                               Margin="0,4,0,0"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3" Margin="0,20,0,40" HorizontalAlignment="Center" Spacing="15">
+            <Border x:Name="BackButtonBorder"
+                    BorderThickness="3"
+                    BorderBrush="{DynamicResource AccentCyanBrush}"
+                    CornerRadius="7"
+                    HorizontalAlignment="Center">
+                <Button Content="{x:Static res:Strings.Back}"
+                        Command="{Binding BackCommand}"
+                        FontSize="14"
+                        Padding="40,10"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource SecondaryTextBrush}"
+                        CornerRadius="4"
+                        Focusable="False"/>
+            </Border>
+
+            <TextBlock Text="{x:Static res:Strings.NavCredits}"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

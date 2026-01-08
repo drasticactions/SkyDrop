@@ -23,7 +23,7 @@
   <ItemGroup>
     <AvaloniaResource Include="Assets/google-10000-english-usa.txt" />
     <AvaloniaResource Include="Assets/NuKinakoMochi-Reg.otf" />
-    <AvaloniaResource Include="Assets/JMdict_e.gz" />
+	<AvaloniaResource Include="Assets/jmdict-eng-common-3.6.1.json" />
   </ItemGroup>
 
   <ItemGroup>

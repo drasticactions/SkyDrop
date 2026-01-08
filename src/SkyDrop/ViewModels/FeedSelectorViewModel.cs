@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using FishyFlip;
 using FishyFlip.Lexicon.App.Bsky.Feed;
 using SkyDrop.Collections;
+using SkyDrop.Resources;
 
 namespace SkyDrop.ViewModels;
 
@@ -32,7 +33,7 @@ public partial class FeedSelectorViewModel : ViewModelBase
     /// Gets the display name of the selected feed, or a default message if none is selected.
     /// </summary>
     public string SelectedFeedDisplayName =>
-        SelectedGenerator?.DisplayName ?? "No feed selected";
+        SelectedGenerator?.DisplayName ?? Strings.FeedNameNone;
 
     [ObservableProperty]
     private bool _isLoading;

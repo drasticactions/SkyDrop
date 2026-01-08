@@ -7,6 +7,7 @@ using FishyFlip;
 using FishyFlip.Models;
 using SkyDrop.Events;
 using SkyDrop.Models;
+using SkyDrop.Resources;
 using SkyDrop.Services;
 
 namespace SkyDrop.ViewModels;
@@ -76,7 +77,7 @@ public partial class LoginViewModel : BlueskyViewModel
             var (result, error) = await this.Protocol.AuthenticateWithPasswordResultAsync(this.Identifier, this.Password);
             if (error != null)
             {
-                this.ErrorMessage = error.Detail?.Message ?? "An unknown error occurred.";
+                this.ErrorMessage = error.Detail?.Message ?? Strings.ErrorUnknown;
                 return false;
             }
 

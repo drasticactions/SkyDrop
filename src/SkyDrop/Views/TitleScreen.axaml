@@ -1,0 +1,256 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:models="using:SkyDrop.Models"
+             xmlns:res="clr-namespace:SkyDrop.Resources"
+             xmlns:services="using:SkyDrop.Services"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+             x:Class="SkyDrop.Views.TitleScreen"
+             x:DataType="vm:TitleScreenViewModel"
+             Focusable="True">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Grid Grid.Row="0" Margin="20,20,20,0">
+            <Border x:Name="LoginButtonBorder"
+                    HorizontalAlignment="Left"
+                    BorderThickness="3"
+                    BorderBrush="Transparent"
+                    CornerRadius="23">
+                <Button Command="{Binding OpenLoginCommand}"
+                        Padding="12,8"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        CornerRadius="20"
+                        Focusable="False">
+                    <StackPanel Orientation="Horizontal" Spacing="8">
+                        <Viewbox Width="14" Height="14" VerticalAlignment="Center">
+                            <Path Data="{StaticResource UserIcon}"
+                                  Fill="{DynamicResource PrimaryTextBrush}"
+                                  Stretch="Uniform"/>
+                        </Viewbox>
+                        <TextBlock Text="{Binding Login, Source={x:Static services:BindableStrings.Instance}}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </Border>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="8">
+
+                <Border x:Name="CreditsButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="23">
+                    <Button Command="{Binding OpenCreditsCommand}"
+                            Padding="12,8"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            CornerRadius="20"
+                            Focusable="False">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Viewbox Width="14" Height="14" VerticalAlignment="Center">
+                                <Path Data="{StaticResource InfoIcon}"
+                                      Fill="{DynamicResource PrimaryTextBrush}"
+                                      Stretch="Uniform"/>
+                            </Viewbox>
+                            <TextBlock Text="{Binding Credits, Source={x:Static services:BindableStrings.Instance}}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+
+                <Border x:Name="LanguageButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="23">
+                    <Button Command="{Binding ToggleLanguageCommand}"
+                            Padding="12,8"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            CornerRadius="20"
+                            Focusable="False">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Viewbox Width="14" Height="14" VerticalAlignment="Center">
+                                <Path Data="{StaticResource GlobeIcon}"
+                                      Fill="{DynamicResource PrimaryTextBrush}"
+                                      Stretch="Uniform"/>
+                            </Viewbox>
+                            <TextBlock Text="{Binding LanguageDisplayText}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+
+                <Border x:Name="ThemeButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="23">
+                    <Button Command="{Binding ToggleThemeCommand}"
+                            Padding="12,8"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            CornerRadius="20"
+                            Focusable="False">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Panel Width="16" Height="16" VerticalAlignment="Center">
+                                <Viewbox IsVisible="{Binding IsDarkMode}">
+                                    <Path Data="{StaticResource MoonIcon}"
+                                          Fill="{DynamicResource PrimaryTextBrush}"
+                                          Stretch="Uniform"/>
+                                </Viewbox>
+                                <Viewbox IsVisible="{Binding !IsDarkMode}">
+                                    <Path Data="{StaticResource SunIcon}"
+                                          Fill="{DynamicResource PrimaryTextBrush}"
+                                          Stretch="Uniform"/>
+                                </Viewbox>
+                            </Panel>
+                            <TextBlock Text="{Binding ThemeDisplayText}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="0,40,0,40" HorizontalAlignment="Center">
+            <TextBlock Text="SKYDROP"
+                       FontSize="48"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AccentCyanBrush}"
+                       HorizontalAlignment="Center"/>
+
+            <TextBlock Text="(Alpha)"
+                       FontSize="16"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="20">
+                <TextBlock Text="{Binding SelectMode, Source={x:Static services:BindableStrings.Instance}}"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource PrimaryTextBrush}"
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,10"/>
+
+                <ListBox x:Name="ModeListBox"
+                         ItemsSource="{Binding AvailableModes}"
+                         SelectedIndex="{Binding SelectedModeIndex}"
+                         HorizontalAlignment="Center"
+                         Background="Transparent"
+                         BorderThickness="0">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="15"/>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.Styles>
+                        <Style Selector="ListBoxItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                    </ListBox.Styles>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:GameModeInfo">
+                            <Button Command="{Binding $parent[ListBox].((vm:TitleScreenViewModel)DataContext).SelectModeCommand}"
+                                    CommandParameter="{Binding}"
+                                    HorizontalAlignment="Center"
+                                    Padding="0"
+                                    Background="Transparent"
+                                    CornerRadius="8"
+                                    Focusable="False">
+                                <Button.IsEnabled>
+                                    <MultiBinding Converter="{x:Static vm:TitleScreenViewModel.CanPlayModeConverter}">
+                                        <Binding Path="IsAvailable"/>
+                                        <Binding Path="RequiresLogin"/>
+                                        <Binding Path="$parent[ListBox].((vm:TitleScreenViewModel)DataContext).IsAuthenticated"/>
+                                    </MultiBinding>
+                                </Button.IsEnabled>
+                                <Border x:Name="ModeBorder"
+                                        Background="{DynamicResource PanelBackgroundBrush}"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="3"
+                                        CornerRadius="8"
+                                        Padding="30,20"
+                                        MinWidth="280">
+                                    <Border.Styles>
+                                        <Style Selector="Border:disabled">
+                                            <Setter Property="Background" Value="{DynamicResource ButtonBackgroundBrush}"/>
+                                            <Setter Property="Opacity" Value="0.6"/>
+                                            <Setter Property="Cursor" Value="Arrow"/>
+                                        </Style>
+                                    </Border.Styles>
+                                    <StackPanel HorizontalAlignment="Center" Spacing="8">
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+                                            <TextBlock Text="{Binding Name}"
+                                                    FontSize="20"
+                                                    FontWeight="Bold"
+                                                    Foreground="{DynamicResource AccentCyanBrush}"
+                                                    HorizontalAlignment="Center"/>
+                                            <Viewbox Width="16" Height="16" VerticalAlignment="Center">
+                                                <Viewbox.IsVisible>
+                                                    <MultiBinding Converter="{x:Static vm:TitleScreenViewModel.IsLockedConverter}">
+                                                        <Binding Path="RequiresLogin"/>
+                                                        <Binding Path="$parent[ListBox].((vm:TitleScreenViewModel)DataContext).IsAuthenticated"/>
+                                                    </MultiBinding>
+                                                </Viewbox.IsVisible>
+                                                <Path Data="{StaticResource LockIcon}"
+                                                      Fill="{DynamicResource TertiaryTextBrush}"
+                                                      Stretch="Uniform"/>
+                                            </Viewbox>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Description}"
+                                                FontSize="12"
+                                                Foreground="{DynamicResource SecondaryTextBrush}"
+                                                HorizontalAlignment="Center"/>
+                                        <TextBlock Text="{Binding ComingSoon, Source={x:Static services:BindableStrings.Instance}}"
+                                                FontSize="10"
+                                                FontStyle="Italic"
+                                                Foreground="{DynamicResource TertiaryTextBrush}"
+                                                HorizontalAlignment="Center"
+                                                IsVisible="{Binding !IsAvailable}"/>
+                                        <TextBlock Text="{Binding LoginRequiredToPlay, Source={x:Static services:BindableStrings.Instance}}"
+                                                FontSize="10"
+                                                FontStyle="Italic"
+                                                Foreground="{DynamicResource AccentGoldBrush}"
+                                                HorizontalAlignment="Center">
+                                            <TextBlock.IsVisible>
+                                                <MultiBinding Converter="{x:Static vm:TitleScreenViewModel.IsLockedConverter}">
+                                                    <Binding Path="RequiresLogin"/>
+                                                    <Binding Path="$parent[ListBox].((vm:TitleScreenViewModel)DataContext).IsAuthenticated"/>
+                                                </MultiBinding>
+                                            </TextBlock.IsVisible>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </Border>
+                            </Button>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3" Margin="0,20,0,40" HorizontalAlignment="Center" Spacing="4">
+            <TextBlock Text="{Binding NavTitleScreen, Source={x:Static services:BindableStrings.Instance}}"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

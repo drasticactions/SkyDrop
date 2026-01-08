@@ -16,7 +16,7 @@ public partial class CreditsViewModel : ViewModelBase
     /// <summary>
     /// Gets the game website URL.
     /// </summary>
-    public string WebsiteUrl => "https://drasticactions.dev/skydrop";
+    public string WebsiteUrl => "https://github.com/drasticactions/skydrop";
 
     /// <summary>
     /// Gets the list of third-party libraries used in the game.
@@ -27,8 +27,7 @@ public partial class CreditsViewModel : ViewModelBase
         new("AsyncImageLoader.Avalonia", "Asynchronous image loading for Avalonia", "https://github.com/AvaloniaUtils/AsyncImageLoader.Avalonia"),
         new("CommunityToolkit.Mvvm", "MVVM Toolkit for .NET", "https://github.com/CommunityToolkit/dotnet"),
         new("FishyFlip", "ATProtocol/Bluesky .NET library", "https://github.com/drasticactions/FishyFlip"),
-        new("JMDict", "Japanese dictionary library", "https://github.com/yamachu/JMDict.NET"),
-        new("DaT9", "T9 text input library", "https://github.com/drasticactions/DaT9"),
+        new("NuKinakoMochi", "Japanese Console Font", "https://kokagem.sakura.ne.jp/font/mochi/"),
         new("SkiaSharp", "Cross-platform 2D graphics library", "https://github.com/mono/SkiaSharp"),
         new("Microsoft.Extensions.DependencyInjection", "Dependency injection container", "https://github.com/dotnet/runtime"),
     };
