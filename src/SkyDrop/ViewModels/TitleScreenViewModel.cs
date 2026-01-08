@@ -46,6 +46,10 @@ public partial class TitleScreenViewModel : ViewModelBase
     private bool _isAutoTheme = true;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(FontDisplayText))]
+    private bool _useCustomFont = true;
+
+    [ObservableProperty]
     private int _selectedModeIndex = 0;
 
     [ObservableProperty]
@@ -58,6 +62,8 @@ public partial class TitleScreenViewModel : ViewModelBase
     private bool _isAuthenticated;
 
     public string ThemeDisplayText => IsAutoTheme ? Strings.ThemeAuto : (IsDarkMode ? Strings.ThemeDark : Strings.ThemeLight);
+
+    public string FontDisplayText => UseCustomFont ? Strings.FontCustom : Strings.FontDefault;
 
     [ObservableProperty]
     private string _languageDisplayText = LocalizationService.Instance.CurrentLanguageCode;
@@ -93,7 +99,9 @@ public partial class TitleScreenViewModel : ViewModelBase
     public TitleScreenViewModel()
     {
         UpdateFromThemeService();
+        UpdateFromFontService();
         ThemeService.Instance.ThemeChanged += OnThemeChanged;
+        FontService.Instance.FontChanged += OnFontChanged;
         LocalizationService.Instance.LanguageChanged += OnLanguageChanged;
 
         StrongReferenceMessenger.Default.Register<OnLoginUserEventArgs>(this, OnLoginUserChanged);
@@ -110,6 +118,16 @@ public partial class TitleScreenViewModel : ViewModelBase
         IsAutoTheme = !ThemeService.Instance.UserHasOverridden;
     }
 
+    private void OnFontChanged()
+    {
+        UpdateFromFontService();
+    }
+
+    private void UpdateFromFontService()
+    {
+        UseCustomFont = FontService.Instance.UseCustomFont;
+    }
+
     private void OnLoginUserChanged(object recipient, OnLoginUserEventArgs args)
     {
         IsAuthenticated = args.LoginUser is not null;
@@ -119,6 +137,7 @@ public partial class TitleScreenViewModel : ViewModelBase
     {
         LanguageDisplayText = LocalizationService.Instance.CurrentLanguageCode;
         OnPropertyChanged(nameof(ThemeDisplayText));
+        OnPropertyChanged(nameof(FontDisplayText));
     }
 
     /// <summary>
@@ -139,6 +158,12 @@ public partial class TitleScreenViewModel : ViewModelBase
     private void ToggleTheme()
     {
         ThemeService.Instance.ToggleTheme();
+    }
+
+    [RelayCommand]
+    private void ToggleFont()
+    {
+        FontService.Instance.ToggleCustomFont();
     }
 
     [RelayCommand]
@@ -201,7 +226,8 @@ public partial class TitleScreenViewModel : ViewModelBase
         {
             SelectedTopBarButton = SelectedTopBarButton switch
             {
-                TopBarButton.Theme => TopBarButton.Language,
+                TopBarButton.Theme => TopBarButton.Font,
+                TopBarButton.Font => TopBarButton.Language,
                 TopBarButton.Language => TopBarButton.Credits,
                 TopBarButton.Credits => TopBarButton.Login,
                 _ => SelectedTopBarButton
@@ -218,7 +244,8 @@ public partial class TitleScreenViewModel : ViewModelBase
             {
                 TopBarButton.Login => TopBarButton.Credits,
                 TopBarButton.Credits => TopBarButton.Language,
-                TopBarButton.Language => TopBarButton.Theme,
+                TopBarButton.Language => TopBarButton.Font,
+                TopBarButton.Font => TopBarButton.Theme,
                 _ => SelectedTopBarButton
             };
         }
@@ -239,6 +266,9 @@ public partial class TitleScreenViewModel : ViewModelBase
                     break;
                 case TopBarButton.Language:
                     LocalizationService.Instance.ToggleLanguage();
+                    break;
+                case TopBarButton.Font:
+                    FontService.Instance.ToggleCustomFont();
                     break;
                 case TopBarButton.Theme:
                     ThemeService.Instance.ToggleTheme();

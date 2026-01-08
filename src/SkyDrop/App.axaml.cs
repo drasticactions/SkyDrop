@@ -31,6 +31,7 @@ public partial class App : Application
         Services = services.BuildServiceProvider();
 
         ThemeService.Instance.Initialize();
+        FontService.Instance.Initialize();
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {

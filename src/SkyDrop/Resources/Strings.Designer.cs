@@ -518,6 +518,24 @@ namespace SkyDrop.Resources {
                 return ResourceManager.GetString("FinalScore", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Custom に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FontCustom {
+            get {
+                return ResourceManager.GetString("FontCustom", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Default に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string FontDefault {
+            get {
+                return ResourceManager.GetString("FontDefault", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   GAME OVER に類似しているローカライズされた文字列を検索します。

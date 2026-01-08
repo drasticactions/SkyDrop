@@ -141,6 +141,12 @@
   <data name="ThemeLight" xml:space="preserve">
     <value>ライト</value>
   </data>
+  <data name="FontCustom" xml:space="preserve">
+    <value>レトロ</value>
+  </data>
+  <data name="FontDefault" xml:space="preserve">
+    <value>デフォルト</value>
+  </data>
   <data name="ModeNormal" xml:space="preserve">
     <value>ブロックモード</value>
   </data>

@@ -16,6 +16,7 @@ public partial class TitleScreen : UserControl
     private Border? _loginButtonBorder;
     private Border? _creditsButtonBorder;
     private Border? _languageButtonBorder;
+    private Border? _fontButtonBorder;
     private Border? _themeButtonBorder;
     private ListBox? _modeListBox;
 
@@ -32,6 +33,7 @@ public partial class TitleScreen : UserControl
         _loginButtonBorder = this.FindControl<Border>("LoginButtonBorder");
         _creditsButtonBorder = this.FindControl<Border>("CreditsButtonBorder");
         _languageButtonBorder = this.FindControl<Border>("LanguageButtonBorder");
+        _fontButtonBorder = this.FindControl<Border>("FontButtonBorder");
         _themeButtonBorder = this.FindControl<Border>("ThemeButtonBorder");
         _modeListBox = this.FindControl<ListBox>("ModeListBox");
 
@@ -101,6 +103,13 @@ public partial class TitleScreen : UserControl
         if (_languageButtonBorder != null)
         {
             _languageButtonBorder.BorderBrush = isTopBarSelected && vm.SelectedTopBarButton == TopBarButton.Language
+                ? accentBrush
+                : transparentBrush;
+        }
+
+        if (_fontButtonBorder != null)
+        {
+            _fontButtonBorder.BorderBrush = isTopBarSelected && vm.SelectedTopBarButton == TopBarButton.Font
                 ? accentBrush
                 : transparentBrush;
         }

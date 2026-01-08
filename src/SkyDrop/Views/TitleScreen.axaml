@@ -87,6 +87,29 @@
                     </Button>
                 </Border>
 
+                <Border x:Name="FontButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="23">
+                    <Button Command="{Binding ToggleFontCommand}"
+                            Padding="12,8"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            CornerRadius="20"
+                            Focusable="False">
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Viewbox Width="14" Height="14" VerticalAlignment="Center">
+                                <Path Data="{StaticResource FontIcon}"
+                                      Fill="{DynamicResource PrimaryTextBrush}"
+                                      Stretch="Uniform"/>
+                            </Viewbox>
+                            <TextBlock Text="{Binding FontDisplayText}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Border>
+
                 <Border x:Name="ThemeButtonBorder"
                         BorderThickness="3"
                         BorderBrush="Transparent"
@@ -123,11 +146,13 @@
             <TextBlock Text="SKYDROP"
                        FontSize="48"
                        FontWeight="Bold"
+                       FontFamily="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"
                        Foreground="{DynamicResource AccentCyanBrush}"
                        HorizontalAlignment="Center"/>
 
             <TextBlock Text="(Alpha)"
                        FontSize="16"
+                       FontFamily="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"
                        Foreground="{DynamicResource SecondaryTextBrush}"
                        HorizontalAlignment="Center"
                        Margin="0,8,0,0"/>

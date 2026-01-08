@@ -141,6 +141,12 @@
   <data name="ThemeLight" xml:space="preserve">
     <value>Light</value>
   </data>
+  <data name="FontCustom" xml:space="preserve">
+    <value>Retro</value>
+  </data>
+  <data name="FontDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
   <data name="ModeNormal" xml:space="preserve">
     <value>ANTI-SOCIAL MODE</value>
   </data>

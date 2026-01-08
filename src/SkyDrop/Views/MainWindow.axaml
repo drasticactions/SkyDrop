@@ -76,6 +76,7 @@
                            FontSize="14"
                            IsHitTestVisible="False"
                            FontWeight="Bold"
+                           FontFamily="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"
                            Foreground="{DynamicResource TitleBarTextBrush}"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
