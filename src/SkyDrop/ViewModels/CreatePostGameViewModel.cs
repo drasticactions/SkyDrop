@@ -603,6 +603,11 @@ public partial class CreatePostGameViewModel : GameViewModelBase
         {
             AbcCharacterIndex = chars.Length - 1;
         }
+        // Allow * (index 9) and # (index 11) to be selected - they are special action keys
+        else if (SelectedKeyIndex == 9 || SelectedKeyIndex == 11)
+        {
+            AbcCharacterIndex = 0;
+        }
         else
         {
             AbcCharacterIndex = 0;
@@ -630,7 +635,8 @@ public partial class CreatePostGameViewModel : GameViewModelBase
         if (CurrentInputMode == TextInputMode.ABC)
         {
             var chars = AbcCharacters[SelectedKeyIndex];
-            if (chars.Length == 0)
+            // Allow * (index 9) and # (index 11) to be selected - they are special action keys
+            if (chars.Length == 0 && SelectedKeyIndex != 9 && SelectedKeyIndex != 11)
             {
                 CycleKeyIndex(clockwise);
                 return;
