@@ -1,0 +1,115 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:embed="using:FishyFlip.Lexicon.App.Bsky.Embed"
+             xmlns:converters="using:SkyDrop.Converters"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="120"
+             x:Class="SkyDrop.Controls.Bluesky.EmbedQuoteView"
+             x:DataType="embed:ViewRecordDef">
+
+    <UserControl.Resources>
+        <converters:PostRecordToTextConverter x:Key="PostRecordToTextConverter"/>
+    </UserControl.Resources>
+
+    <ContentControl Content="{Binding Record}">
+        <ContentControl.DataTemplates>
+            <DataTemplate DataType="embed:ViewRecord">
+                <Border CornerRadius="4"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        BorderBrush="{DynamicResource NextPieceBackgroundBrush}"
+                        BorderThickness="1"
+                        Padding="8"
+                        Margin="0,4,0,0">
+                    <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="32,*">
+                        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                                Width="28" Height="28"
+                                CornerRadius="14"
+                                Background="{DynamicResource NextPieceBackgroundBrush}"
+                                Margin="0,0,8,0"
+                                VerticalAlignment="Top"
+                                ClipToBounds="True">
+                            <Panel>
+                                <Image asyncImageLoader:ImageLoader.Source="{Binding Author.Avatar, FallbackValue={x:Null}}"
+                                       Stretch="UniformToFill"
+                                       IsVisible="{Binding Author.Avatar, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                                <TextBlock Text="?"
+                                           FontSize="14"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource TertiaryTextBrush}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           IsVisible="{Binding Author.Avatar, Converter={x:Static StringConverters.IsNullOrEmpty}}"/>
+                            </Panel>
+                        </Border>
+
+                        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                            <TextBlock Text="{Binding Author.DisplayName, FallbackValue='Unknown'}"
+                                       FontWeight="SemiBold"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource PrimaryTextBrush}"
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="150"/>
+                            <TextBlock Text="{Binding Author.Handle, StringFormat='@{0}'}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource TertiaryTextBrush}"
+                                       TextTrimming="CharacterEllipsis"
+                                       MaxWidth="120"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1"
+                                   Text="{Binding Value, Converter={StaticResource PostRecordToTextConverter}}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource SecondaryTextBrush}"
+                                   TextWrapping="Wrap"
+                                   MaxLines="3"
+                                   Margin="0,2,0,0"/>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate DataType="embed:ViewNotFound">
+                <Border CornerRadius="4"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        BorderBrush="{DynamicResource NextPieceBackgroundBrush}"
+                        BorderThickness="1"
+                        Padding="8"
+                        Margin="0,4,0,0">
+                    <TextBlock Text="Post not found"
+                               FontSize="12"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               FontStyle="Italic"/>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate DataType="embed:ViewBlocked">
+                <Border CornerRadius="4"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        BorderBrush="{DynamicResource NextPieceBackgroundBrush}"
+                        BorderThickness="1"
+                        Padding="8"
+                        Margin="0,4,0,0">
+                    <TextBlock Text="Blocked post"
+                               FontSize="12"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               FontStyle="Italic"/>
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate DataType="embed:ViewDetached">
+                <Border CornerRadius="4"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        BorderBrush="{DynamicResource NextPieceBackgroundBrush}"
+                        BorderThickness="1"
+                        Padding="8"
+                        Margin="0,4,0,0">
+                    <TextBlock Text="Detached post"
+                               FontSize="12"
+                               Foreground="{DynamicResource TertiaryTextBrush}"
+                               FontStyle="Italic"/>
+                </Border>
+            </DataTemplate>
+        </ContentControl.DataTemplates>
+    </ContentControl>
+</UserControl>

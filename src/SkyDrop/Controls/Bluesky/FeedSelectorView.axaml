@@ -1,0 +1,160 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:feed="using:FishyFlip.Lexicon.App.Bsky.Feed"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+             x:Class="SkyDrop.Controls.Bluesky.FeedSelectorView"
+             x:DataType="vm:FeedSelectorViewModel">
+
+    <Border Background="{DynamicResource PanelBackgroundBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="8"
+            Padding="12">
+        <Grid RowDefinitions="Auto,Auto,*,Auto">
+            <StackPanel Grid.Row="0" Spacing="4">
+                <TextBlock Text="SELECT FEED"
+                           FontSize="14"
+                           FontWeight="SemiBold"
+                           Foreground="{DynamicResource PrimaryTextBrush}"/>
+                <TextBlock Text="{Binding SelectedFeedDisplayName}"
+                           FontSize="12"
+                           Foreground="{DynamicResource SecondaryTextBrush}"
+                           TextTrimming="CharacterEllipsis"/>
+            </StackPanel>
+
+            <Border Grid.Row="1"
+                    x:Name="SearchBarBorder"
+                    BorderBrush="Transparent"
+                    BorderThickness="2"
+                    CornerRadius="6"
+                    Margin="0,12,0,8"
+                    Padding="2">
+                <Grid ColumnDefinitions="*,Auto">
+                    <TextBox Grid.Column="0"
+                             x:Name="SearchTextBox"
+                             Text="{Binding SearchQuery, Mode=TwoWay}"
+                             Watermark="Search feeds..."
+                             FontSize="12"
+                             Padding="8"
+                             Background="{DynamicResource NextPieceBackgroundBrush}"
+                             Foreground="{DynamicResource PrimaryTextBrush}"
+                             BorderBrush="{DynamicResource ButtonBackgroundBrush}"
+                             CornerRadius="4"/>
+                    <Button Grid.Column="1"
+                            Content="Search"
+                            Command="{Binding SearchFeedsCommand}"
+                            IsEnabled="{Binding !IsLoading}"
+                            Margin="8,0,0,0"
+                            Padding="12,6"
+                            FontSize="12"
+                            Background="{DynamicResource AccentCyanBrush}"
+                            Foreground="White"
+                            CornerRadius="4"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="2" MinHeight="200" MaxHeight="300">
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            IsVisible="{Binding IsLoading}">
+                    <TextBlock Text="Loading feeds..."
+                               FontSize="14"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
+                <ScrollViewer x:Name="FeedScrollViewer"
+                              IsVisible="{Binding !IsLoading}"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <ItemsControl x:Name="FeedItemsControl" ItemsSource="{Binding Generators}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="feed:GeneratorView">
+                                <Border x:Name="FeedItemBorder"
+                                        Background="Transparent"
+                                        CornerRadius="4"
+                                        Padding="0">
+                                    <Button Command="{Binding $parent[ItemsControl].((vm:FeedSelectorViewModel)DataContext).SelectFeedCommand}"
+                                            CommandParameter="{Binding}"
+                                            Background="Transparent"
+                                            Padding="8"
+                                            HorizontalContentAlignment="Stretch"
+                                            CornerRadius="4">
+                                        <Grid ColumnDefinitions="Auto,*,Auto">
+                                            <Border Grid.Column="0"
+                                                    Width="40"
+                                                    Height="40"
+                                                    CornerRadius="4"
+                                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                                    Margin="0,0,12,0">
+                                                <Image asyncImageLoader:ImageLoader.Source="{Binding Avatar}"
+                                                       Stretch="UniformToFill"/>
+                                            </Border>
+
+                                            <StackPanel Grid.Column="1" Spacing="2" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding DisplayName}"
+                                                           FontSize="13"
+                                                           FontWeight="SemiBold"
+                                                           Foreground="{DynamicResource PrimaryTextBrush}"
+                                                           TextTrimming="CharacterEllipsis"/>
+                                                <TextBlock Text="{Binding Description}"
+                                                           FontSize="11"
+                                                           Foreground="{DynamicResource TertiaryTextBrush}"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           MaxLines="2"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock FontSize="10"
+                                                           Foreground="{DynamicResource MutedTextBrush}">
+                                                    <TextBlock.Text>
+                                                        <MultiBinding StringFormat="by @{0}">
+                                                            <Binding Path="Creator.Handle"/>
+                                                        </MultiBinding>
+                                                    </TextBlock.Text>
+                                                </TextBlock>
+                                            </StackPanel>
+
+                                            <StackPanel Grid.Column="2"
+                                                        Orientation="Horizontal"
+                                                        Spacing="4"
+                                                        VerticalAlignment="Center"
+                                                        Margin="8,0,0,0">
+                                                <TextBlock Text="{Binding LikeCount}"
+                                                           FontSize="11"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                                <TextBlock Text="likes"
+                                                           FontSize="11"
+                                                           Foreground="{DynamicResource TertiaryTextBrush}"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </Button>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+
+            <Border Grid.Row="3"
+                    x:Name="LoadMoreBorder"
+                    BorderBrush="Transparent"
+                    BorderThickness="2"
+                    CornerRadius="6"
+                    HorizontalAlignment="Center"
+                    Margin="0,8,0,0"
+                    Padding="2"
+                    IsVisible="{Binding HasMoreItems}">
+                <Button Content="Load More"
+                        Command="{Binding LoadMoreFeedsCommand}"
+                        IsEnabled="{Binding !IsLoading}"
+                        Padding="20,8"
+                        FontSize="12"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Foreground="{DynamicResource SecondaryTextBrush}"
+                        CornerRadius="4"/>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

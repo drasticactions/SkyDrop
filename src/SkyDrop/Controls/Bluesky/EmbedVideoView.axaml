@@ -1,0 +1,46 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:embed="using:FishyFlip.Lexicon.App.Bsky.Embed"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
+             x:Class="SkyDrop.Controls.Bluesky.EmbedVideoView"
+             x:DataType="embed:ViewVideo">
+
+    <Border CornerRadius="4"
+            Background="{DynamicResource ButtonBackgroundBrush}"
+            ClipToBounds="True"
+            MaxHeight="200">
+        <Grid>
+            <Image asyncImageLoader:ImageLoader.Source="{Binding Thumbnail}"
+                   Stretch="UniformToFill"
+                   IsVisible="{Binding Thumbnail, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+            <Border Background="{DynamicResource ButtonBackgroundBrush}"
+                    IsVisible="{Binding Thumbnail, Converter={x:Static StringConverters.IsNullOrEmpty}}">
+                <TextBlock Text="Video"
+                           FontSize="14"
+                           Foreground="{DynamicResource SecondaryTextBrush}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <Border Background="#66000000"
+                    CornerRadius="24"
+                    Width="48" Height="48"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <TextBlock Text="▶"
+                           FontSize="20"
+                           Foreground="White"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </Border>
+
+            <ToolTip.Tip>
+                <TextBlock Text="{Binding Alt, FallbackValue='Video'}"/>
+            </ToolTip.Tip>
+        </Grid>
+    </Border>
+</UserControl>

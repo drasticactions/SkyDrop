@@ -1,0 +1,109 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:controls="using:SkyDrop.Controls.Bluesky"
+             xmlns:feed="using:FishyFlip.Lexicon.App.Bsky.Feed"
+             xmlns:embed="using:FishyFlip.Lexicon.App.Bsky.Embed"
+             xmlns:converters="using:SkyDrop.Converters"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="250"
+             x:Class="SkyDrop.Controls.Bluesky.BlueskyPostView"
+             x:DataType="feed:FeedViewPost">
+
+    <UserControl.Resources>
+        <converters:PostRecordToTextConverter x:Key="PostRecordToTextConverter"/>
+    </UserControl.Resources>
+
+    <Border Background="{DynamicResource NextPieceBackgroundBrush}"
+            CornerRadius="4"
+            Padding="12"
+            Margin="0,0,0,8">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="48,*">
+            <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                    Width="40" Height="40"
+                    CornerRadius="20"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Margin="0,0,12,0"
+                    VerticalAlignment="Top"
+                    ClipToBounds="True">
+                <Panel>
+                    <Image asyncImageLoader:ImageLoader.Source="{Binding Post.Author.Avatar, FallbackValue={x:Null}}"
+                           Stretch="UniformToFill"
+                           IsVisible="{Binding Post.Author.Avatar, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                    <TextBlock Text="?"
+                               FontSize="20"
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               IsVisible="{Binding Post.Author.Avatar, Converter={x:Static StringConverters.IsNullOrEmpty}}"/>
+                </Panel>
+            </Border>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Spacing="8">
+                <TextBlock Text="{Binding Post.Author.DisplayName, FallbackValue='Unknown'}"
+                           FontWeight="SemiBold"
+                           FontSize="14"
+                           Foreground="{DynamicResource PrimaryTextBrush}"
+                           TextTrimming="CharacterEllipsis"
+                           MaxWidth="200"/>
+                <TextBlock Text="{Binding Post.Author.Handle, StringFormat='@{0}'}"
+                           FontSize="12"
+                           Foreground="{DynamicResource TertiaryTextBrush}"
+                           TextTrimming="CharacterEllipsis"
+                           MaxWidth="150"/>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                       Text="{Binding Post.Record, Converter={StaticResource PostRecordToTextConverter}}"
+                       FontSize="14"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       TextWrapping="Wrap"
+                       MaxLines="6"
+                       Margin="0,4,0,8"/>
+
+            <ContentControl Grid.Row="2" Grid.Column="1"
+                            Content="{Binding Post.Embed}"
+                            Margin="0,0,0,8"
+                            IsVisible="{Binding Post.Embed, Converter={x:Static ObjectConverters.IsNotNull}}">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="embed:ViewImages">
+                        <controls:EmbedImagesView/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="embed:ViewVideo">
+                        <controls:EmbedVideoView/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="embed:ViewExternal">
+                        <controls:EmbedExternalView/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="embed:ViewRecordDef">
+                        <controls:EmbedQuoteView/>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="embed:ViewRecordWithMedia">
+                        <controls:EmbedRecordWithMediaView/>
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" Spacing="16">
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="Re:" FontSize="11" Foreground="{DynamicResource TertiaryTextBrush}"/>
+                    <TextBlock Text="{Binding Post.ReplyCount, FallbackValue=0}" FontSize="11" Foreground="{DynamicResource AccentCyanBrush}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="Rp:" FontSize="11" Foreground="{DynamicResource TertiaryTextBrush}"/>
+                    <TextBlock Text="{Binding Post.RepostCount, FallbackValue=0}" FontSize="11" Foreground="{DynamicResource AccentGreenBrush}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Spacing="4">
+                    <TextBlock Text="L:" FontSize="11" Foreground="{DynamicResource TertiaryTextBrush}"/>
+                    <TextBlock Text="{Binding Post.LikeCount, FallbackValue=0}" FontSize="11" Foreground="{DynamicResource AccentGoldBrush}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

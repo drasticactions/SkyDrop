@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+             x:Class="SkyDrop.Controls.PauseOverlay"
+             Focusable="True">
+
+    <Border Margin="10" Background="{DynamicResource OverlayBackgroundBrush}" CornerRadius="12">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
+            <TextBlock Text="PAUSED"
+                       FontSize="48"
+                       FontWeight="Bold"
+                       Foreground="{DynamicResource AccentCyanBrush}"
+                       HorizontalAlignment="Center"/>
+
+            <StackPanel Spacing="15" HorizontalAlignment="Center">
+                <Border x:Name="ResumeButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="{DynamicResource AccentCyanBrush}"
+                        CornerRadius="7"
+                        HorizontalAlignment="Center">
+                    <Button x:Name="ResumeButton"
+                            Content="RESUME"
+                            FontSize="18"
+                            FontWeight="Bold"
+                            Padding="50,15"
+                            Background="{DynamicResource AccentGreenBrush}"
+                            Foreground="White"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+
+                <Border x:Name="MainMenuButtonBorder"
+                        BorderThickness="3"
+                        BorderBrush="Transparent"
+                        CornerRadius="7"
+                        HorizontalAlignment="Center">
+                    <Button x:Name="MainMenuButton"
+                            Content="MAIN MENU"
+                            FontSize="14"
+                            Padding="40,12"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            Foreground="{DynamicResource SecondaryTextBrush}"
+                            CornerRadius="4"
+                            Focusable="False"/>
+                </Border>
+            </StackPanel>
+
+            <TextBlock Text="↑↓ Navigate  |  ENTER Select  |  ESC Resume"
+                       FontSize="12"
+                       Foreground="{DynamicResource TertiaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+    </Border>
+</UserControl>

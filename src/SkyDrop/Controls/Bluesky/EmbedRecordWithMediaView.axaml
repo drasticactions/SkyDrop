@@ -1,0 +1,28 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:embed="using:FishyFlip.Lexicon.App.Bsky.Embed"
+             xmlns:controls="using:SkyDrop.Controls.Bluesky"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="300"
+             x:Class="SkyDrop.Controls.Bluesky.EmbedRecordWithMediaView"
+             x:DataType="embed:ViewRecordWithMedia">
+
+    <StackPanel Spacing="4">
+        <ContentControl Content="{Binding Media}">
+            <ContentControl.DataTemplates>
+                <DataTemplate DataType="embed:ViewImages">
+                    <controls:EmbedImagesView/>
+                </DataTemplate>
+                <DataTemplate DataType="embed:ViewVideo">
+                    <controls:EmbedVideoView/>
+                </DataTemplate>
+                <DataTemplate DataType="embed:ViewExternal">
+                    <controls:EmbedExternalView/>
+                </DataTemplate>
+            </ContentControl.DataTemplates>
+        </ContentControl>
+
+        <controls:EmbedQuoteView DataContext="{Binding Record}"/>
+    </StackPanel>
+</UserControl>

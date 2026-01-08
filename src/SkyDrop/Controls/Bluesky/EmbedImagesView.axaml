@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:embed="using:FishyFlip.Lexicon.App.Bsky.Embed"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
+             x:Class="SkyDrop.Controls.Bluesky.EmbedImagesView"
+             x:DataType="embed:ViewImages">
+
+    <ItemsControl ItemsSource="{Binding Images}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel Orientation="Horizontal"/>
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="embed:ViewImage">
+                <Border CornerRadius="4"
+                        Background="{DynamicResource ButtonBackgroundBrush}"
+                        Margin="0,0,4,4"
+                        ClipToBounds="True"
+                        MaxWidth="180"
+                        MaxHeight="180">
+                    <Image asyncImageLoader:ImageLoader.Source="{Binding Thumb}"
+                           Stretch="UniformToFill"
+                           ToolTip.Tip="{Binding Alt}"/>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

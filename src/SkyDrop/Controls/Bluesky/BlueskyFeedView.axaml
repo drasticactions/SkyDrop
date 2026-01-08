@@ -1,0 +1,97 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:SkyDrop.ViewModels"
+             xmlns:controls="using:SkyDrop.Controls.Bluesky"
+             xmlns:feed="using:FishyFlip.Lexicon.App.Bsky.Feed"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
+             x:Class="SkyDrop.Controls.Bluesky.BlueskyFeedView"
+             x:DataType="vm:ATUriCollectionViewModel">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+            <TextBox Grid.Column="0"
+                     Text="{Binding FeedUri, Mode=TwoWay}"
+                     Watermark="Enter AT-URI (e.g., at://did:plc:.../app.bsky.feed.generator/feed-name)"
+                     FontSize="12"
+                     Padding="8"
+                     Background="{DynamicResource NextPieceBackgroundBrush}"
+                     Foreground="{DynamicResource PrimaryTextBrush}"
+                     BorderBrush="{DynamicResource ButtonBackgroundBrush}"
+                     CornerRadius="4"/>
+            <Button Grid.Column="1"
+                    Content="Load"
+                    Command="{Binding LoadFeedCommand}"
+                    IsEnabled="{Binding !IsLoading}"
+                    Margin="8,0,0,0"
+                    Padding="16,8"
+                    FontWeight="SemiBold"
+                    Background="{DynamicResource AccentCyanBrush}"
+                    Foreground="White"
+                    CornerRadius="4"/>
+        </Grid>
+
+        <Border Grid.Row="1"
+                Background="#44FF4444"
+                CornerRadius="4"
+                Padding="8"
+                Margin="0,0,0,8"
+                IsVisible="{Binding HasError}">
+            <TextBlock Text="{Binding ErrorMessage}"
+                       FontSize="12"
+                       Foreground="#FFFF6666"
+                       TextWrapping="Wrap"/>
+        </Border>
+
+        <StackPanel Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    IsVisible="{Binding IsLoading}">
+            <TextBlock Text="Loading..."
+                       FontSize="16"
+                       Foreground="{DynamicResource SecondaryTextBrush}"
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <ScrollViewer Grid.Row="2"
+                      IsVisible="{Binding !IsLoading}"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding FeedItems}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="feed:FeedViewPost">
+                        <controls:BlueskyPostView/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="8" Margin="0,8,0,0"
+                    IsVisible="{Binding HasFeedItems}">
+            <Button Content="Load More"
+                    Command="{Binding LoadMoreCommand}"
+                    IsEnabled="{Binding !IsLoading}"
+                    Padding="12,6"
+                    FontSize="12"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource SecondaryTextBrush}"
+                    CornerRadius="4"/>
+            <Button Content="Refresh"
+                    Command="{Binding RefreshCommand}"
+                    IsEnabled="{Binding !IsLoading}"
+                    Padding="12,6"
+                    FontSize="12"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource SecondaryTextBrush}"
+                    CornerRadius="4"/>
+            <Button Content="Clear"
+                    Command="{Binding ClearFeedCommand}"
+                    Padding="12,6"
+                    FontSize="12"
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource TertiaryTextBrush}"
+                    CornerRadius="4"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
