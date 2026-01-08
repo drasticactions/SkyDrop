@@ -1,0 +1,31 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Define the custom font family -->
+    <Style>
+        <Style.Resources>
+            <FontFamily x:Key="NuKinakoMochiFont">avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi</FontFamily>
+        </Style.Resources>
+    </Style>
+
+    <!-- Apply font to all TextBlocks -->
+    <Style Selector="TextBlock">
+        <Setter Property="FontFamily" Value="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"/>
+    </Style>
+
+    <!-- Apply font to all Labels -->
+    <Style Selector="Label">
+        <Setter Property="FontFamily" Value="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"/>
+    </Style>
+
+    <!-- Apply font to all Buttons -->
+    <Style Selector="Button">
+        <Setter Property="FontFamily" Value="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"/>
+    </Style>
+
+    <!-- Apply font to all TextBoxes -->
+    <Style Selector="TextBox">
+        <Setter Property="FontFamily" Value="avares://SkyDrop/Assets/NuKinakoMochi-Reg.otf#Nu Kinako Mochi"/>
+    </Style>
+
+</Styles>

@@ -1,4 +1,5 @@
 <Window xmlns="https://github.com/avaloniaui"
+        xmlns:controls="using:SkyDrop.Controls"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:SkyDrop.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,6 +7,19 @@
         xmlns:views="using:SkyDrop.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="SkyDrop.Views.MainWindow"
-        Title="SkyDrop">
+        Title="SkyDrop"
+        Width="600"
+        Height="700"
+        MinWidth="500"
+        MinHeight="600"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="PreferSystemChrome"
+        Background="{DynamicResource GameBackgroundBrush}"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <controls:StarFieldBackground StarCount="120" EnableTwinkle="True"/>
+        <controls:CloudFieldBackground CloudCount="8" EnableAnimation="True"/>
+    </Grid>
 
 </Window>

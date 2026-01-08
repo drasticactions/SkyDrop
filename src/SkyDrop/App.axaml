@@ -7,5 +7,73 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://SkyDrop/Styles/FontStyles.axaml"/>
     </Application.Styles>
+
+     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Dark">
+                    <Color x:Key="GameBackgroundColor">#0A0F1A</Color>
+                    <Color x:Key="PanelBackgroundColor">#121A2D</Color>
+                    <Color x:Key="BoardBackgroundColor">#151E32</Color>
+                    <Color x:Key="GridLineColor">#2A3549</Color>
+                    <Color x:Key="BorderColor">#3A4A66</Color>
+                    <Color x:Key="PrimaryTextColor">#E8EEFF</Color>
+                    <Color x:Key="SecondaryTextColor">#8899BB</Color>
+                    <Color x:Key="TertiaryTextColor">#667799</Color>
+                    <Color x:Key="MutedTextColor">#556688</Color>
+                    <Color x:Key="DividerColor">#2A3549</Color>
+                    <Color x:Key="ButtonBackgroundColor">#1E2A44</Color>
+                    <Color x:Key="AccentCyanColor">#00AAFF</Color>
+                    <Color x:Key="AccentGoldColor">#FFD700</Color>
+                    <Color x:Key="AccentGreenColor">#4ADE80</Color>
+                    <Color x:Key="NextPieceBackgroundColor">#1A2540</Color>
+                    <Color x:Key="OverlayBackgroundColor">#EE000000</Color>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Light">
+                    <Color x:Key="GameBackgroundColor">#E8F4FC</Color>
+                    <Color x:Key="PanelBackgroundColor">#FFFFFF</Color>
+                    <Color x:Key="BoardBackgroundColor">#D6EBFA</Color>
+                    <Color x:Key="GridLineColor">#A8C8E8</Color>
+                    <Color x:Key="BorderColor">#7AB0DB</Color>
+                    <Color x:Key="PrimaryTextColor">#0A1628</Color>
+                    <Color x:Key="SecondaryTextColor">#3A5068</Color>
+                    <Color x:Key="TertiaryTextColor">#5A7088</Color>
+                    <Color x:Key="MutedTextColor">#7A90A8</Color>
+                    <Color x:Key="DividerColor">#B8D8F0</Color>
+                    <Color x:Key="ButtonBackgroundColor">#C8E0F4</Color>
+                    <Color x:Key="AccentCyanColor">#0085FF</Color>
+                    <Color x:Key="AccentGoldColor">#E8A800</Color>
+                    <Color x:Key="AccentGreenColor">#22A860</Color>
+                    <Color x:Key="NextPieceBackgroundColor">#C0DCF2</Color>
+                    <Color x:Key="OverlayBackgroundColor">#EEF0F4F8</Color>
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <StreamGeometry x:Key="UserIcon">M6,0 L10,0 L10,2 L6,2 Z M4,2 L12,2 L12,4 L4,4 Z M6,4 L10,4 L10,6 L6,6 Z M4,6 L6,6 L6,8 L4,8 Z M10,6 L12,6 L12,8 L10,8 Z M2,8 L14,8 L14,10 L2,10 Z M4,10 L6,10 L6,16 L4,16 Z M10,10 L12,10 L12,16 L10,16 Z M6,10 L10,10 L10,12 L6,12 Z</StreamGeometry>
+            <StreamGeometry x:Key="InfoIcon">M2,0 L14,0 L14,2 L2,2 Z M0,2 L2,2 L2,14 L0,14 Z M14,2 L16,2 L16,14 L14,14 Z M2,14 L14,14 L14,16 L2,16 Z M7,3 L9,3 L9,5 L7,5 Z M7,6 L9,6 L9,13 L7,13 Z</StreamGeometry>
+            <StreamGeometry x:Key="GlobeIcon">M4,0 L12,0 L12,2 L4,2 Z M2,2 L4,2 L4,4 L2,4 Z M12,2 L14,2 L14,4 L12,4 Z M0,4 L2,4 L2,12 L0,12 Z M14,4 L16,4 L16,12 L14,12 Z M2,12 L4,12 L4,14 L2,14 Z M12,12 L14,12 L14,14 L12,14 Z M4,14 L12,14 L12,16 L4,16 Z M6,4 L10,4 L10,6 L6,6 Z M4,6 L6,6 L6,8 L4,8 Z M10,6 L12,6 L12,8 L10,8 Z M2,8 L14,8 L14,10 L2,10 Z</StreamGeometry>
+            <StreamGeometry x:Key="SunIcon">M7,0 L9,0 L9,3 L7,3 Z M7,13 L9,13 L9,16 L7,16 Z M0,7 L3,7 L3,9 L0,9 Z M13,7 L16,7 L16,9 L13,9 Z M2,2 L4,2 L4,4 L2,4 Z M12,2 L14,2 L14,4 L12,4 Z M2,12 L4,12 L4,14 L2,14 Z M12,12 L14,12 L14,14 L12,14 Z M5,5 L11,5 L11,7 L5,7 Z M5,7 L7,7 L7,9 L5,9 Z M9,7 L11,7 L11,9 L9,9 Z M5,9 L11,9 L11,11 L5,11 Z</StreamGeometry>
+            <StreamGeometry x:Key="MoonIcon">M6,0 L12,0 L12,2 L6,2 Z M4,2 L6,2 L6,4 L4,4 Z M12,2 L14,2 L14,4 L12,4 Z M2,4 L4,4 L4,6 L2,6 Z M10,4 L12,4 L12,6 L10,6 Z M2,6 L4,6 L4,10 L2,10 Z M8,6 L10,6 L10,10 L8,10 Z M2,10 L4,10 L4,12 L2,12 Z M10,10 L12,10 L12,12 L10,12 Z M4,12 L6,12 L6,14 L4,14 Z M12,12 L14,12 L14,14 L12,14 Z M6,14 L12,14 L12,16 L6,16 Z</StreamGeometry>
+            <StreamGeometry x:Key="LockIcon">M6,0 L10,0 L10,2 L6,2 Z M4,2 L6,2 L6,6 L4,6 Z M10,2 L12,2 L12,6 L10,6 Z M2,6 L14,6 L14,8 L2,8 Z M2,8 L4,8 L4,16 L2,16 Z M12,8 L14,8 L14,16 L12,16 Z M4,14 L12,14 L12,16 L4,16 Z M7,9 L9,9 L9,11 L7,11 Z M7,11 L9,11 L9,13 L7,13 Z</StreamGeometry>
+            <SolidColorBrush x:Key="GameBackgroundBrush" Color="{DynamicResource GameBackgroundColor}"/>
+            <SolidColorBrush x:Key="PanelBackgroundBrush" Color="{DynamicResource PanelBackgroundColor}"/>
+            <SolidColorBrush x:Key="BoardBackgroundBrush" Color="{DynamicResource BoardBackgroundColor}"/>
+            <SolidColorBrush x:Key="GridLineBrush" Color="{DynamicResource GridLineColor}"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="{DynamicResource BorderColor}"/>
+            <SolidColorBrush x:Key="PrimaryTextBrush" Color="{DynamicResource PrimaryTextColor}"/>
+            <SolidColorBrush x:Key="SecondaryTextBrush" Color="{DynamicResource SecondaryTextColor}"/>
+            <SolidColorBrush x:Key="TertiaryTextBrush" Color="{DynamicResource TertiaryTextColor}"/>
+            <SolidColorBrush x:Key="MutedTextBrush" Color="{DynamicResource MutedTextColor}"/>
+            <SolidColorBrush x:Key="DividerBrush" Color="{DynamicResource DividerColor}"/>
+            <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{DynamicResource ButtonBackgroundColor}"/>
+            <SolidColorBrush x:Key="AccentCyanBrush" Color="{DynamicResource AccentCyanColor}"/>
+            <SolidColorBrush x:Key="AccentGoldBrush" Color="{DynamicResource AccentGoldColor}"/>
+            <SolidColorBrush x:Key="AccentGreenBrush" Color="{DynamicResource AccentGreenColor}"/>
+            <SolidColorBrush x:Key="NextPieceBackgroundBrush" Color="{DynamicResource NextPieceBackgroundColor}"/>
+            <SolidColorBrush x:Key="OverlayBackgroundBrush" Color="{DynamicResource OverlayBackgroundColor}"/>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

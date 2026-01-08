@@ -11,24 +11,20 @@
   <ItemGroup>
     <PackageReference Include="AsyncImageLoader.Avalonia" Version="3.5.0" />
     <PackageReference Include="FishyFlip" Version="4.2.0" />
-    <PackageReference Include="SkiaSharp" Version="3.119.0" />
+	 <PackageReference Include="Avalonia.Skia" Version="12.0.999-cibuild0061299-alpha" />
+    <PackageReference Include="JMDict" Version="1.0.7" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
-    <PackageReference Include="Avalonia" Version="11.3.10" />
-	<PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10" />
-	<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
-	<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-	<PackageReference Include="Avalonia.Diagnostics" Version="11.3.10">
-		<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
-		<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
-	</PackageReference>
+    <PackageReference Include="Avalonia" Version="12.0.999-cibuild0061299-alpha" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.999-cibuild0061299-alpha" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.999-cibuild0061299-alpha" />
   </ItemGroup>
 
   <ItemGroup>
     <AvaloniaResource Include="Assets/google-10000-english-usa.txt" />
     <AvaloniaResource Include="Assets/NuKinakoMochi-Reg.otf" />
     <AvaloniaResource Include="Assets/JMdict_e.gz" />
-   </ItemGroup>
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Resources\Strings.Designer.cs">
