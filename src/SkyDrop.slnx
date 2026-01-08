@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="SkyDrop.Browser/SkyDrop.Browser.csproj" />
+  <Project Path="SkyDrop.Desktop/SkyDrop.Desktop.csproj" />
   <Project Path="SkyDrop/SkyDrop.csproj" />
 </Solution>
