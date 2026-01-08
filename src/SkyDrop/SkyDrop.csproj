@@ -11,13 +11,13 @@
   <ItemGroup>
     <PackageReference Include="AsyncImageLoader.Avalonia" Version="3.5.0" />
     <PackageReference Include="FishyFlip" Version="4.2.0" />
-	 <PackageReference Include="Avalonia.Skia" Version="12.0.999-cibuild0061299-alpha" />
+	 <PackageReference Include="Avalonia.Skia" Version="11.3.10" />
     <PackageReference Include="JMDict" Version="1.0.7" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
-    <PackageReference Include="Avalonia" Version="12.0.999-cibuild0061299-alpha" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.999-cibuild0061299-alpha" />
-    <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.999-cibuild0061299-alpha" />
+    <PackageReference Include="Avalonia" Version="11.3.10" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.10" />
+    <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.10" />
   </ItemGroup>
 
   <ItemGroup>

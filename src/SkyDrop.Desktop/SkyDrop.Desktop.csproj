@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia.Desktop" Version="12.0.999-cibuild0061299-alpha" />
-	<PackageReference Include="Avalonia.Skia" Version="12.0.999-cibuild0061299-alpha" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.3.10" />
+	<PackageReference Include="Avalonia.Skia" Version="11.3.10" />
   </ItemGroup>
 
   <ItemGroup>

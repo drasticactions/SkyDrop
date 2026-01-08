@@ -73,11 +73,13 @@ public static class StatsImageGenerator
 
         // Draw "SKYDROP" title
         using var titlePaint = new SKPaint { Color = AccentCyan, IsAntialias = true };
-        canvas.DrawText("SKYDROP", ImageWidth / 2, 80, SKTextAlign.Center, titleFont, titlePaint);
+        titlePaint.TextAlign = SKTextAlign.Center;
+        canvas.DrawText("SKYDROP", ImageWidth / 2, 80, titleFont, titlePaint);
 
         // Draw "GAME STATS" subtitle
         using var subtitlePaint = new SKPaint { Color = TextSecondary, IsAntialias = true };
-        canvas.DrawText("GAME STATS", ImageWidth / 2, 110, SKTextAlign.Center, subtitleFont, subtitlePaint);
+        subtitlePaint.TextAlign = SKTextAlign.Center;
+        canvas.DrawText("GAME STATS", ImageWidth / 2, 110, subtitleFont, subtitlePaint);
 
         // Draw separator line
         using var linePaint = new SKPaint
@@ -96,7 +98,8 @@ public static class StatsImageGenerator
 
         // Draw footer
         using var footerPaint = new SKPaint { Color = TextSecondary, IsAntialias = true };
-        canvas.DrawText("Posted with SkyDrop", ImageWidth / 2, ImageHeight - 35, SKTextAlign.Center, footerFont, footerPaint);
+        footerPaint.TextAlign = SKTextAlign.Center;
+        canvas.DrawText("Posted with SkyDrop", ImageWidth / 2, ImageHeight - 35, footerFont, footerPaint);
 
         // Encode to PNG
         using var image = surface.Snapshot();
@@ -126,11 +129,11 @@ public static class StatsImageGenerator
         canvas.DrawRoundRect(new SKRoundRect(new SKRect(x, y, x + 6, y + boxHeight), 3, 3), accentPaint);
 
         // Draw label
-        using var labelPaint = new SKPaint { Color = TextSecondary, IsAntialias = true };
-        canvas.DrawText(label, x + 20, y + 30, SKTextAlign.Left, labelFont, labelPaint);
+        using var labelPaint = new SKPaint { Color = TextSecondary, IsAntialias = true, TextAlign = SKTextAlign.Left };
+        canvas.DrawText(label, x + 20, y + 30, labelFont, labelPaint);
 
         // Draw value
-        using var valuePaint = new SKPaint { Color = accentColor, IsAntialias = true };
-        canvas.DrawText(value, x + 20, y + 70, SKTextAlign.Left, valueFont, valuePaint);
+        using var valuePaint = new SKPaint { Color = accentColor, IsAntialias = true, TextAlign = SKTextAlign.Left };
+        canvas.DrawText(value, x + 20, y + 70, valueFont, valuePaint);
     }
 }
