@@ -73,7 +73,7 @@
                                 CornerRadius="7">
                             <TextBox x:Name="InputTextBox"
                                      Text="{Binding InputText, Mode=TwoWay}"
-                                     Watermark="Type text here..."
+                                     Watermark="{x:Static res:Strings.WatermarkTypeText}"
                                      FontSize="16"
                                      Padding="12"
                                      Background="{DynamicResource NextPieceBackgroundBrush}"
@@ -146,7 +146,7 @@
                                 CornerRadius="7">
                             <TextBox x:Name="T9InputTextBox"
                                      Text="{Binding T9Input, Mode=TwoWay}"
-                                     Watermark="Enter digits (2-9)..."
+                                     Watermark="{x:Static res:Strings.WatermarkEnterDigits}"
                                      FontSize="16"
                                      Padding="12"
                                      Background="{DynamicResource NextPieceBackgroundBrush}"

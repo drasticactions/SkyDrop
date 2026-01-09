@@ -1877,5 +1877,158 @@ namespace SkyDrop.Resources {
                 return ResourceManager.GetString("FeedNameNone", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   CHAR:
+        /// </summary>
+        public static string CharLabel {
+            get {
+                return ResourceManager.GetString("CharLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   かな:
+        /// </summary>
+        public static string KanaLabel {
+            get {
+                return ResourceManager.GetString("KanaLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Rotate = Select key/char
+        /// </summary>
+        public static string ControlRotateSelectKey {
+            get {
+                return ResourceManager.GetString("ControlRotateSelectKey", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Drop = Press key
+        /// </summary>
+        public static string ControlDropPressKey {
+            get {
+                return ResourceManager.GetString("ControlDropPressKey", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   TAB = Cycle suggestions
+        /// </summary>
+        public static string ControlTabCycleSuggestions {
+            get {
+                return ResourceManager.GetString("ControlTabCycleSuggestions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   M = Toggle mode (T9/ABC/かな)
+        /// </summary>
+        public static string ControlMToggleMode {
+            get {
+                return ResourceManager.GetString("ControlMToggleMode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   0=Space  *=Delete  #=Add post
+        /// </summary>
+        public static string ControlSpecialKeysShort {
+            get {
+                return ResourceManager.GetString("ControlSpecialKeysShort", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   ESC = Pause
+        /// </summary>
+        public static string ControlEscPause {
+            get {
+                return ResourceManager.GetString("ControlEscPause", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Score: {0} | Level: {1} | Lines: {2}
+        /// </summary>
+        public static string GameOverStats {
+            get {
+                return ResourceManager.GetString("GameOverStats", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Type text here...
+        /// </summary>
+        public static string WatermarkTypeText {
+            get {
+                return ResourceManager.GetString("WatermarkTypeText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Enter digits (2-9)...
+        /// </summary>
+        public static string WatermarkEnterDigits {
+            get {
+                return ResourceManager.GetString("WatermarkEnterDigits", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Search feeds...
+        /// </summary>
+        public static string WatermarkSearchFeeds {
+            get {
+                return ResourceManager.GetString("WatermarkSearchFeeds", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   by @{0}
+        /// </summary>
+        public static string ByAuthor {
+            get {
+                return ResourceManager.GetString("ByAuthor", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Unknown
+        /// </summary>
+        public static string UnknownAuthor {
+            get {
+                return ResourceManager.GetString("UnknownAuthor", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Re:
+        /// </summary>
+        public static string RepliesShort {
+            get {
+                return ResourceManager.GetString("RepliesShort", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Rp:
+        /// </summary>
+        public static string RepostsShort {
+            get {
+                return ResourceManager.GetString("RepostsShort", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   L:
+        /// </summary>
+        public static string LikesShort {
+            get {
+                return ResourceManager.GetString("LikesShort", resourceCulture);
+            }
+        }
     }
 }

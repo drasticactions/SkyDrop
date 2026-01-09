@@ -38,7 +38,7 @@
                     <TextBox Grid.Column="0"
                              x:Name="SearchTextBox"
                              Text="{Binding SearchQuery, Mode=TwoWay}"
-                             Watermark="Search feeds..."
+                             Watermark="{x:Static res:Strings.WatermarkSearchFeeds}"
                              FontSize="12"
                              Padding="8"
                              Background="{DynamicResource NextPieceBackgroundBrush}"

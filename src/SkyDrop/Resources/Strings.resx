@@ -733,4 +733,56 @@
   <data name="FeedNameNone" xml:space="preserve">
     <value>No feed selected</value>
   </data>
+  <!-- Localization additions -->
+  <data name="CharLabel" xml:space="preserve">
+    <value>CHAR:</value>
+  </data>
+  <data name="KanaLabel" xml:space="preserve">
+    <value>かな:</value>
+  </data>
+  <data name="ControlRotateSelectKey" xml:space="preserve">
+    <value>Rotate = Select key/char</value>
+  </data>
+  <data name="ControlDropPressKey" xml:space="preserve">
+    <value>Drop = Press key</value>
+  </data>
+  <data name="ControlTabCycleSuggestions" xml:space="preserve">
+    <value>TAB = Cycle suggestions</value>
+  </data>
+  <data name="ControlMToggleMode" xml:space="preserve">
+    <value>M = Toggle mode (T9/ABC/かな)</value>
+  </data>
+  <data name="ControlSpecialKeysShort" xml:space="preserve">
+    <value>0=Space  *=Delete  #=Add post</value>
+  </data>
+  <data name="ControlEscPause" xml:space="preserve">
+    <value>ESC = Pause</value>
+  </data>
+  <data name="GameOverStats" xml:space="preserve">
+    <value>Score: {0} | Level: {1} | Lines: {2}</value>
+  </data>
+  <data name="WatermarkTypeText" xml:space="preserve">
+    <value>Type text here...</value>
+  </data>
+  <data name="WatermarkEnterDigits" xml:space="preserve">
+    <value>Enter digits (2-9)...</value>
+  </data>
+  <data name="WatermarkSearchFeeds" xml:space="preserve">
+    <value>Search feeds...</value>
+  </data>
+  <data name="ByAuthor" xml:space="preserve">
+    <value>by @{0}</value>
+  </data>
+  <data name="UnknownAuthor" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="RepliesShort" xml:space="preserve">
+    <value>Re:</value>
+  </data>
+  <data name="RepostsShort" xml:space="preserve">
+    <value>Rp:</value>
+  </data>
+  <data name="LikesShort" xml:space="preserve">
+    <value>L:</value>
+  </data>
 </root>

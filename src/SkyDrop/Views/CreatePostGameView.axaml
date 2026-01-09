@@ -42,7 +42,7 @@
                             <TextBlock Text="{Binding Lines}" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource AccentGreenBrush}" HorizontalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="8,0,0,0">
-                            <TextBlock Text="NEXT" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Static res:Strings.Next}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
                             <Border Background="{DynamicResource NextPieceBackgroundBrush}" CornerRadius="4" Width="50" Height="40">
                                 <controls:NextPieceCanvas Piece="{Binding NextPiece}"/>
                             </Border>
@@ -63,7 +63,7 @@
                                 Margin="0,0,0,8"
                                 IsVisible="{Binding IsAbcMode}">
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <TextBlock Text="CHAR: " FontSize="12" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center"/>
+                                <TextBlock Text="{x:Static res:Strings.CharLabel}" FontSize="12" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                 <TextBlock Text="{Binding CurrentAbcCharacter}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentGoldBrush}" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Border>
@@ -75,7 +75,7 @@
                                 IsVisible="{Binding IsKanaMode}">
                             <StackPanel HorizontalAlignment="Center" Spacing="4">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                    <TextBlock Text="かな: " FontSize="12" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static res:Strings.KanaLabel}" FontSize="12" Foreground="{DynamicResource SecondaryTextBrush}" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                     <TextBlock Text="{Binding CurrentKanaCharacter}" FontSize="24" FontWeight="Bold" Foreground="{DynamicResource AccentGoldBrush}" VerticalAlignment="Center"/>
                                 </StackPanel>
                                 <Border Background="{DynamicResource GameBackgroundBrush}"
@@ -271,12 +271,12 @@
 
                     <StackPanel Grid.Row="5" Spacing="2">
                         <TextBlock Text="{x:Static res:Strings.Controls}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource TertiaryTextBrush}"/>
-                        <TextBlock Text="Rotate = Select key/char" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
-                        <TextBlock Text="Drop = Press key" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
-                        <TextBlock Text="TAB = Cycle suggestions" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
-                        <TextBlock Text="M = Toggle mode (T9/ABC/かな)" FontSize="9" Foreground="{DynamicResource AccentCyanBrush}"/>
-                        <TextBlock Text="0=Space  *=Delete  #=Add post" FontSize="9" Foreground="{DynamicResource AccentGoldBrush}"/>
-                        <TextBlock Text="ESC = Pause" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlRotateSelectKey}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlDropPressKey}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlTabCycleSuggestions}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlMToggleMode}" FontSize="9" Foreground="{DynamicResource AccentCyanBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlSpecialKeysShort}" FontSize="9" Foreground="{DynamicResource AccentGoldBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlEscPause}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
                     </StackPanel>
                 </Grid>
             </Border>
