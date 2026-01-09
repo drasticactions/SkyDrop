@@ -3,6 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/SkyDrop/**'
+      - 'src/SkyDrop.Browser/**'
+      - '.github/workflows/deploy-browser.yml'
   workflow_dispatch:
 
 permissions:
