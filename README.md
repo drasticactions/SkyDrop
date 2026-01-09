@@ -40,5 +40,7 @@ from the terminal. If you don't know how to do that, you should stick to the Web
 - Login info is not saved between sessions, you need to log in again when you restart. This was intentional for now, since doing that for Web would be tricky and I assume most people will play this once and never again (Or will not log in), but it's possible to do.
 - Videos will not play. Thumbnails are shown.
 - Holding inputs should work correctly for Desktop, but is limited to single presses on Web.
+- The T9 list includes 10,000 english words. It's not complete, and I currently don't surface the word can't be found.
+- Better documentation is needed for the games, or a tutorial for how to play would be nice.
 
 Issues and PRs are welcome, but remember that this is a fun project. I will get to issues and PRs as I see fit and feel like it, so please don't be mad if I don't address it. If you want to play around with the codebase, you're welcome to fork this and do whatever you like. 
