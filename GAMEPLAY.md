@@ -67,6 +67,8 @@ Browse your personal Bluesky home timeline while playing. Requires login. Uses t
 
 This mode lets you write a Bluesky thread. Rotate pieces to select keys on a virtual phone keypad, then drop pieces to press keys. Once you game over, you can review the thread and post it.
 
+**Note:** Posts are limited to text only. Hashtags and embeds are not supported.
+
 **Input Modes:**
 
 #### T9 Mode (Predictive Text)
