@@ -6,5 +6,6 @@ public enum TopBarButton
     Credits,
     Language,
     Font,
+    ContentFilter,
     Theme
 }

@@ -50,6 +50,10 @@ public partial class TitleScreenViewModel : ViewModelBase
     private bool _useCustomFont = true;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(ContentFilterDisplayText))]
+    private bool _showAdultContent;
+
+    [ObservableProperty]
     private int _selectedModeIndex = 0;
 
     [ObservableProperty]
@@ -64,6 +68,8 @@ public partial class TitleScreenViewModel : ViewModelBase
     public string ThemeDisplayText => IsAutoTheme ? Strings.ThemeAuto : (IsDarkMode ? Strings.ThemeDark : Strings.ThemeLight);
 
     public string FontDisplayText => UseCustomFont ? Strings.FontCustom : Strings.FontDefault;
+
+    public string ContentFilterDisplayText => ShowAdultContent ? Strings.ContentFilterOn : Strings.ContentFilterOff;
 
     [ObservableProperty]
     private string _languageDisplayText = LocalizationService.Instance.CurrentLanguageCode;
@@ -100,8 +106,10 @@ public partial class TitleScreenViewModel : ViewModelBase
     {
         UpdateFromThemeService();
         UpdateFromFontService();
+        UpdateFromContentFilterService();
         ThemeService.Instance.ThemeChanged += OnThemeChanged;
         FontService.Instance.FontChanged += OnFontChanged;
+        ContentFilterService.Instance.SettingChanged += OnContentFilterChanged;
         LocalizationService.Instance.LanguageChanged += OnLanguageChanged;
 
         StrongReferenceMessenger.Default.Register<OnLoginUserEventArgs>(this, OnLoginUserChanged);
@@ -128,6 +136,16 @@ public partial class TitleScreenViewModel : ViewModelBase
         UseCustomFont = FontService.Instance.UseCustomFont;
     }
 
+    private void OnContentFilterChanged()
+    {
+        UpdateFromContentFilterService();
+    }
+
+    private void UpdateFromContentFilterService()
+    {
+        ShowAdultContent = ContentFilterService.Instance.ShowAdultContent;
+    }
+
     private void OnLoginUserChanged(object recipient, OnLoginUserEventArgs args)
     {
         IsAuthenticated = args.LoginUser is not null;
@@ -138,6 +156,7 @@ public partial class TitleScreenViewModel : ViewModelBase
         LanguageDisplayText = LocalizationService.Instance.CurrentLanguageCode;
         OnPropertyChanged(nameof(ThemeDisplayText));
         OnPropertyChanged(nameof(FontDisplayText));
+        OnPropertyChanged(nameof(ContentFilterDisplayText));
     }
 
     /// <summary>
@@ -164,6 +183,12 @@ public partial class TitleScreenViewModel : ViewModelBase
     private void ToggleFont()
     {
         FontService.Instance.ToggleCustomFont();
+    }
+
+    [RelayCommand]
+    private void ToggleContentFilter()
+    {
+        ContentFilterService.Instance.ToggleAdultContent();
     }
 
     [RelayCommand]
@@ -226,7 +251,8 @@ public partial class TitleScreenViewModel : ViewModelBase
         {
             SelectedTopBarButton = SelectedTopBarButton switch
             {
-                TopBarButton.Theme => TopBarButton.Font,
+                TopBarButton.Theme => TopBarButton.ContentFilter,
+                TopBarButton.ContentFilter => TopBarButton.Font,
                 TopBarButton.Font => TopBarButton.Language,
                 TopBarButton.Language => TopBarButton.Credits,
                 TopBarButton.Credits => TopBarButton.Login,
@@ -245,7 +271,8 @@ public partial class TitleScreenViewModel : ViewModelBase
                 TopBarButton.Login => TopBarButton.Credits,
                 TopBarButton.Credits => TopBarButton.Language,
                 TopBarButton.Language => TopBarButton.Font,
-                TopBarButton.Font => TopBarButton.Theme,
+                TopBarButton.Font => TopBarButton.ContentFilter,
+                TopBarButton.ContentFilter => TopBarButton.Theme,
                 _ => SelectedTopBarButton
             };
         }
@@ -269,6 +296,9 @@ public partial class TitleScreenViewModel : ViewModelBase
                     break;
                 case TopBarButton.Font:
                     FontService.Instance.ToggleCustomFont();
+                    break;
+                case TopBarButton.ContentFilter:
+                    ContentFilterService.Instance.ToggleAdultContent();
                     break;
                 case TopBarButton.Theme:
                     ThemeService.Instance.ToggleTheme();

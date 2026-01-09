@@ -98,7 +98,8 @@ public class GameCanvas : Control
         _offsetX = (bounds.Width - (boardWidth * _cellSize)) / 2;
         _offsetY = (bounds.Height - (boardHeight * _cellSize)) / 2;
 
-        var backgroundBrush = new SolidColorBrush(backgroundColor);
+        var transparentBackground = Color.FromArgb(220, backgroundColor.R, backgroundColor.G, backgroundColor.B);
+        var backgroundBrush = new SolidColorBrush(transparentBackground);
         context.DrawRectangle(backgroundBrush, null,
             new Rect(_offsetX, _offsetY, boardWidth * _cellSize, boardHeight * _cellSize));
 

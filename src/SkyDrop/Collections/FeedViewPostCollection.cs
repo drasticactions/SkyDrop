@@ -8,6 +8,7 @@ using FishyFlip.Lexicon;
 using FishyFlip.Lexicon.App.Bsky.Feed;
 using FishyFlip.Models;
 using FishyFlip.Tools;
+using SkyDrop.Services;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -35,6 +36,12 @@ public abstract class FeedViewPostCollection : ATObjectCollectionBase<FeedViewPo
         var (postViews, cursor) = await this.GetPostViewItemsAsync(limit ?? 50, cancellationToken);
         foreach (var postView in postViews)
         {
+            if (this.IsR18(postView) && !ContentFilterService.Instance.ShowAdultContent)
+            {
+                // Skip R18 content when adult content filter is off
+                continue;
+            }
+
             this.AddItem(postView);
         }
 
@@ -48,6 +55,34 @@ public abstract class FeedViewPostCollection : ATObjectCollectionBase<FeedViewPo
         cancellationToken?.ThrowIfCancellationRequested();
         this.Clear();
         return this.GetMoreItemsAsync(limit, cancellationToken);
+    }
+
+    private bool IsR18(FeedViewPost postView)
+    {
+        if (postView.Post.Labels is null)
+        {
+            return false;
+        }
+
+        if (postView.Post.Labels.Count == 0)
+        {
+            return false;
+        }
+
+        foreach (var label in postView.Post.Labels)
+        {
+            if (label.Val.Contains("porn", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+
+            if (label.Val.Contains("sexual", StringComparison.OrdinalIgnoreCase))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>

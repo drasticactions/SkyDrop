@@ -147,6 +147,12 @@
   <data name="FontDefault" xml:space="preserve">
     <value>Default</value>
   </data>
+  <data name="ContentFilterOn" xml:space="preserve">
+    <value>R18+</value>
+  </data>
+  <data name="ContentFilterOff" xml:space="preserve">
+    <value>Safe</value>
+  </data>
   <data name="ModeNormal" xml:space="preserve">
     <value>ANTI-SOCIAL MODE</value>
   </data>

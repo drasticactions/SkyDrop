@@ -536,7 +536,25 @@ namespace SkyDrop.Resources {
                 return ResourceManager.GetString("FontDefault", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   R18+ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContentFilterOn {
+            get {
+                return ResourceManager.GetString("ContentFilterOn", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Safe に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContentFilterOff {
+            get {
+                return ResourceManager.GetString("ContentFilterOff", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   GAME OVER に類似しているローカライズされた文字列を検索します。
         /// </summary>
