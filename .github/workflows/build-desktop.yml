@@ -94,9 +94,14 @@ jobs:
       - name: Build universal binary
         run: ./scripts/build-macos-universal.sh
 
+      - name: Create zip archive
+        run: |
+          cd artifacts
+          zip -r SkyDrop-macOS-universal.zip SkyDrop.app
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: SkyDrop-macOS-universal
-          path: artifacts/SkyDrop-macOS-universal/
+          path: artifacts/SkyDrop-macOS-universal.zip
           if-no-files-found: error

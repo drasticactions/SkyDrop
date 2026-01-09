@@ -2,7 +2,7 @@
 
 SkyDrop is a simple, Alpha, Bluesky "Client." You can read feeds and your timeline, as well as write posts. Unlike other clients, with SkyDrop you have to work for it by playing the game.
 
-Read the [Gameplay](GAMEPLAY.md) docs for how it works. You can download the game from the [Releases](https://github.com/drasticactions/SkyDrop/releases), or play the [Web version](https://drasticactions.github.io/SkyDrop/). 
+Read the [Gameplay](GAMEPLAY.md) docs for how it works. You can play the [Web version](https://drasticactions.github.io/SkyDrop/) here.
 
 - Build with .NET and [Avalonia UI](https://avaloniaui.net).
 - Uses [Nu Kinako Mochi](https://kokagem.sakura.ne.jp/font/mochi/) as the typeface
@@ -14,6 +14,22 @@ This is *Alpha Quality*, expect bugs!
 ## Why?
 
 The idea came from a [tinybaby post](https://bsky.app/profile/did:plc:yhgc5rlqhoezrx6fbawajxlh/post/3mbjfemrthk2b), and my own frustration of building a [ATProtocol client library](https://github.com/drasticactions/FishyFlip) and not knowing what to build with it. Every time I tried to build a Bluesky client app, I would give up. Why bother building one when there are so many others out there. I would have nothing to add to it... Hence, SkyDrop.
+
+## Native Versions:
+
+I am working on building a signed release pipeline for the native client versions. The CI builds can be found as [artifacts](https://github.com/drasticactions/SkyDrop/actions/workflows/build-desktop.yml). The web and native app clients have the same features.
+
+**NOTE:** These CI builds are not signed. If you are running this on macOS, you will need remove the quarantine by running:
+
+`xattr -rd com.apple.quarantine /path/to/SkyDrop.app`
+
+from the terminal. If you don't know how to do that, you should stick to the Web version for now.
+
+## Build:
+
+- Install the .NET 10 SDK
+- For `SkyDrop.Browser`, install the `wasm-tools` workload
+- `dotnet build src/SkyDrop.slnx`
 
 ## Known Issues:
 
