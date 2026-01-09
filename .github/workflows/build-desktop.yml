@@ -1,0 +1,96 @@
+name: Build Desktop
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+            artifact-name: SkyDrop-Linux-x64
+          - os: ubuntu-24.04-arm
+            rid: linux-arm64
+            artifact-name: SkyDrop-Linux-arm64
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Publish
+        run: dotnet publish src/SkyDrop.Desktop/SkyDrop.Desktop.csproj -c Release -r ${{ matrix.rid }} -o publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact-name }}
+          path: publish/
+          if-no-files-found: error
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Build Windows binaries
+        run: ./scripts/build-windows.ps1
+
+      - name: Upload x64 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SkyDrop-Windows-x64
+          path: artifacts/SkyDrop-Windows-x64/
+          if-no-files-found: error
+
+      - name: Upload arm64 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SkyDrop-Windows-arm64
+          path: artifacts/SkyDrop-Windows-arm64/
+          if-no-files-found: error
+
+  build-macos:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: 'preview'
+
+      - name: Build universal binary
+        run: ./scripts/build-macos-universal.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: SkyDrop-macOS-universal
+          path: artifacts/SkyDrop-macOS-universal/
+          if-no-files-found: error
