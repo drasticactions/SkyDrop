@@ -34,6 +34,7 @@ from the terminal. If you don't know how to do that, you should stick to the Web
 ## Known Issues:
 
 - No sound or music. Have not made any yet.
+- For Queued Post mode, it doesn't properly support CJK langauges. Since I'm splitting on words, those would need to be treated differently. I'm still thinking of the best way to handle that.
 - The default "Retro" font is [Nu Kinako Mochi](https://kokagem.sakura.ne.jp/font/mochi/). It does not support all Japanese characters, so I tried to get creative with my text and menu options. It can also be hard to read in general for English and Japanese, even though it looks really nice. You can revert to the system fonts on the title screen.
 - The dakuten/handakuten can be cut off in the UI, this appears to be an Avalonia issue with CJK and this font.
 - The "block droping gameplay" may not be _exactly_ the "best" version of said block dropping game you've played. I am tweaking it more and am open to suggestions, but this is not intended to have every possible feature for the best version of said block dropping game possible.
