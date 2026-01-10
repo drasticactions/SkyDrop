@@ -23,7 +23,7 @@ public enum UIInput
     /// <summary>Navigate right.</summary>
     Right,
 
-    /// <summary>Confirm/select action (Enter/Space/A button).</summary>
+    /// <summary>Confirm/select action (Enter/A button).</summary>
     Confirm,
 
     /// <summary>Cancel/back action (Escape/B button).</summary>

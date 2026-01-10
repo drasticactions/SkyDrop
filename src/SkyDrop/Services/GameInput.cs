@@ -11,5 +11,6 @@ public enum GameInput
     HardDrop,
     RotateCW,
     RotateCCW,
-    Pause
+    Pause,
+    Confirm
 }

@@ -38,6 +38,9 @@ public static class InputMappings
             // Pause
             { Key.Escape, GameInput.Pause },
             { Key.P, GameInput.Pause },
+
+            // Confirm (for game over restart, etc.)
+            { Key.Enter, GameInput.Confirm },
         };
 
     /// <summary>
@@ -60,7 +63,6 @@ public static class InputMappings
 
             // Action keys
             { Key.Enter, UIInput.Confirm },
-            { Key.Space, UIInput.Confirm },
             { Key.Escape, UIInput.Cancel },
             { Key.Tab, UIInput.Secondary },
         };

@@ -141,7 +141,7 @@ public partial class GameView : UserControl
                     return;
                 }
 
-                if (e.Input == GameInput.HardDrop) // Space
+                if (e.Input == GameInput.Confirm) // Enter
                 {
                     vm.RestartGame();
                     return;
