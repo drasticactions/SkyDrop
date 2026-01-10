@@ -49,7 +49,8 @@
                         </StackPanel>
                     </Grid>
 
-                    <StackPanel Grid.Row="1" Margin="0,0,0,15">
+                    <!-- Standard Mode Content -->
+                    <StackPanel Grid.Row="1" Margin="0,0,0,15" IsVisible="{Binding IsStandardMode}">
                         <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
                             <TextBlock Grid.Column="0" Text="{x:Static res:Strings.SelectedKey}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" HorizontalAlignment="Center"/>
                             <Border Grid.Column="1" Background="{DynamicResource AccentCyanBrush}" CornerRadius="3" Padding="6,2">
@@ -188,7 +189,7 @@
                         </Grid>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="2" Margin="0,0,0,10">
+                    <StackPanel Grid.Row="2" Margin="0,0,0,10" IsVisible="{Binding IsStandardMode}">
                         <Grid ColumnDefinitions="*,Auto">
                             <TextBlock Grid.Column="0" Text="{x:Static res:Strings.Word}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}"/>
                             <TextBlock Grid.Column="1" Text="{Binding CurrentT9Sequence}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource AccentGoldBrush}" FontFamily="Consolas,Monaco,monospace"/>
@@ -202,7 +203,7 @@
                         </Border>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="3" Margin="0,0,0,10">
+                    <StackPanel Grid.Row="3" Margin="0,0,0,10" IsVisible="{Binding IsStandardMode}">
                         <Grid ColumnDefinitions="*,Auto">
                             <TextBlock Grid.Column="0" Text="{x:Static res:Strings.CurrentPost}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}"/>
                             <TextBlock Grid.Column="1" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Right">
@@ -231,6 +232,89 @@
                                    Foreground="{DynamicResource AccentRedBrush}"
                                    IsVisible="{Binding IsPostTooLong}"
                                    Margin="0,4,0,0"/>
+                    </StackPanel>
+
+                    <!-- Queued Mode Content -->
+                    <StackPanel Grid.Row="1" Grid.RowSpan="3" Margin="0,0,0,15" IsVisible="{Binding IsQueuedMode}">
+                        <!-- Progress Header -->
+                        <Border Background="{DynamicResource AccentPurpleBrush}" CornerRadius="4" Padding="8" Margin="0,0,0,10">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="{x:Static res:Strings.QueuedModeLabel}"
+                                           FontSize="12"
+                                           FontWeight="Bold"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Progress Display -->
+                        <StackPanel Spacing="8">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <TextBlock Grid.Column="0" Text="{x:Static res:Strings.WordsRevealed}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                <TextBlock Grid.Column="1" FontSize="10" FontWeight="Bold">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}/{1}">
+                                            <Binding Path="WordsRevealed"/>
+                                            <Binding Path="TotalWords"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                    <TextBlock.Foreground>
+                                        <Binding Path="IsQueueComplete">
+                                            <Binding.Converter>
+                                                <x:Null/>
+                                            </Binding.Converter>
+                                        </Binding>
+                                    </TextBlock.Foreground>
+                                </TextBlock>
+                            </Grid>
+
+                            <!-- Progress Bar -->
+                            <Grid Height="20">
+                                <ProgressBar Minimum="0"
+                                             Maximum="100"
+                                             Value="{Binding QueuedProgressPercent}"
+                                             Background="{DynamicResource NextPieceBackgroundBrush}"
+                                             Foreground="{DynamicResource AccentGreenBrush}"
+                                             CornerRadius="4"/>
+                                <TextBlock Text="{Binding QueuedProgressPercent, StringFormat={}{0}%}"
+                                           FontSize="10"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource PrimaryTextBrush}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"/>
+                            </Grid>
+
+                            <!-- Completion Badge -->
+                            <Border Background="{DynamicResource AccentGreenBrush}"
+                                    CornerRadius="4"
+                                    Padding="8,4"
+                                    IsVisible="{Binding IsQueueComplete}"
+                                    HorizontalAlignment="Center">
+                                <TextBlock Text="{x:Static res:Strings.ThreadComplete}"
+                                           FontSize="12"
+                                           FontWeight="Bold"
+                                           Foreground="White"/>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Current Output Preview -->
+                        <StackPanel Margin="0,15,0,0">
+                            <TextBlock Text="{x:Static res:Strings.CurrentOutput}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource SecondaryTextBrush}" Margin="0,0,0,4"/>
+                            <Border Background="{DynamicResource NextPieceBackgroundBrush}" CornerRadius="4" Padding="8" MinHeight="60">
+                                <TextBlock Text="{Binding CurrentQueuedPostPreview}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource PrimaryTextBrush}"
+                                           TextWrapping="Wrap"/>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Instructions -->
+                        <StackPanel Margin="0,15,0,0" Spacing="2">
+                            <TextBlock Text="{x:Static res:Strings.QueuedInstructions}"
+                                       FontSize="9"
+                                       Foreground="{DynamicResource TertiaryTextBrush}"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
                     </StackPanel>
 
                     <Grid Grid.Row="4" RowDefinitions="Auto,*" Margin="0,0,0,10">

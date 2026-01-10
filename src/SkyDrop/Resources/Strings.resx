@@ -788,4 +788,100 @@
   <data name="LikesShort" xml:space="preserve">
     <value>L:</value>
   </data>
+  <!-- Queued Mode Strings -->
+  <data name="GameVariant" xml:space="preserve">
+    <value>GAME VARIANT</value>
+  </data>
+  <data name="VariantDescription" xml:space="preserve">
+    <value>(click to toggle)</value>
+  </data>
+  <data name="VariantStandard" xml:space="preserve">
+    <value>STANDARD</value>
+  </data>
+  <data name="VariantQueued" xml:space="preserve">
+    <value>QUEUED</value>
+  </data>
+  <data name="VariantStandardDesc" xml:space="preserve">
+    <value>Type posts using T9/ABC input</value>
+  </data>
+  <data name="VariantQueuedDesc" xml:space="preserve">
+    <value>Clear lines to reveal pre-written posts</value>
+  </data>
+  <data name="QueuedHowItWorks" xml:space="preserve">
+    <value>HOW IT WORKS</value>
+  </data>
+  <data name="QueuedDescription" xml:space="preserve">
+    <value>Pre-write posts, then clear lines to reveal words. Each line cleared adds a word to your output.</value>
+  </data>
+  <data name="QueuedPosts" xml:space="preserve">
+    <value>QUEUED POSTS</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>Posts</value>
+  </data>
+  <data name="Words" xml:space="preserve">
+    <value>Words</value>
+  </data>
+  <data name="QueuedEmptyState" xml:space="preserve">
+    <value>Add posts below to start your thread</value>
+  </data>
+  <data name="AddNewPost" xml:space="preserve">
+    <value>Add New Post</value>
+  </data>
+  <data name="QueuedPostPlaceholder" xml:space="preserve">
+    <value>Write your post content here...</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>CANCEL</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>CLEAR ALL</value>
+  </data>
+  <data name="QueuedNeedPosts" xml:space="preserve">
+    <value>Add at least one post to play</value>
+  </data>
+  <data name="QueuedModeLabel" xml:space="preserve">
+    <value>QUEUED MODE</value>
+  </data>
+  <data name="WordsRevealed" xml:space="preserve">
+    <value>WORDS REVEALED</value>
+  </data>
+  <data name="ThreadComplete" xml:space="preserve">
+    <value>THREAD COMPLETE!</value>
+  </data>
+  <data name="CurrentOutput" xml:space="preserve">
+    <value>CURRENT OUTPUT</value>
+  </data>
+  <data name="QueuedInstructions" xml:space="preserve">
+    <value>Clear lines to reveal words from your queued posts.</value>
+  </data>
+  <data name="EditingPost" xml:space="preserve">
+    <value>Editing Post</value>
+  </data>
+  <data name="UpdatePost" xml:space="preserve">
+    <value>UPDATE</value>
+  </data>
+  <data name="AddToQueue" xml:space="preserve">
+    <value>ADD TO QUEUE</value>
+  </data>
+  <!-- Stats Image Strings -->
+  <data name="StatsImageTitle" xml:space="preserve">
+    <value>SKYDROP</value>
+  </data>
+  <data name="StatsImageSubtitle" xml:space="preserve">
+    <value>GAME STATS</value>
+  </data>
+  <data name="StatsImageCreatePostMode" xml:space="preserve">
+    <value>CREATE POST - {0}</value>
+  </data>
+  <data name="StatsImageFooter" xml:space="preserve">
+    <value>Posted with SkyDrop</value>
+  </data>
+  <!-- Signature Post Strings -->
+  <data name="SignaturePostedWith" xml:space="preserve">
+    <value>Posted with</value>
+  </data>
+  <data name="SignatureMode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
 </root>

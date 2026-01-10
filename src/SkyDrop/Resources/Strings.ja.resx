@@ -788,4 +788,100 @@
   <data name="LikesShort" xml:space="preserve">
     <value>♡:</value>
   </data>
+  <!-- Stats Image Strings -->
+  <data name="StatsImageTitle" xml:space="preserve">
+    <value>SKYDROP</value>
+  </data>
+  <data name="StatsImageSubtitle" xml:space="preserve">
+    <value>ゲーム結果</value>
+  </data>
+  <data name="StatsImageCreatePostMode" xml:space="preserve">
+    <value>投稿作成 - {0}</value>
+  </data>
+  <data name="StatsImageFooter" xml:space="preserve">
+    <value>SkyDropで投稿</value>
+  </data>
+  <!-- Signature Post Strings -->
+  <data name="SignaturePostedWith" xml:space="preserve">
+    <value>投稿元:</value>
+  </data>
+  <data name="SignatureMode" xml:space="preserve">
+    <value>モード</value>
+  </data>
+  <!-- Queued Mode Strings -->
+  <data name="GameVariant" xml:space="preserve">
+    <value>ゲームタイプ</value>
+  </data>
+  <data name="VariantDescription" xml:space="preserve">
+    <value>(クリックで切替)</value>
+  </data>
+  <data name="VariantStandard" xml:space="preserve">
+    <value>スタンダード</value>
+  </data>
+  <data name="VariantQueued" xml:space="preserve">
+    <value>キュー</value>
+  </data>
+  <data name="VariantStandardDesc" xml:space="preserve">
+    <value>T9/ABCで投稿を入力</value>
+  </data>
+  <data name="VariantQueuedDesc" xml:space="preserve">
+    <value>ラインを消して事前投稿を表示</value>
+  </data>
+  <data name="QueuedHowItWorks" xml:space="preserve">
+    <value>遊び方</value>
+  </data>
+  <data name="QueuedDescription" xml:space="preserve">
+    <value>事前に投稿を書き、ラインを消して単語を表示。1ライン消すごとに1単語が出力に追加されます。</value>
+  </data>
+  <data name="QueuedPosts" xml:space="preserve">
+    <value>キューの投稿</value>
+  </data>
+  <data name="Posts" xml:space="preserve">
+    <value>投稿</value>
+  </data>
+  <data name="Words" xml:space="preserve">
+    <value>単語</value>
+  </data>
+  <data name="QueuedEmptyState" xml:space="preserve">
+    <value>下に投稿を追加してスレッドを開始</value>
+  </data>
+  <data name="AddNewPost" xml:space="preserve">
+    <value>新規投稿を追加</value>
+  </data>
+  <data name="QueuedPostPlaceholder" xml:space="preserve">
+    <value>投稿内容を入力...</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>すべて削除</value>
+  </data>
+  <data name="QueuedNeedPosts" xml:space="preserve">
+    <value>プレイするには投稿を追加してください</value>
+  </data>
+  <data name="QueuedModeLabel" xml:space="preserve">
+    <value>キューモード</value>
+  </data>
+  <data name="WordsRevealed" xml:space="preserve">
+    <value>表示された単語</value>
+  </data>
+  <data name="ThreadComplete" xml:space="preserve">
+    <value>スレッド完成！</value>
+  </data>
+  <data name="CurrentOutput" xml:space="preserve">
+    <value>現在の出力</value>
+  </data>
+  <data name="QueuedInstructions" xml:space="preserve">
+    <value>ラインを消してキューの投稿から単語を表示</value>
+  </data>
+  <data name="EditingPost" xml:space="preserve">
+    <value>投稿を編集中</value>
+  </data>
+  <data name="UpdatePost" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="AddToQueue" xml:space="preserve">
+    <value>キューに追加</value>
+  </data>
 </root>

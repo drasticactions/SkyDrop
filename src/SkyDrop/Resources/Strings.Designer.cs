@@ -2039,5 +2039,284 @@ namespace SkyDrop.Resources {
                 return ResourceManager.GetString("LikesShort", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   GAME VARIANT
+        /// </summary>
+        public static string GameVariant {
+            get {
+                return ResourceManager.GetString("GameVariant", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   (click to toggle)
+        /// </summary>
+        public static string VariantDescription {
+            get {
+                return ResourceManager.GetString("VariantDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   STANDARD
+        /// </summary>
+        public static string VariantStandard {
+            get {
+                return ResourceManager.GetString("VariantStandard", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   QUEUED
+        /// </summary>
+        public static string VariantQueued {
+            get {
+                return ResourceManager.GetString("VariantQueued", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Type posts using T9/ABC input
+        /// </summary>
+        public static string VariantStandardDesc {
+            get {
+                return ResourceManager.GetString("VariantStandardDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Clear lines to reveal pre-written posts
+        /// </summary>
+        public static string VariantQueuedDesc {
+            get {
+                return ResourceManager.GetString("VariantQueuedDesc", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   HOW IT WORKS
+        /// </summary>
+        public static string QueuedHowItWorks {
+            get {
+                return ResourceManager.GetString("QueuedHowItWorks", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Pre-write posts, then clear lines to reveal words. Each line cleared adds a word to your output.
+        /// </summary>
+        public static string QueuedDescription {
+            get {
+                return ResourceManager.GetString("QueuedDescription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   QUEUED POSTS
+        /// </summary>
+        public static string QueuedPosts {
+            get {
+                return ResourceManager.GetString("QueuedPosts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posts
+        /// </summary>
+        public static string Posts {
+            get {
+                return ResourceManager.GetString("Posts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Words
+        /// </summary>
+        public static string Words {
+            get {
+                return ResourceManager.GetString("Words", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Add posts below to start your thread
+        /// </summary>
+        public static string QueuedEmptyState {
+            get {
+                return ResourceManager.GetString("QueuedEmptyState", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Add New Post
+        /// </summary>
+        public static string AddNewPost {
+            get {
+                return ResourceManager.GetString("AddNewPost", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Write your post content here...
+        /// </summary>
+        public static string QueuedPostPlaceholder {
+            get {
+                return ResourceManager.GetString("QueuedPostPlaceholder", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   CANCEL
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   CLEAR ALL
+        /// </summary>
+        public static string ClearAll {
+            get {
+                return ResourceManager.GetString("ClearAll", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Add at least one post to play
+        /// </summary>
+        public static string QueuedNeedPosts {
+            get {
+                return ResourceManager.GetString("QueuedNeedPosts", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   QUEUED MODE
+        /// </summary>
+        public static string QueuedModeLabel {
+            get {
+                return ResourceManager.GetString("QueuedModeLabel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   WORDS REVEALED
+        /// </summary>
+        public static string WordsRevealed {
+            get {
+                return ResourceManager.GetString("WordsRevealed", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   THREAD COMPLETE!
+        /// </summary>
+        public static string ThreadComplete {
+            get {
+                return ResourceManager.GetString("ThreadComplete", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   CURRENT OUTPUT
+        /// </summary>
+        public static string CurrentOutput {
+            get {
+                return ResourceManager.GetString("CurrentOutput", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Clear lines to reveal words from your queued posts.
+        /// </summary>
+        public static string QueuedInstructions {
+            get {
+                return ResourceManager.GetString("QueuedInstructions", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Editing Post
+        /// </summary>
+        public static string EditingPost {
+            get {
+                return ResourceManager.GetString("EditingPost", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   UPDATE
+        /// </summary>
+        public static string UpdatePost {
+            get {
+                return ResourceManager.GetString("UpdatePost", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   ADD TO QUEUE
+        /// </summary>
+        public static string AddToQueue {
+            get {
+                return ResourceManager.GetString("AddToQueue", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   SKYDROP
+        /// </summary>
+        public static string StatsImageTitle {
+            get {
+                return ResourceManager.GetString("StatsImageTitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   GAME STATS
+        /// </summary>
+        public static string StatsImageSubtitle {
+            get {
+                return ResourceManager.GetString("StatsImageSubtitle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   CREATE POST - {0}
+        /// </summary>
+        public static string StatsImageCreatePostMode {
+            get {
+                return ResourceManager.GetString("StatsImageCreatePostMode", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posted with SkyDrop
+        /// </summary>
+        public static string StatsImageFooter {
+            get {
+                return ResourceManager.GetString("StatsImageFooter", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Posted with
+        /// </summary>
+        public static string SignaturePostedWith {
+            get {
+                return ResourceManager.GetString("SignaturePostedWith", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Mode
+        /// </summary>
+        public static string SignatureMode {
+            get {
+                return ResourceManager.GetString("SignatureMode", resourceCulture);
+            }
+        }
     }
 }

@@ -4,7 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:SkyDrop.ViewModels"
              xmlns:res="clr-namespace:SkyDrop.Resources"
-             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+             xmlns:local="clr-namespace:SkyDrop.Views"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="700"
              x:Class="SkyDrop.Views.CreatePostModeOptionsView"
              x:DataType="vm:CreatePostModeOptionsViewModel"
              Focusable="True">
@@ -20,6 +21,66 @@
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Center" Spacing="20">
+
+                <StackPanel Spacing="10">
+                    <TextBlock Text="{x:Static res:Strings.GameType}"
+                               FontSize="18"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"
+                               HorizontalAlignment="Center"/>
+
+                    <Border x:Name="VariantSelectorBorder"
+                            BorderBrush="Transparent"
+                            BorderThickness="3"
+                            CornerRadius="8"
+                            Padding="5"
+                            HorizontalAlignment="Center">
+                        <Grid ColumnDefinitions="*,*" HorizontalAlignment="Center">
+                            <Border Grid.Column="0"
+                                    x:Name="StandardVariantButton"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    CornerRadius="4,0,0,4"
+                                    Padding="20,12"
+                                    Cursor="Hand">
+                                <StackPanel HorizontalAlignment="Center" Spacing="4">
+                                    <TextBlock Text="{x:Static res:Strings.VariantStandard}"
+                                               FontSize="14"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static res:Strings.VariantStandardDesc}"
+                                               FontSize="10"
+                                               Foreground="{DynamicResource TertiaryTextBrush}"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+
+                            <Border Grid.Column="1"
+                                    x:Name="QueuedVariantButton"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    CornerRadius="0,4,4,0"
+                                    Padding="20,12"
+                                    Cursor="Hand">
+                                <StackPanel HorizontalAlignment="Center" Spacing="4">
+                                    <TextBlock Text="{x:Static res:Strings.VariantQueued}"
+                                               FontSize="14"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static res:Strings.VariantQueuedDesc}"
+                                               FontSize="10"
+                                               Foreground="{DynamicResource TertiaryTextBrush}"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+
+                    <TextBlock Text="{Binding VariantDescription}"
+                               FontSize="12"
+                               Foreground="{DynamicResource AccentGoldBrush}"
+                               HorizontalAlignment="Center"/>
+                </StackPanel>
 
                 <StackPanel Spacing="10">
                     <TextBlock Text="{x:Static res:Strings.SelectLevel}"
@@ -79,235 +140,495 @@
                                HorizontalAlignment="Center"/>
                 </StackPanel>
 
-                <StackPanel Spacing="10">
-                    <TextBlock Text="{x:Static res:Strings.InputMode}"
-                               FontSize="18"
-                               FontWeight="SemiBold"
-                               Foreground="{DynamicResource PrimaryTextBrush}"
-                               HorizontalAlignment="Center"/>
-
-                    <Border x:Name="InputModeSelectorBorder"
-                            BorderBrush="Transparent"
-                            BorderThickness="3"
-                            CornerRadius="8"
-                            Padding="5"
-                            HorizontalAlignment="Center">
-                        <Button Command="{Binding ToggleInputModeCommand}"
-                                Background="{DynamicResource ButtonBackgroundBrush}"
-                                CornerRadius="4"
-                                Padding="20,10"
-                                Focusable="False">
-                            <StackPanel Orientation="Horizontal">
-                                <Border Background="{DynamicResource AccentCyanBrush}"
-                                        CornerRadius="3"
-                                        Padding="8,4"
-                                        MinWidth="50">
-                                    <TextBlock Text="{Binding SelectedInputModeDisplay}"
-                                               FontSize="18"
-                                               FontWeight="Bold"
-                                               Foreground="White"
-                                               HorizontalAlignment="Center"/>
-                                </Border>
-                            </StackPanel>
-                        </Button>
-                    </Border>
-
-                    <StackPanel HorizontalAlignment="Center" Spacing="2">
-                        <TextBlock Text="{x:Static res:Strings.T9Description}"
-                                   FontSize="11"
-                                   Foreground="{DynamicResource TertiaryTextBrush}"
+                <StackPanel IsVisible="{Binding IsStandardVariant}" Spacing="20">
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="{x:Static res:Strings.InputMode}"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
                                    HorizontalAlignment="Center"/>
-                        <TextBlock Text="{x:Static res:Strings.ABCDescription}"
-                                   FontSize="11"
+
+                        <Border x:Name="InputModeSelectorBorder"
+                                BorderBrush="Transparent"
+                                BorderThickness="3"
+                                CornerRadius="8"
+                                Padding="5"
+                                HorizontalAlignment="Center">
+                            <Button Command="{Binding ToggleInputModeCommand}"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    CornerRadius="4"
+                                    Padding="20,10"
+                                    Focusable="False">
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Background="{DynamicResource AccentCyanBrush}"
+                                            CornerRadius="3"
+                                            Padding="8,4"
+                                            MinWidth="50">
+                                        <TextBlock Text="{Binding SelectedInputModeDisplay}"
+                                                   FontSize="18"
+                                                   FontWeight="Bold"
+                                                   Foreground="White"
+                                                   HorizontalAlignment="Center"/>
+                                    </Border>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+
+                        <StackPanel HorizontalAlignment="Center" Spacing="2">
+                            <TextBlock Text="{x:Static res:Strings.T9Description}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource TertiaryTextBrush}"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Static res:Strings.ABCDescription}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource TertiaryTextBrush}"
+                                       HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Spacing="10">
+                        <TextBlock Text="{x:Static res:Strings.HowToPlay}"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"
+                                   HorizontalAlignment="Center"/>
+
+                        <Border x:Name="ControlsCarouselBorder"
+                                BorderBrush="Transparent"
+                                BorderThickness="3"
+                                CornerRadius="8"
+                                Padding="5"
+                                HorizontalAlignment="Center">
+                            <Grid ColumnDefinitions="Auto,*,Auto" Width="380">
+                                <Button Grid.Column="0"
+                                        Content="&#9664;"
+                                        x:Name="CarouselLeftButton"
+                                        FontSize="20"
+                                        Width="40"
+                                        Height="40"
+                                        Background="{DynamicResource ButtonBackgroundBrush}"
+                                        Foreground="{DynamicResource PrimaryTextBrush}"
+                                        CornerRadius="4"
+                                        VerticalAlignment="Center"
+                                        Focusable="False"/>
+
+                                <Border Grid.Column="1"
+                                        Background="{DynamicResource PanelBackgroundBrush}"
+                                        CornerRadius="8"
+                                        Padding="20"
+                                        Margin="10,0"
+                                        MinHeight="180">
+                                    <Panel>
+                                        <StackPanel x:Name="ControlsPanel" IsVisible="True" Spacing="8">
+                                            <TextBlock Text="{x:Static res:Strings.Controls}"
+                                                       FontSize="16"
+                                                       FontWeight="Bold"
+                                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <StackPanel Spacing="6" Margin="0,8,0,0">
+                                                <TextBlock Text="{x:Static res:Strings.ControlSelectKey}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                                <TextBlock Text="{x:Static res:Strings.ControlPressKey}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                                <TextBlock Text="{x:Static res:Strings.ControlCycleSuggestions}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"/>
+                                                <TextBlock Text="{x:Static res:Strings.ControlToggleMode}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource AccentCyanBrush}"/>
+                                                <TextBlock Text="{x:Static res:Strings.ControlSpecialKeys}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource AccentGoldBrush}"
+                                                           Margin="0,4,0,0"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="T9Panel" IsVisible="False" Spacing="8">
+                                            <TextBlock Text="{x:Static res:Strings.T9Mode}"
+                                                       FontSize="16"
+                                                       FontWeight="Bold"
+                                                       Foreground="{DynamicResource AccentCyanBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{x:Static res:Strings.PredictiveTextInput}"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <StackPanel Spacing="6" Margin="0,8,0,0">
+                                                <TextBlock Text="{x:Static res:Strings.T9HelpDigits}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.T9HelpTab}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.T9HelpKey1}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.T9HelpAutoCapitalize}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource TertiaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="AbcPanel" IsVisible="False" Spacing="8">
+                                            <TextBlock Text="{x:Static res:Strings.ABCMode}"
+                                                       FontSize="16"
+                                                       FontWeight="Bold"
+                                                       Foreground="{DynamicResource AccentCyanBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{x:Static res:Strings.MultiTapInput}"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <StackPanel Spacing="6" Margin="0,8,0,0">
+                                                <TextBlock Text="{x:Static res:Strings.ABCHelpRotate}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.ABCHelpDrop}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.ABCHelpKey1}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.ABCHelpAutoCapitalize}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource TertiaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="KanaPanel" IsVisible="False" Spacing="8">
+                                            <TextBlock Text="{x:Static res:Strings.KanaMode}"
+                                                       FontSize="16"
+                                                       FontWeight="Bold"
+                                                       Foreground="{DynamicResource AccentCyanBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <TextBlock Text="{x:Static res:Strings.JapaneseHiraganaInput}"
+                                                       FontSize="12"
+                                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                                       HorizontalAlignment="Center"/>
+                                            <StackPanel Spacing="6" Margin="0,8,0,0">
+                                                <TextBlock Text="{x:Static res:Strings.KanaHelpRotate}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.KanaHelpDakuten}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.KanaHelpTab}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource SecondaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                                <TextBlock Text="{x:Static res:Strings.KanaHelpConfirm}"
+                                                           FontSize="12"
+                                                           Foreground="{DynamicResource TertiaryTextBrush}"
+                                                           TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Panel>
+                                </Border>
+
+                                <!-- Right Arrow -->
+                                <Button Grid.Column="2"
+                                        Content="&#9654;"
+                                        x:Name="CarouselRightButton"
+                                        FontSize="20"
+                                        Width="40"
+                                        Height="40"
+                                        Background="{DynamicResource ButtonBackgroundBrush}"
+                                        Foreground="{DynamicResource PrimaryTextBrush}"
+                                        CornerRadius="4"
+                                        VerticalAlignment="Center"
+                                        Focusable="False"/>
+                            </Grid>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
+                            <Ellipse x:Name="Indicator0" Width="8" Height="8" Fill="{DynamicResource AccentCyanBrush}"/>
+                            <Ellipse x:Name="Indicator1" Width="8" Height="8" Fill="{DynamicResource ButtonBackgroundBrush}"/>
+                            <Ellipse x:Name="Indicator2" Width="8" Height="8" Fill="{DynamicResource ButtonBackgroundBrush}"/>
+                            <Ellipse x:Name="Indicator3" Width="8" Height="8" Fill="{DynamicResource ButtonBackgroundBrush}"/>
+                        </StackPanel>
+
+                        <TextBlock Text="{x:Static res:Strings.BrowseModes}"
+                                   FontSize="12"
                                    Foreground="{DynamicResource TertiaryTextBrush}"
                                    HorizontalAlignment="Center"/>
                     </StackPanel>
                 </StackPanel>
 
-                <StackPanel Spacing="10">
-                    <TextBlock Text="{x:Static res:Strings.HowToPlay}"
-                               FontSize="18"
-                               FontWeight="SemiBold"
-                               Foreground="{DynamicResource PrimaryTextBrush}"
-                               HorizontalAlignment="Center"/>
+                <StackPanel IsVisible="{Binding IsQueuedVariant}" Spacing="15" Width="380">
 
-                    <Border x:Name="ControlsCarouselBorder"
-                            BorderBrush="Transparent"
-                            BorderThickness="3"
+                    <Border Background="{DynamicResource PanelBackgroundBrush}"
                             CornerRadius="8"
-                            Padding="5"
-                            HorizontalAlignment="Center">
-                        <Grid ColumnDefinitions="Auto,*,Auto" Width="380">
-                            <Button Grid.Column="0"
-                                    Content="&#9664;"
-                                    x:Name="CarouselLeftButton"
-                                    FontSize="20"
-                                    Width="40"
-                                    Height="40"
-                                    Background="{DynamicResource ButtonBackgroundBrush}"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    CornerRadius="4"
-                                    VerticalAlignment="Center"
-                                    Focusable="False"/>
-
-                            <!-- Carousel Content -->
-                            <Border Grid.Column="1"
-                                    Background="{DynamicResource PanelBackgroundBrush}"
-                                    CornerRadius="8"
-                                    Padding="20"
-                                    Margin="10,0"
-                                    MinHeight="180">
-                                <Panel>
-                                    <StackPanel x:Name="ControlsPanel" IsVisible="True" Spacing="8">
-                                        <TextBlock Text="{x:Static res:Strings.Controls}"
-                                                   FontSize="16"
-                                                   FontWeight="Bold"
-                                                   Foreground="{DynamicResource AccentGoldBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <StackPanel Spacing="6" Margin="0,8,0,0">
-                                            <TextBlock Text="{x:Static res:Strings.ControlSelectKey}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"/>
-                                            <TextBlock Text="{x:Static res:Strings.ControlPressKey}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"/>
-                                            <TextBlock Text="{x:Static res:Strings.ControlCycleSuggestions}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"/>
-                                            <TextBlock Text="{x:Static res:Strings.ControlToggleMode}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource AccentCyanBrush}"/>
-                                            <TextBlock Text="{x:Static res:Strings.ControlSpecialKeys}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource AccentGoldBrush}"
-                                                       Margin="0,4,0,0"/>
-                                        </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel x:Name="T9Panel" IsVisible="False" Spacing="8">
-                                        <TextBlock Text="{x:Static res:Strings.T9Mode}"
-                                                   FontSize="16"
-                                                   FontWeight="Bold"
-                                                   Foreground="{DynamicResource AccentCyanBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{x:Static res:Strings.PredictiveTextInput}"
-                                                   FontSize="12"
-                                                   Foreground="{DynamicResource AccentGoldBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <StackPanel Spacing="6" Margin="0,8,0,0">
-                                            <TextBlock Text="{x:Static res:Strings.T9HelpDigits}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.T9HelpTab}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.T9HelpKey1}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.T9HelpAutoCapitalize}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource TertiaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                        </StackPanel>
-                                    </StackPanel>
-
-                                    <StackPanel x:Name="AbcPanel" IsVisible="False" Spacing="8">
-                                        <TextBlock Text="{x:Static res:Strings.ABCMode}"
-                                                   FontSize="16"
-                                                   FontWeight="Bold"
-                                                   Foreground="{DynamicResource AccentCyanBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{x:Static res:Strings.MultiTapInput}"
-                                                   FontSize="12"
-                                                   Foreground="{DynamicResource AccentGoldBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <StackPanel Spacing="6" Margin="0,8,0,0">
-                                            <TextBlock Text="{x:Static res:Strings.ABCHelpRotate}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.ABCHelpDrop}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.ABCHelpKey1}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.ABCHelpAutoCapitalize}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource TertiaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                        </StackPanel>
-                                    </StackPanel>
-
-                                    <!-- Kana Mode -->
-                                    <StackPanel x:Name="KanaPanel" IsVisible="False" Spacing="8">
-                                        <TextBlock Text="{x:Static res:Strings.KanaMode}"
-                                                   FontSize="16"
-                                                   FontWeight="Bold"
-                                                   Foreground="{DynamicResource AccentCyanBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <TextBlock Text="{x:Static res:Strings.JapaneseHiraganaInput}"
-                                                   FontSize="12"
-                                                   Foreground="{DynamicResource AccentGoldBrush}"
-                                                   HorizontalAlignment="Center"/>
-                                        <StackPanel Spacing="6" Margin="0,8,0,0">
-                                            <TextBlock Text="{x:Static res:Strings.KanaHelpRotate}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.KanaHelpDakuten}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.KanaHelpTab}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource SecondaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                            <TextBlock Text="{x:Static res:Strings.KanaHelpConfirm}"
-                                                       FontSize="12"
-                                                       Foreground="{DynamicResource TertiaryTextBrush}"
-                                                       TextWrapping="Wrap"/>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Panel>
-                            </Border>
-
-                            <!-- Right Arrow -->
-                            <Button Grid.Column="2"
-                                    Content="&#9654;"
-                                    x:Name="CarouselRightButton"
-                                    FontSize="20"
-                                    Width="40"
-                                    Height="40"
-                                    Background="{DynamicResource ButtonBackgroundBrush}"
-                                    Foreground="{DynamicResource PrimaryTextBrush}"
-                                    CornerRadius="4"
-                                    VerticalAlignment="Center"
-                                    Focusable="False"/>
-                        </Grid>
+                            Padding="15">
+                        <StackPanel Spacing="8">
+                            <TextBlock Text="{x:Static res:Strings.QueuedHowItWorks}"
+                                       FontSize="14"
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                       HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Static res:Strings.QueuedDescription}"
+                                       FontSize="12"
+                                       Foreground="{DynamicResource SecondaryTextBrush}"
+                                       TextWrapping="Wrap"
+                                       TextAlignment="Center"/>
+                        </StackPanel>
                     </Border>
 
-                    <!-- Carousel Indicators -->
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="8">
-                        <Ellipse x:Name="Indicator0" Width="8" Height="8" Fill="{DynamicResource AccentCyanBrush}"/>
-                        <Ellipse x:Name="Indicator1" Width="8" Height="8" Fill="{DynamicResource ButtonBackgroundBrush}"/>
-                        <Ellipse x:Name="Indicator2" Width="8" Height="8" Fill="{DynamicResource ButtonBackgroundBrush}"/>
-                        <Ellipse x:Name="Indicator3" Width="8" Height="8" Fill="{DynamicResource ButtonBackgroundBrush}"/>
+                    <!-- Queued Posts List -->
+                    <StackPanel Spacing="10">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                            <TextBlock Text="{x:Static res:Strings.QueuedPosts}"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource PrimaryTextBrush}"
+                                       VerticalAlignment="Center"/>
+                            <Border Background="{DynamicResource AccentCyanBrush}"
+                                    CornerRadius="10"
+                                    Padding="8,2">
+                                <StackPanel Orientation="Horizontal" Spacing="4">
+                                    <TextBlock Text="{Binding QueuedPosts.Count}"
+                                               FontSize="12"
+                                               VerticalAlignment="Center"
+                                               FontWeight="Bold"
+                                               Foreground="White"/>
+                                    <TextBlock Text="{x:Static res:Strings.Posts}"
+                                               FontSize="12"
+                                               VerticalAlignment="Center"
+                                               Foreground="White"/>
+                                    <TextBlock Text="•"
+                                               FontSize="12"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"
+                                               Margin="4,0"/>
+                                    <TextBlock Text="{Binding TotalQueuedWords}"
+                                               FontSize="12"
+                                               FontWeight="Bold"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static res:Strings.Words}"
+                                               FontSize="12"
+                                               Foreground="White"
+                                               VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+
+                        <Border Background="{DynamicResource PanelBackgroundBrush}"
+                                CornerRadius="8"
+                                Padding="10"
+                                MinHeight="100"
+                                MaxHeight="200">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <ItemsControl ItemsSource="{Binding QueuedPosts}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="{DynamicResource NextPieceBackgroundBrush}"
+                                                    CornerRadius="6"
+                                                    Padding="10,8"
+                                                    Margin="0,0,0,6">
+                                                <Grid ColumnDefinitions="Auto,*,Auto">
+                                                    <Border Grid.Column="0"
+                                                            Background="{DynamicResource AccentPurpleBrush}"
+                                                            CornerRadius="4"
+                                                            Padding="6,2"
+                                                            VerticalAlignment="Top"
+                                                            Margin="0,0,8,0">
+                                                        <TextBlock FontSize="11"
+                                                                   FontWeight="Bold"
+                                                                   Foreground="White">
+                                                            <TextBlock.Text>
+                                                                <MultiBinding Converter="{x:Static local:IndexDisplayMultiConverter.Instance}">
+                                                                    <Binding Path="$parent[ItemsControl].ItemsSource"/>
+                                                                    <Binding/>
+                                                                </MultiBinding>
+                                                            </TextBlock.Text>
+                                                        </TextBlock>
+                                                    </Border>
+
+                                                    <TextBlock Grid.Column="1"
+                                                               Text="{Binding}"
+                                                               FontSize="12"
+                                                               Foreground="{DynamicResource PrimaryTextBrush}"
+                                                               TextWrapping="Wrap"
+                                                               TextTrimming="CharacterEllipsis"
+                                                               MaxLines="2"
+                                                               VerticalAlignment="Center"/>
+
+                                                    <StackPanel Grid.Column="2"
+                                                                Orientation="Horizontal"
+                                                                Spacing="4"
+                                                                VerticalAlignment="Center"
+                                                                Margin="8,0,0,0">
+                                                        <Button Content="&#9650;"
+                                                                Command="{Binding $parent[UserControl].((vm:CreatePostModeOptionsViewModel)DataContext).MoveQueuedPostUpCommand}"
+                                                                FontSize="10"
+                                                                Width="24"
+                                                                Height="24"
+                                                                Padding="0"
+                                                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                                                Foreground="{DynamicResource SecondaryTextBrush}"
+                                                                CornerRadius="3"
+                                                                Focusable="False">
+                                                            <Button.CommandParameter>
+                                                                <MultiBinding Converter="{x:Static local:IndexOfMultiConverter.Instance}">
+                                                                    <Binding Path="$parent[ItemsControl].ItemsSource"/>
+                                                                    <Binding/>
+                                                                </MultiBinding>
+                                                            </Button.CommandParameter>
+                                                        </Button>
+                                                        <Button Content="&#9660;"
+                                                                Command="{Binding $parent[UserControl].((vm:CreatePostModeOptionsViewModel)DataContext).MoveQueuedPostDownCommand}"
+                                                                FontSize="10"
+                                                                Width="24"
+                                                                Height="24"
+                                                                Padding="0"
+                                                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                                                Foreground="{DynamicResource SecondaryTextBrush}"
+                                                                CornerRadius="3"
+                                                                Focusable="False">
+                                                            <Button.CommandParameter>
+                                                                <MultiBinding Converter="{x:Static local:IndexOfMultiConverter.Instance}">
+                                                                    <Binding Path="$parent[ItemsControl].ItemsSource"/>
+                                                                    <Binding/>
+                                                                </MultiBinding>
+                                                            </Button.CommandParameter>
+                                                        </Button>
+                                                        <Button Content="&#9998;"
+                                                                Command="{Binding $parent[UserControl].((vm:CreatePostModeOptionsViewModel)DataContext).EditQueuedPostCommand}"
+                                                                FontSize="10"
+                                                                Width="24"
+                                                                Height="24"
+                                                                Padding="0"
+                                                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                                                Foreground="{DynamicResource AccentCyanBrush}"
+                                                                CornerRadius="3"
+                                                                Focusable="False">
+                                                            <Button.CommandParameter>
+                                                                <MultiBinding Converter="{x:Static local:IndexOfMultiConverter.Instance}">
+                                                                    <Binding Path="$parent[ItemsControl].ItemsSource"/>
+                                                                    <Binding/>
+                                                                </MultiBinding>
+                                                            </Button.CommandParameter>
+                                                        </Button>
+                                                        <Button Content="&#10005;"
+                                                                Command="{Binding $parent[UserControl].((vm:CreatePostModeOptionsViewModel)DataContext).RemoveQueuedPostCommand}"
+                                                                FontSize="10"
+                                                                Width="24"
+                                                                Height="24"
+                                                                Padding="0"
+                                                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                                                Foreground="{DynamicResource AccentRedBrush}"
+                                                                CornerRadius="3"
+                                                                Focusable="False">
+                                                            <Button.CommandParameter>
+                                                                <MultiBinding Converter="{x:Static local:IndexOfMultiConverter.Instance}">
+                                                                    <Binding Path="$parent[ItemsControl].ItemsSource"/>
+                                                                    <Binding/>
+                                                                </MultiBinding>
+                                                            </Button.CommandParameter>
+                                                        </Button>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <TextBlock Text="{x:Static res:Strings.QueuedEmptyState}"
+                                   FontSize="12"
+                                   Foreground="{DynamicResource TertiaryTextBrush}"
+                                   HorizontalAlignment="Center"
+                                   IsVisible="{Binding !QueuedPosts.Count}"/>
                     </StackPanel>
 
-                    <TextBlock Text="{x:Static res:Strings.BrowseModes}"
-                               FontSize="12"
-                               Foreground="{DynamicResource TertiaryTextBrush}"
-                               HorizontalAlignment="Center"/>
+                    <StackPanel Spacing="8">
+                        <TextBlock FontSize="14"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}:">
+                                    <Binding Source="{x:Static res:Strings.AddNewPost}"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                        <Border Background="{DynamicResource NextPieceBackgroundBrush}"
+                                CornerRadius="8"
+                                Padding="2">
+                            <TextBox x:Name="PostEditorTextBox"
+                                     Text="{Binding CurrentQueuedPostText, Mode=TwoWay}"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     MinHeight="80"
+                                     MaxHeight="120"
+                                     FontSize="14"
+                                     Watermark="{x:Static res:Strings.QueuedPostPlaceholder}"/>
+                        </Border>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Grid.Column="0"
+                                       Text="{Binding IsEditingPost, Converter={x:Static local:EditingLabelConverter.Instance}}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource AccentGoldBrush}"
+                                       IsVisible="{Binding IsEditingPost}"/>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <TextBlock FontSize="12"
+                                           Foreground="{Binding IsCurrentPostTooLong, Converter={x:Static local:BoolToColorConverter.Instance}}">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}/300">
+                                            <Binding Path="CurrentQueuedPostLength"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+                            <Button Command="{Binding AddOrUpdateQueuedPostCommand}"
+                                    IsEnabled="{Binding CanAddQueuedPost}"
+                                    Background="{DynamicResource AccentGreenBrush}"
+                                    Foreground="White"
+                                    CornerRadius="4"
+                                    Padding="20,8"
+                                    Focusable="False">
+                                <TextBlock Text="{Binding IsEditingPost, Converter={x:Static local:AddUpdateButtonConverter.Instance}}"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"/>
+                            </Button>
+                            <Button Content="{x:Static res:Strings.Cancel}"
+                                    Command="{Binding CancelEditCommand}"
+                                    IsVisible="{Binding IsEditingPost}"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    Foreground="{DynamicResource SecondaryTextBrush}"
+                                    CornerRadius="4"
+                                    Padding="20,8"
+                                    Focusable="False"/>
+                            <Button Content="{x:Static res:Strings.ClearAll}"
+                                    Command="{Binding ClearQueueCommand}"
+                                    IsVisible="{Binding QueuedPosts.Count}"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    Foreground="{DynamicResource AccentRedBrush}"
+                                    CornerRadius="4"
+                                    Padding="20,8"
+                                    Focusable="False"/>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
 
-            <!-- Action Buttons -->
             <StackPanel Margin="0,20,0,40" HorizontalAlignment="Center" Spacing="15">
                 <Border x:Name="PlayButtonBorder"
                         BorderThickness="3"
@@ -316,6 +637,7 @@
                         HorizontalAlignment="Center">
                     <Button Content="{x:Static res:Strings.Play}"
                             Command="{Binding PlayCommand}"
+                            IsEnabled="{Binding CanPlay}"
                             FontSize="20"
                             FontWeight="Bold"
                             Padding="60,15"
@@ -324,6 +646,12 @@
                             CornerRadius="4"
                             Focusable="False"/>
                 </Border>
+
+                <TextBlock Text="{x:Static res:Strings.QueuedNeedPosts}"
+                           FontSize="12"
+                           Foreground="{DynamicResource AccentRedBrush}"
+                           HorizontalAlignment="Center"
+                           IsVisible="{Binding !CanPlay}"/>
 
                 <Border x:Name="BackButtonBorder"
                         BorderThickness="3"

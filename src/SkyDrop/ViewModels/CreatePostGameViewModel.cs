@@ -1,3 +1,4 @@
+using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using DaT9;
@@ -25,6 +26,13 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     private readonly ATProtocol _protocol;
     private readonly JapaneseDictionaryService _japaneseDictionary;
     private CreatePostModeOptions? _currentOptions;
+
+    // Queued mode fields
+    private Queue<string> _wordQueue = new();
+    private List<int> _postBoundaries = new();
+    private int _totalQueuedWords;
+    private int _currentOutputPostIndex;
+    private StringBuilder _currentQueuedOutput = new();
 
     /// <summary>
     /// The T9 keypad layout (0-11: 1,2,3,4,5,6,7,8,9,*,0,#)
@@ -114,6 +122,53 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// Gets the list of completed posts created during the game.
     /// </summary>
     public ObservableCollection<string> CompletedPosts { get; } = new();
+
+    // ============= Queued Mode Properties =============
+
+    /// <summary>
+    /// Whether the game is in queued mode.
+    /// </summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsStandardMode))]
+    private bool _isQueuedMode;
+
+    /// <summary>
+    /// Whether the game is in standard (T9/ABC/Kana) mode.
+    /// </summary>
+    public bool IsStandardMode => !IsQueuedMode;
+
+    /// <summary>
+    /// Number of words revealed so far in queued mode.
+    /// </summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(QueuedProgressPercent))]
+    [NotifyPropertyChangedFor(nameof(IsQueueComplete))]
+    private int _wordsRevealed;
+
+    /// <summary>
+    /// Total number of words in the queue.
+    /// </summary>
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(QueuedProgressPercent))]
+    private int _totalWords;
+
+    /// <summary>
+    /// Progress percentage (0-100) for queued mode.
+    /// </summary>
+    public int QueuedProgressPercent => TotalWords > 0 ? (int)((double)WordsRevealed / TotalWords * 100) : 0;
+
+    /// <summary>
+    /// Whether all queued words have been revealed.
+    /// </summary>
+    public bool IsQueueComplete => WordsRevealed >= TotalWords && TotalWords > 0;
+
+    /// <summary>
+    /// The current output post being built in queued mode.
+    /// </summary>
+    [ObservableProperty]
+    private string _currentQueuedPostPreview = "";
+
+    // ============= End Queued Mode Properties =============
 
     /// <summary>
     /// The currently selected keypad position (0-11).
@@ -337,6 +392,7 @@ public partial class CreatePostGameViewModel : GameViewModelBase
 
         _engine.OnRotation += OnRotation;
         _engine.OnPieceLocked += OnPieceLocked;
+        _engine.OnLinesCleared += OnLinesCleared;
     }
 
     /// <summary>
@@ -358,7 +414,87 @@ public partial class CreatePostGameViewModel : GameViewModelBase
         ShowInstructions = true;
         IsGameOver = false;
         IsPaused = false;
-        ResetT9State();
+
+        // Initialize mode based on variant
+        IsQueuedMode = options.Variant == CreatePostVariant.Queued;
+
+        if (IsQueuedMode)
+        {
+            InitializeQueuedMode(options.QueuedPosts ?? []);
+        }
+        else
+        {
+            ResetT9State();
+        }
+    }
+
+    /// <summary>
+    /// Initializes the queued mode with pre-written posts.
+    /// </summary>
+    private void InitializeQueuedMode(IReadOnlyList<string> queuedPosts)
+    {
+        _wordQueue.Clear();
+        _postBoundaries.Clear();
+        _currentQueuedOutput.Clear();
+        _currentOutputPostIndex = 0;
+        CompletedPosts.Clear();
+
+        int cumulativeWordCount = 0;
+
+        foreach (var post in queuedPosts)
+        {
+            var words = post.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var word in words)
+            {
+                _wordQueue.Enqueue(word);
+                cumulativeWordCount++;
+            }
+            _postBoundaries.Add(cumulativeWordCount);
+        }
+
+        _totalQueuedWords = cumulativeWordCount;
+        TotalWords = _totalQueuedWords;
+        WordsRevealed = 0;
+        CurrentQueuedPostPreview = "";
+    }
+
+    /// <summary>
+    /// Called when lines are cleared. In queued mode, reveals words from the queue.
+    /// </summary>
+    private void OnLinesCleared(int linesCleared)
+    {
+        if (!IsQueuedMode || _wordQueue.Count == 0)
+            return;
+
+        for (int i = 0; i < linesCleared && _wordQueue.Count > 0; i++)
+        {
+            string word = _wordQueue.Dequeue();
+            WordsRevealed++;
+
+            // Add space before word if not first word in current output
+            if (_currentQueuedOutput.Length > 0)
+            {
+                _currentQueuedOutput.Append(' ');
+            }
+            _currentQueuedOutput.Append(word);
+
+            // Check if we've completed the current queued post
+            if (_currentOutputPostIndex < _postBoundaries.Count &&
+                WordsRevealed >= _postBoundaries[_currentOutputPostIndex])
+            {
+                // Finalize current output post
+                var completedPost = _currentQueuedOutput.ToString().Trim();
+                if (!string.IsNullOrEmpty(completedPost))
+                {
+                    CompletedPosts.Add(completedPost);
+                }
+                _currentQueuedOutput.Clear();
+                _currentOutputPostIndex++;
+            }
+        }
+
+        // Update preview
+        CurrentQueuedPostPreview = _currentQueuedOutput.ToString();
     }
 
     /// <summary>
@@ -394,7 +530,15 @@ public partial class CreatePostGameViewModel : GameViewModelBase
         IsGameOver = false;
         IsPaused = false;
         HasPosted = false;
-        ResetT9State();
+
+        if (IsQueuedMode)
+        {
+            InitializeQueuedMode(_currentOptions.QueuedPosts ?? []);
+        }
+        else
+        {
+            ResetT9State();
+        }
 
         StartEngine(_currentOptions.StartLevel);
     }
@@ -512,9 +656,13 @@ public partial class CreatePostGameViewModel : GameViewModelBase
 
     /// <summary>
     /// Called when the tetromino is rotated.
+    /// In queued mode, rotation doesn't affect text input.
     /// </summary>
     private void OnRotation(bool clockwise)
     {
+        // Skip text input processing in queued mode
+        if (IsQueuedMode) return;
+
         if (CurrentInputMode == TextInputMode.Kana)
         {
             var chars = KanaCharacters[SelectedKeyIndex];
@@ -718,9 +866,13 @@ public partial class CreatePostGameViewModel : GameViewModelBase
 
     /// <summary>
     /// Called when a piece locks into place.
+    /// In queued mode, piece locking doesn't trigger text input.
     /// </summary>
     private void OnPieceLocked()
     {
+        // Skip text input processing in queued mode
+        if (IsQueuedMode) return;
+
         ProcessKeyPress(SelectedKeyIndex);
     }
 
@@ -1203,12 +1355,26 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// </summary>
     protected override void OnGameOver()
     {
-        FinalizeCurrentInput();
-        var post = CurrentPost.Trim();
-        if (!string.IsNullOrEmpty(post))
+        if (IsQueuedMode)
         {
-            CompletedPosts.Add(post);
-            CurrentPost = "";
+            // Finalize any remaining queued output
+            var remainingOutput = _currentQueuedOutput.ToString().Trim();
+            if (!string.IsNullOrEmpty(remainingOutput))
+            {
+                CompletedPosts.Add(remainingOutput);
+                _currentQueuedOutput.Clear();
+                CurrentQueuedPostPreview = "";
+            }
+        }
+        else
+        {
+            FinalizeCurrentInput();
+            var post = CurrentPost.Trim();
+            if (!string.IsNullOrEmpty(post))
+            {
+                CompletedPosts.Add(post);
+                CurrentPost = "";
+            }
         }
 
         GameOverMenuIndex = CompletedPosts.Count > 0 ? 2 : 0;
@@ -1261,7 +1427,15 @@ public partial class CreatePostGameViewModel : GameViewModelBase
 
             foreach (var post in CompletedPosts)
             {
-                var (pResult, pError) = await _protocol.Feed.CreatePostAsync(post, reply: replyRefDef);
+                // Process URLs in the post text to markdown links, then parse for facets
+                var processedText = PostTextProcessor.PreparePostText(post);
+                var parsedPost = MarkdownPost.Parse(processedText);
+
+                var (pResult, pError) = await _protocol.Feed.CreatePostAsync(
+                    parsedPost.Post,
+                    facets: parsedPost.Facets,
+                    reply: replyRefDef);
+
                 if (pResult != null)
                 {
                     if (firstPost is null)
@@ -1281,11 +1455,13 @@ public partial class CreatePostGameViewModel : GameViewModelBase
             {
                 PostingStatus = Strings.StatusGeneratingStatsImage;
 
+                var modeName = IsQueuedMode ? Strings.VariantQueued : Strings.VariantStandard;
                 var statsImageBytes = StatsImageGenerator.GenerateStatsImage(
                     Score,
                     Level,
                     Lines,
-                    CompletedPosts.Count);
+                    CompletedPosts.Count,
+                    modeName);
 
                 var content = new StreamContent(new MemoryStream(statsImageBytes));
                 content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
@@ -1294,7 +1470,7 @@ public partial class CreatePostGameViewModel : GameViewModelBase
 
                 if (blobResult != null)
                 {
-                    var markdownPostText = $"Posted with [@SkyDrop](did:plc:zgvtbqqgnrbpfsyni76dpmca)\n\nScore: {Score:N0} | Level: {Level} | Lines: {Lines}";
+                    var markdownPostText = $"{Strings.SignaturePostedWith} [@SkyDrop](did:plc:zgvtbqqgnrbpfsyni76dpmca)\n\n{Strings.SignatureMode}: {modeName} | {Strings.Score}: {Score:N0} | {Strings.Level}: {Level} | {Strings.Lines}: {Lines}";
                     var post = MarkdownPost.Parse(markdownPostText);
 
                     Image image = new Image(blobResult.Blob, post.Post, aspectRatio: new AspectRatio(800, 420));
@@ -1327,7 +1503,8 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// </summary>
     public byte[] GenerateStatsImageBytes()
     {
-        return StatsImageGenerator.GenerateStatsImage(Score, Level, Lines, CompletedPosts.Count);
+        var modeName = IsQueuedMode ? Strings.VariantQueued : Strings.VariantStandard;
+        return StatsImageGenerator.GenerateStatsImage(Score, Level, Lines, CompletedPosts.Count, modeName);
     }
 
     /// <summary>

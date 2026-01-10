@@ -1,4 +1,5 @@
 using SkiaSharp;
+using SkyDrop.Resources;
 
 namespace SkyDrop.Services;
 
@@ -46,8 +47,9 @@ public static class StatsImageGenerator
     /// <param name="level">Final level</param>
     /// <param name="lines">Lines cleared</param>
     /// <param name="postsCount">Number of posts created</param>
+    /// <param name="modeName">Name of the game mode variant (e.g., "Standard", "Queued")</param>
     /// <returns>PNG image as byte array</returns>
-    public static byte[] GenerateStatsImage(int score, int level, int lines, int postsCount)
+    public static byte[] GenerateStatsImage(int score, int level, int lines, int postsCount, string? modeName = null)
     {
         using var surface = SKSurface.Create(new SKImageInfo(ImageWidth, ImageHeight));
         var canvas = surface.Canvas;
@@ -71,15 +73,18 @@ public static class StatsImageGenerator
         using var labelFont = new SKFont(typeface, 16);
         using var valueFont = new SKFont(typeface, 36);
 
-        // Draw "SKYDROP" title
+        // Draw title
         using var titlePaint = new SKPaint { Color = AccentCyan, IsAntialias = true };
         titlePaint.TextAlign = SKTextAlign.Center;
-        canvas.DrawText("SKYDROP", ImageWidth / 2, 80, titleFont, titlePaint);
+        canvas.DrawText(Strings.StatsImageTitle, ImageWidth / 2, 80, titleFont, titlePaint);
 
-        // Draw "GAME STATS" subtitle
+        // Draw subtitle with mode name if provided
         using var subtitlePaint = new SKPaint { Color = TextSecondary, IsAntialias = true };
         subtitlePaint.TextAlign = SKTextAlign.Center;
-        canvas.DrawText("GAME STATS", ImageWidth / 2, 110, subtitleFont, subtitlePaint);
+        var subtitleText = string.IsNullOrEmpty(modeName)
+            ? Strings.StatsImageSubtitle
+            : string.Format(Strings.StatsImageCreatePostMode, modeName.ToUpperInvariant());
+        canvas.DrawText(subtitleText, ImageWidth / 2, 110, subtitleFont, subtitlePaint);
 
         // Draw separator line
         using var linePaint = new SKPaint
@@ -91,15 +96,15 @@ public static class StatsImageGenerator
         canvas.DrawLine(100, 130, ImageWidth - 100, 130, linePaint);
 
         // Stats layout - 2x2 grid
-        DrawStatBox(canvas, 60, 160, "SCORE", score.ToString("N0"), AccentGold, labelFont, valueFont);
-        DrawStatBox(canvas, ImageWidth / 2 + 20, 160, "LEVEL", level.ToString(), AccentCyan, labelFont, valueFont);
-        DrawStatBox(canvas, 60, 280, "LINES", lines.ToString(), AccentGreen, labelFont, valueFont);
-        DrawStatBox(canvas, ImageWidth / 2 + 20, 280, "POSTS", postsCount.ToString(), AccentRed, labelFont, valueFont);
+        DrawStatBox(canvas, 60, 160, Strings.Score, score.ToString("N0"), AccentGold, labelFont, valueFont);
+        DrawStatBox(canvas, ImageWidth / 2 + 20, 160, Strings.Level, level.ToString(), AccentCyan, labelFont, valueFont);
+        DrawStatBox(canvas, 60, 280, Strings.Lines, lines.ToString(), AccentGreen, labelFont, valueFont);
+        DrawStatBox(canvas, ImageWidth / 2 + 20, 280, Strings.Posts, postsCount.ToString(), AccentRed, labelFont, valueFont);
 
         // Draw footer
         using var footerPaint = new SKPaint { Color = TextSecondary, IsAntialias = true };
         footerPaint.TextAlign = SKTextAlign.Center;
-        canvas.DrawText("Posted with SkyDrop", ImageWidth / 2, ImageHeight - 35, footerFont, footerPaint);
+        canvas.DrawText(Strings.StatsImageFooter, ImageWidth / 2, ImageHeight - 35, footerFont, footerPaint);
 
         // Encode to PNG
         using var image = surface.Snapshot();
