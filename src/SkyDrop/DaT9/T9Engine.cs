@@ -538,6 +538,11 @@ public class T9Engine
             while (true)
             {
                 var completion = GetCompletion();
+                if (string.IsNullOrEmpty(completion))
+                {
+                    break;
+                }
+                
                 if (!completions.Contains(completion))
                 {
                     completions.Add(completion);
@@ -574,9 +579,25 @@ public class T9Engine
             return false;
         }
 
+        // Strip leading and trailing punctuation
+        var cleanedWord = word.Trim();
+        while (cleanedWord.Length > 0 && char.IsPunctuation(cleanedWord[0]))
+        {
+            cleanedWord = cleanedWord[1..];
+        }
+        while (cleanedWord.Length > 0 && char.IsPunctuation(cleanedWord[^1]))
+        {
+            cleanedWord = cleanedWord[..^1];
+        }
+
+        if (string.IsNullOrEmpty(cleanedWord))
+        {
+            return false;
+        }
+
         // Convert word to T9 sequence
         var sequence = new System.Text.StringBuilder();
-        foreach (var c in word)
+        foreach (var c in cleanedWord)
         {
             if (c == '\'')
             {
@@ -596,7 +617,7 @@ public class T9Engine
 
         // Get all completions for this sequence and check if the word is among them
         var completions = GetAllCompletions(sequence.ToString());
-        var normalizedWord = word.ToLowerInvariant().Replace("'", "");
+        var normalizedWord = cleanedWord.ToLowerInvariant().Replace("'", "");
         
         return completions.Any(c => c.ToLowerInvariant().Replace("'", "") == normalizedWord);
     }

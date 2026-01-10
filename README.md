@@ -33,11 +33,12 @@ from the terminal. If you don't know how to do that, you should stick to the Web
 
 ## Known Issues:
 
+- No sound or music. Have not made any yet.
 - The default "Retro" font is [Nu Kinako Mochi](https://kokagem.sakura.ne.jp/font/mochi/). It does not support all Japanese characters, so I tried to get creative with my text and menu options. It can also be hard to read in general for English and Japanese, even though it looks really nice. You can revert to the system fonts on the title screen.
 - The dakuten/handakuten can be cut off in the UI, this appears to be an Avalonia issue with CJK and this font.
 - The "block droping gameplay" may not be _exactly_ the "best" version of said block dropping game you've played. I am tweaking it more and am open to suggestions, but this is not intended to have every possible feature for the best version of said block dropping game possible.
 - The Login system uses password and not OAuth. Implmenting OAuth support in this context, especially for Web, is complex. As this is less intended as a "true" client experience and more of a bit of fun, I did not implement that yet. 
-- Login info is not saved between sessions, you need to log in again when you restart. This was intentional for now, since doing that for Web would be tricky and I assume most people will play this once and never again (Or will not log in), but it's possible to do.
+- Login info is not saved between sessions, you need to log in again when you restart the game. This was intentional for now, since doing that for Web would be tricky and I assume most people will play this once and never again (Or will not log in), but it's possible to do.
 - Videos will not play. Thumbnails are shown.
 - Holding inputs should work correctly for Desktop, but is limited to single presses on Web.
 - The T9 list includes 10,000 english words. It's not complete, and I currently don't surface the word can't be found.
