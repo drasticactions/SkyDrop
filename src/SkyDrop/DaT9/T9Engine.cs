@@ -561,6 +561,46 @@ public class T9Engine
         return completions;
     }
 
+
+    /// <summary>
+    /// Checks if a word exists in the dictionary.
+    /// </summary>
+    /// <param name="word">The word to check.</param>
+    /// <returns>True if the word is in the dictionary, false otherwise.</returns>
+    public bool IsWordInDictionary(string word)
+    {
+        if (string.IsNullOrWhiteSpace(word))
+        {
+            return false;
+        }
+
+        // Convert word to T9 sequence
+        var sequence = new System.Text.StringBuilder();
+        foreach (var c in word)
+        {
+            if (c == '\'')
+            {
+                continue;
+            }
+
+            if (T9Mapping.TryGetValue(char.ToLower(c), out var digit))
+            {
+                sequence.Append(digit);
+            }
+        }
+
+        if (sequence.Length == 0)
+        {
+            return false;
+        }
+
+        // Get all completions for this sequence and check if the word is among them
+        var completions = GetAllCompletions(sequence.ToString());
+        var normalizedWord = word.ToLowerInvariant().Replace("'", "");
+        
+        return completions.Any(c => c.ToLowerInvariant().Replace("'", "") == normalizedWord);
+    }
+
     /// <summary>
     /// Represents a node in the T9 trie structure.
     /// </summary>

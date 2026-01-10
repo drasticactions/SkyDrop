@@ -100,7 +100,8 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
             foreach (var step in result.Steps)
             {
-                SequenceSteps.Add(new SequenceStepDisplay(step.Word, step.Sequence));
+                var isInDictionary = _engine.IsWordInDictionary(step.Word);
+                SequenceSteps.Add(new SequenceStepDisplay(step.Word, step.Sequence, isInDictionary));
             }
         }
         catch (Exception ex)
@@ -183,4 +184,4 @@ public partial class T9GeneratorViewModel : ViewModelBase
 /// <summary>
 /// Display model for a T9 sequence step showing word and its T9 sequence.
 /// </summary>
-public record SequenceStepDisplay(string Word, string Sequence);
+public record SequenceStepDisplay(string Word, string Sequence, bool IsInDictionary);

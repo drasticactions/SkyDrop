@@ -399,6 +399,17 @@ public partial class CreatePostGameViewModel : GameViewModelBase
         StartEngine(_currentOptions.StartLevel);
     }
 
+
+    /// <summary>
+    /// Returns to the title screen and fully resets game state.
+    /// </summary>
+    public override void ReturnToTitle()
+    {
+        ResetT9State();
+        HasPosted = false;
+        base.ReturnToTitle();
+    }
+
     /// <summary>
     /// Navigates the Game Over menu up or down.
     /// </summary>

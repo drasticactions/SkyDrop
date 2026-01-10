@@ -525,6 +525,9 @@
   <data name="WordBreakdown" xml:space="preserve">
     <value>単語分解</value>
   </data>
+  <data name="WordNotInDictionary" xml:space="preserve">
+    <value>辞書にない単語</value>
+  </data>
   <data name="EnterT9Sequence" xml:space="preserve">
     <value>T9シーケンスを入力</value>
   </data>

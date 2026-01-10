@@ -525,6 +525,9 @@
   <data name="WordBreakdown" xml:space="preserve">
     <value>Word Breakdown</value>
   </data>
+  <data name="WordNotInDictionary" xml:space="preserve">
+    <value>Word not in dictionary</value>
+  </data>
   <data name="EnterT9Sequence" xml:space="preserve">
     <value>Enter T9 Sequence</value>
   </data>

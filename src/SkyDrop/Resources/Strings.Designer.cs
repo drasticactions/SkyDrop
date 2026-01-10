@@ -1526,7 +1526,16 @@ namespace SkyDrop.Resources {
                 return ResourceManager.GetString("WordBreakdown", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Word not in dictionary に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WordNotInDictionary {
+            get {
+                return ResourceManager.GetString("WordNotInDictionary", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Write posts using T9 input に類似しているローカライズされた文字列を検索します。
         /// </summary>

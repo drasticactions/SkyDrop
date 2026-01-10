@@ -115,15 +115,24 @@
                                             CornerRadius="4"
                                             Padding="12"
                                             Margin="0,4">
-                                        <Grid ColumnDefinitions="*,Auto">
+                                        <Grid ColumnDefinitions="20,*,Auto" VerticalAlignment="Center">
                                             <TextBlock Grid.Column="0"
+                                                       Text="⚠"
+                                                       FontSize="14"
+                                                       Foreground="#E53935"
+                                                       VerticalAlignment="Center"
+                                                       IsVisible="{Binding !IsInDictionary}"
+                                                       ToolTip.Tip="{x:Static res:Strings.WordNotInDictionary}"/>
+                                            <TextBlock Grid.Column="1"
                                                        Text="{Binding Word}"
                                                        FontSize="14"
+                                                       VerticalAlignment="Center"
                                                        Foreground="{DynamicResource PrimaryTextBrush}"/>
-                                            <TextBlock Grid.Column="1"
+                                            <TextBlock Grid.Column="2"
                                                        Text="{Binding Sequence}"
                                                        FontSize="14"
                                                        FontWeight="Bold"
+                                                       VerticalAlignment="Center"
                                                        Foreground="{DynamicResource AccentCyanBrush}"/>
                                         </Grid>
                                     </Border>
