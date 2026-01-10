@@ -799,7 +799,7 @@
     <value>投稿作成 - {0}</value>
   </data>
   <data name="StatsImageFooter" xml:space="preserve">
-    <value>SkyDropで投稿</value>
+    <value>SkyDropでトウコウ</value>
   </data>
   <!-- Signature Post Strings -->
   <data name="SignaturePostedWith" xml:space="preserve">
@@ -837,7 +837,7 @@
     <value>キューの投稿</value>
   </data>
   <data name="Posts" xml:space="preserve">
-    <value>投稿</value>
+    <value>トウコウ</value>
   </data>
   <data name="Words" xml:space="preserve">
     <value>単語</value>
