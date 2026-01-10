@@ -344,18 +344,9 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// </summary>
     private void LoadDefaultDictionary()
     {
-        var uri = new Uri("avares://SkyDrop/Assets/google-10000-english-usa.txt");
+        var uri = new Uri("avares://SkyDrop/Assets/en-utf8.csv");
         using var stream = Avalonia.Platform.AssetLoader.Open(uri);
-        using var reader = new StreamReader(stream);
-
-        while (reader.ReadLine() is { } line)
-        {
-            var word = line.Trim();
-            if (!string.IsNullOrEmpty(word))
-            {
-                _t9Engine.AddWord(word);
-            }
-        }
+        _t9Engine.LoadDictionaryFromStream(stream);
     }
 
     /// <summary>

@@ -55,7 +55,7 @@ public class T9Engine
     /// </summary>
     /// <param name="word">The word to add.</param>
     /// <returns>True if the word was added, false if it already exists or contains invalid characters.</returns>
-    public bool AddWord(string word)
+    public bool AddWord(string word, int frequency = 0)
     {
         var cur = _lookup;
 
@@ -85,13 +85,30 @@ public class T9Engine
             cur = child;
         }
 
-        if (!cur.Words.Contains(word))
+        // Check if word already exists
+        for (int i = 0; i < cur.Words.Count; i++)
         {
-            cur.Words.Add(word);
-            return true;
+            if (cur.Words[i].Word == word)
+            {
+                return false;
+            }
         }
 
-        return false;
+        // Insert word in frequency order (higher frequency first)
+        int insertIndex = 0;
+        for (int i = 0; i < cur.Words.Count; i++)
+        {
+            if (cur.Words[i].Frequency >= frequency)
+            {
+                insertIndex = i + 1;
+            }
+            else
+            {
+                break;
+            }
+        }
+        cur.Words.Insert(insertIndex, (word, frequency));
+        return true;
     }
 
     /// <summary>
@@ -102,11 +119,47 @@ public class T9Engine
     {
         foreach (var line in File.ReadLines(filename))
         {
-            var word = line.Trim();
-            if (!string.IsNullOrEmpty(word))
+            var parts = line.Split('\t');
+            var word = parts[0].Trim();
+            if (string.IsNullOrEmpty(word))
             {
-                AddWord(word);
+                continue;
             }
+
+            int frequency = 0;
+            if (parts.Length > 1 && int.TryParse(parts[1].Trim(), out var freq))
+            {
+                frequency = freq;
+            }
+
+            AddWord(word, frequency);
+        }
+    }
+
+
+    /// <summary>
+    /// Loads the dictionary from a stream containing tab-delimited word,frequency pairs.
+    /// </summary>
+    /// <param name="stream">The stream to read from.</param>
+    public void LoadDictionaryFromStream(Stream stream)
+    {
+        using var reader = new StreamReader(stream);
+        while (reader.ReadLine() is { } line)
+        {
+            var parts = line.Split('\t');
+            var word = parts[0].Trim();
+            if (string.IsNullOrEmpty(word))
+            {
+                continue;
+            }
+
+            int frequency = 0;
+            if (parts.Length > 1 && int.TryParse(parts[1].Trim(), out var freq))
+            {
+                frequency = freq;
+            }
+
+            AddWord(word, frequency);
         }
     }
 
@@ -161,7 +214,7 @@ public class T9Engine
         {
             if (candidate.Words.Count > 0)
             {
-                var word = candidate.Words[_completionChoice % candidate.Words.Count];
+                var word = candidate.Words[_completionChoice % candidate.Words.Count].Word;
                 return _caseMode switch
                 {
                     CaseMode.Capitalize when word.Length > 0 => char.ToUpper(word[0]) + word[1..],
@@ -514,6 +567,6 @@ public class T9Engine
     private class TrieNode
     {
         public Dictionary<int, TrieNode> Children { get; } = new();
-        public List<string> Words { get; } = new();
+        public List<(string Word, int Frequency)> Words { get; } = new();
     }
 }

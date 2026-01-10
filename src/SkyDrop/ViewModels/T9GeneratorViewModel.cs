@@ -54,18 +54,9 @@ public partial class T9GeneratorViewModel : ViewModelBase
 
     private void LoadDictionary()
     {
-        var uri = new Uri("avares://SkyDrop/Assets/google-10000-english-usa.txt");
+        var uri = new Uri("avares://SkyDrop/Assets/en-utf8.csv");
         using var stream = Avalonia.Platform.AssetLoader.Open(uri);
-        using var reader = new StreamReader(stream);
-
-        while (reader.ReadLine() is { } line)
-        {
-            var word = line.Trim();
-            if (!string.IsNullOrEmpty(word))
-            {
-                _engine.AddWord(word);
-            }
-        }
+        _engine.LoadDictionaryFromStream(stream);
     }
 
     partial void OnCurrentModeChanged(T9Mode value)
