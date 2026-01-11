@@ -761,6 +761,18 @@
   <data name="ControlEscPause" xml:space="preserve">
     <value>ESC = ポーズ</value>
   </data>
+  <data name="ControlArrowsMove" xml:space="preserve">
+    <value>← → = 移動</value>
+  </data>
+  <data name="ControlUpRotate" xml:space="preserve">
+    <value>↑ = 回転</value>
+  </data>
+  <data name="ControlDownSoftDrop" xml:space="preserve">
+    <value>↓ = ソフトドロップ</value>
+  </data>
+  <data name="ControlSpaceHardDrop" xml:space="preserve">
+    <value>スペース = ハードドロップ</value>
+  </data>
   <data name="GameOverStats" xml:space="preserve">
     <value>スコア: {0} | レベル: {1} | ライン: {2}</value>
   </data>

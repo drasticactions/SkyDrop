@@ -346,20 +346,49 @@
                                 <TextBlock Text="{x:Static res:Strings.PressHashToAddPost}"
                                            FontSize="9"
                                            Foreground="{DynamicResource TertiaryTextBrush}"
-                                           IsVisible="{Binding !CompletedPosts.Count}"
                                            HorizontalAlignment="Center"
-                                           VerticalAlignment="Center"/>
+                                           VerticalAlignment="Center">
+                                    <TextBlock.IsVisible>
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                            <Binding Path="!CompletedPosts.Count"/>
+                                            <Binding Path="IsStandardMode"/>
+                                        </MultiBinding>
+                                    </TextBlock.IsVisible>
+                                </TextBlock>
+                                <TextBlock Text="{x:Static res:Strings.ClearLinesToReveal}"
+                                           FontSize="9"
+                                           Foreground="{DynamicResource TertiaryTextBrush}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center">
+                                    <TextBlock.IsVisible>
+                                        <MultiBinding Converter="{x:Static BoolConverters.And}">
+                                            <Binding Path="!CompletedPosts.Count"/>
+                                            <Binding Path="IsQueuedMode"/>
+                                        </MultiBinding>
+                                    </TextBlock.IsVisible>
+                                </TextBlock>
                             </Panel>
                         </Border>
                     </Grid>
 
-                    <StackPanel Grid.Row="5" Spacing="2">
+                    <!-- Standard Mode Controls -->
+                    <StackPanel Grid.Row="5" Spacing="2" IsVisible="{Binding IsStandardMode}">
                         <TextBlock Text="{x:Static res:Strings.Controls}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource TertiaryTextBrush}"/>
                         <TextBlock Text="{x:Static res:Strings.ControlRotateSelectKey}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
                         <TextBlock Text="{x:Static res:Strings.ControlDropPressKey}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
                         <TextBlock Text="{x:Static res:Strings.ControlTabCycleSuggestions}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
                         <TextBlock Text="{x:Static res:Strings.ControlMToggleMode}" FontSize="9" Foreground="{DynamicResource AccentCyanBrush}"/>
                         <TextBlock Text="{x:Static res:Strings.ControlSpecialKeysShort}" FontSize="9" Foreground="{DynamicResource AccentGoldBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlEscPause}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                    </StackPanel>
+
+                    <!-- Queued Mode Controls -->
+                    <StackPanel Grid.Row="5" Spacing="2" IsVisible="{Binding IsQueuedMode}">
+                        <TextBlock Text="{x:Static res:Strings.Controls}" FontSize="10" FontWeight="SemiBold" Foreground="{DynamicResource TertiaryTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlArrowsMove}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlUpRotate}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlDownSoftDrop}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
+                        <TextBlock Text="{x:Static res:Strings.ControlSpaceHardDrop}" FontSize="9" Foreground="{DynamicResource AccentGoldBrush}"/>
                         <TextBlock Text="{x:Static res:Strings.ControlEscPause}" FontSize="9" Foreground="{DynamicResource MutedTextBrush}"/>
                     </StackPanel>
                 </Grid>

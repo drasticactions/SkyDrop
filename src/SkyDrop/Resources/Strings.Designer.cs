@@ -1960,6 +1960,42 @@ namespace SkyDrop.Resources {
         }
 
         /// <summary>
+        ///   ← → = Move piece
+        /// </summary>
+        public static string ControlArrowsMove {
+            get {
+                return ResourceManager.GetString("ControlArrowsMove", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   ↑ = Rotate piece
+        /// </summary>
+        public static string ControlUpRotate {
+            get {
+                return ResourceManager.GetString("ControlUpRotate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   ↓ = Soft drop
+        /// </summary>
+        public static string ControlDownSoftDrop {
+            get {
+                return ResourceManager.GetString("ControlDownSoftDrop", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Space = Hard drop
+        /// </summary>
+        public static string ControlSpaceHardDrop {
+            get {
+                return ResourceManager.GetString("ControlSpaceHardDrop", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Score: {0} | Level: {1} | Lines: {2}
         /// </summary>
         public static string GameOverStats {

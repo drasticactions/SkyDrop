@@ -761,6 +761,18 @@
   <data name="ControlEscPause" xml:space="preserve">
     <value>ESC = Pause</value>
   </data>
+  <data name="ControlArrowsMove" xml:space="preserve">
+    <value>← → = Move piece</value>
+  </data>
+  <data name="ControlUpRotate" xml:space="preserve">
+    <value>↑ = Rotate piece</value>
+  </data>
+  <data name="ControlDownSoftDrop" xml:space="preserve">
+    <value>↓ = Soft drop</value>
+  </data>
+  <data name="ControlSpaceHardDrop" xml:space="preserve">
+    <value>Space = Hard drop</value>
+  </data>
   <data name="GameOverStats" xml:space="preserve">
     <value>Score: {0} | Level: {1} | Lines: {2}</value>
   </data>
