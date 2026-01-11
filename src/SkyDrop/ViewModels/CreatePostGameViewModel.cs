@@ -1510,6 +1510,7 @@ public partial class CreatePostGameViewModel : GameViewModelBase
     /// <summary>
     /// Cycles to the next T9 word completion.
     /// Can be called externally (e.g., via a specific key combination).
+    /// Wraps around to the first suggestion when reaching the end.
     /// </summary>
     public void CycleT9Completion()
     {
@@ -1520,7 +1521,9 @@ public partial class CreatePostGameViewModel : GameViewModelBase
         }
         catch (WordNotFoundException)
         {
-            // No more completions - stay on current
+            // Wrap around to the first completion
+            _t9Engine.ResetCompletionChoice();
+            CurrentWordPreview = _t9Engine.GetCompletion();
         }
     }
 
